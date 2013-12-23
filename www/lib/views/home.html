@@ -1,0 +1,73 @@
+<div>
+<div class="select">
+	<select name="linea" onchange="etr.obtenerCalle(this.children(this.selectedIndex));">
+		<option value="0" idlinea="0">Seleccionar linea</option>
+		<option value="101" idlinea="1,2">101</option>
+		<option value="102" idlinea="3,4">102</option>
+		<option value="103" idlinea="5,6">103</option>
+		<option value="110" idlinea="11">110</option>
+		<option value="112" idlinea="12,13">112</option>
+		<option value="113" idlinea="14">113</option>
+		<option value="115" idlinea="15">115</option>
+		<option value="116" idlinea="16">116</option>
+		<option value="120" idlinea="17">120</option>
+		<option value="121" idlinea="18">121</option>
+		<option value="122" idlinea="19,20">122</option>
+		<option value="123" idlinea="21">123</option>
+		<option value="125" idlinea="22">125</option>
+		<option value="126" idlinea="23,24">126</option>
+		<option value="127" idlinea="25">127</option>
+		<option value="128" idlinea="26,27">128</option>
+		<option value="129" idlinea="28">129</option>
+		<option value="130" idlinea="29">130</option>
+		<option value="131" idlinea="30">131</option>
+		<option value="132" idlinea="31">132</option>
+		<option value="133" idlinea="32,33">133</option>
+		<option value="134" idlinea="34">134</option>
+		<option value="135" idlinea="35">135</option>
+		<option value="136" idlinea="36">136</option>
+		<option value="137" idlinea="37">137</option>
+		<option value="138" idlinea="38,39">138</option>
+		<option value="139" idlinea="40,41">139</option>
+		<option value="140" idlinea="43">140</option>
+		<option value="141" idlinea="44">141</option>
+		<option value="142" idlinea="45,46,47">142</option>
+		<option value="143" idlinea="48,49">143</option>
+		<option value="144" idlinea="50,51">144</option>
+		<option value="145" idlinea="52,53">145</option>
+		<option value="146" idlinea="54,55">146</option>
+		<option value="153" idlinea="56,57,58">153</option>
+		<option value="K" idlinea="64">K</option>
+		<option value="LC" idlinea="65">Línea de la Costa</option>
+		<option value="RC" idlinea="66">Ronda del Centro</option>
+	</select>
+</div>
+<div class="select">
+	<select id="calle" name="calle" disabled="disabled" onchange="etr.obtenerInter(this.value)">
+		<option value="0">Seleccionar calle</option>
+	</select>
+</div>
+<div class="select">
+	<select id="inter" name="inter" disabled="disabled" onchange="etr.obtenerParadas(this.value)">
+		<option value="0">Seleccionar intersecci&oacute;n</option>
+	</select>
+</div>
+<div class="input">
+	<p class="labels">Nro. de Parada</p>
+	<input type="text" id="idparada" name="idparada" class="parada" disabled="disabled" onfocus="this.value='';" />
+</div>
+<div class="select">
+	<select id="parada" name="parada" class="parada1" disabled="disabled" onchange="etr.selecParada(this.value)">
+		<option value="0" style="width:100%;">Seleccionar parada</option>
+	</select>
+</div>
+<div class="button">
+	<input type="button" value="Consultar" class="btn"  onclick="etr.cuandollega()" />
+</div>
+</div>
+<br />
+<div id="popup" style="display:none;">
+	<button id="popup_close" onclick="$('#popup').hide();">&nbsp;</button>
+	<div id="cuando_llega"></div>
+	<div id="fav_button" onclick="etr.addFavorito();"><span>Agregar a favoritos</span></div>
+</div>
