@@ -138,10 +138,10 @@ function _etr(){
 	
 	this.busqueda = {};
 
-	this.obtenerCalle = function(option) {
+	this.obtenerCalle = function() {
 		
-		var linea   = option.value;
-		var idlinea = option.getAttribute("idlinea");
+        var linea = $('#linea').find(":selected").val();
+        var idlinea = $('#linea').find(":selected").attr("idlinea");
 		
 		$("#message").html("");
 		$("#calle").attr("disabled", "disabled");
