@@ -36,7 +36,7 @@ var app = {
 			window.plugins.socialsharing.available(function(isAvailable) {
 				if (isAvailable) {
 					window.plugins.socialsharing.share(
-						"No hagas cálculos con los horarios, quedate en la cama hasta que llegue el cole!", 
+						"No hagas cálculos de horarios, quedate en la cama hasta que llegue el cole!", 
 						null, 
 						null, 
 						"http://cineros.com.ar"
@@ -123,6 +123,7 @@ var app = {
 			return;
 		}
 		etr.busqueda.idparada = idparada;
+		alert(etr.busqueda.idparada);
 		document.location.href = "#resultado";
 	}
 };
@@ -141,5 +142,9 @@ function toggle(id){
 			el.style.zIndex = '-1';
 		}
 	}
+}
+
+function alert(msj){
+    navigator.notification.alert(msj);
 }
 
