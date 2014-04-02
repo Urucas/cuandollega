@@ -3,6 +3,7 @@ var app = {
 	baseURL: "http://cinema.urucas.com/api",
 	modules: [
 		{ id: "consultar", view: "views/consultar.html"},
+		{ id: "favoritos", view: "views/favoritos.html"},
 		{ id: "configuracion", view: "views/configuracion.html"},
 		{ id: "resultado", view: "views/resultado.html"},
 		{ id: "search", view: "cartelera.html", callback: function() { app.search(); } },
@@ -20,7 +21,8 @@ var app = {
 
 		try { scroll(0,0); }catch(e){};
 		$("#wrapper").include(view, function(){
-			try { callback(); } catch(e) { }
+			try { toggle("menu"); }catch(e) {}
+			try { callback(); } catch(e) {}
 		});
 
 	},
