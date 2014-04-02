@@ -137,7 +137,6 @@ function _etr(){
 	this.busqueda = {};
 
 	this.obtenerCalle = function() {
-		alert("obtener calle");
         var linea = $('#consultar-linea').find(":selected").val();
         var idlinea = $('#consultar-linea').find(":selected").attr("idlinea");
 		
@@ -175,14 +174,13 @@ function _etr(){
 			var calle = calles[i];
 			html_calles+= '<option value="' + calle.id +'">' + calle.desc + '</option>';
 		}
-        console.log(html_calles)
 		$("#consultar-calle").html(html_calles);
 		//$("#consultar-calle").attr("disabled", "");
 		//$("#consultar-nrosparada").attr("disabled", "");
 	}
 
 	this.obtenerInter = function() {
-		alert("obtener inter");
+	
 		$("#message").html("");
 	//	$("#inter").attr("disabled", "disabled");
 	//	$("#parada").attr("disabled", "disabled");
@@ -216,13 +214,12 @@ function _etr(){
 			var inter = inters[i];
 			html_inters+= '<option value="' + inter.id +'">' + inter.desc + '</option>';
 		}
-		$("#inter").html(html_inters);
+		$("#consultar-interseccion").html(html_inters);
 //		$("#inter").attr("disabled", "");
 	}
 
 	this.obtenerParadas = function() {
 
-		alert("obtener paradas");
 		$("#message").html("");
 		var idinter = $("#consultar-interseccion").val();
 		this.busqueda.idinter = 0;
