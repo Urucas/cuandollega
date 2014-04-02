@@ -269,150 +269,10 @@ a:active{text-decoration:none;}
     display:block;
     margin:0 auto;
 }
-.btn p{
-    font-family:RobotoLight;
-    font-size:1.4em;
-    color:#FFF;
-    margin:6% 0% 0% 0%;
-    padding:0;
-}
-
-/* INTERNAS */
-
-.sombra-int{
-    width:100%;
-    margin:0 auto;
-    padding:0;
-    height:6px;
-}
-#pelis{
-    width:100%;
-}
-.peli{
-    width:96%;
-    height:auto;
-    padding:10px 0px;
-    border-bottom:#CCC 1px solid;
-    text-align:left;
-    display:inline-block;
-    background:url(images/flecha.png) right no-repeat;
-    background-size:50px;
-}
-.cine{
-    width:96%;
-    height:auto;
-    padding:10px 0px;
-    border-bottom:#CCC 1px solid;
-    text-align:left;
-    display:inline-block;
-}
-.thumb{
-
-    /*	background-color:#14aad6;*/
-    background:url(images/icon_cineros.png) no-repeat;
-    background-size:74px 74px;
-    height: 140px;
-    float:left;
-    margin-right:10px;
-}
-.titulo{
-    font-family:RobotoRegular;
-    font-size:1.8em;
-    line-height:1em;
-    color:#14aad6;
-    margin-bottom:4px;
-}
-.votos,
-.info{
-    font-family:RobotoLight;
-    font-size:1.5em;
-    line-height:1.1em;
-    color:#999;
-    margin-bottom:4px;
-}
-.btns a{
-}
-.btn-buena{
-    margin-right:1px;
-    width:48px;
-    height:40px;
-}
-.btn-mala,
-.btn-buena img,
-.btn-mala img{
-    width:48px;
-    height:40px;
-}
-.km{
-    font-family:RobotoLight;
-    font-size:0.7em;
-    line-height:1em;
-    color:#999;
-    margin-left:4px;
-}
-.como{
-    font-family:RobotoRegular;
-    font-size:1.5em;
-    line-height:1.2em;
-    color:#14aad6;
-    margin-top:10px;
-    margin-bottom:4px;
-}
-
-
-/* Pelicula */
-
-.img-peli{
-    display:block;
-}
-.votos-peli{
-    position:relative;
-    float:right;
-    top:-103px;
-    height:50px;
-}
-.porcentaje{
-    width:97px;
-    height:68px;
-    background-color:#14aad6;
-}
-.porcentaje p{
-    font-family:RobotoRegular;
-    letter-spacing:-1px;
-    font-size:4.5em;
-    line-height:1.2em;
-    color:#fff;
-}
-
-.porcentaje .cant_votos {
-    font-size: 11px;
-    color: white;
-    line-height: 1px !important;
-    display: block;
-    padding: 0px;
-    margin: 0px;
-    margin-top: -8px;
-}
 
 .simbolo{
     font-size:0.5em;
     margin-left:2px;
-}
-.peli-descripcion{
-    width:96%;
-    height:auto;
-    padding:10px 0px;
-    text-align:left;
-    margin:0 auto;
-    display:block;
-}
-.descripcion{
-    font-family:RobotoLight;
-    font-size:1.5em;
-    line-height:1.3em;
-    color:#999;
-    margin-top:8px;
-    margin-bottom:4px;
 }
 .linea{
     width:100%;
@@ -420,14 +280,6 @@ a:active{text-decoration:none;}
     line-height:1px;
     border-top:#CCC 1px solid;
     margin:10px 0px;
-}
-#movie-horarios{
-    font-family:RobotoLight;
-    font-size:1.4em;
-    line-height:1.3em;
-    color:#999;
-    margin-bottom:4px;
-    white-space:pre;
 }
 
 /* CONFIGURACION */
@@ -457,9 +309,6 @@ a:active{text-decoration:none;}
     margin-bottom:4px;
 }
 
-.peli .sinopsis{
-    width:90%;
-}
 /* IOS */
 .statusBar{
     height:20px;
