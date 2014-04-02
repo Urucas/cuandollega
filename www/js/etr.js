@@ -140,17 +140,12 @@ function _etr(){
         var linea = $('#consultar-linea').find(":selected").val();
         var idlinea = $('#consultar-linea').find(":selected").attr("idlinea");
 		
-//		$("#consultar-calle").attr("disabled", "disabled");
-		//$("#consultar-interseccion").attr("disabled", "disabled");
-		//$("#consultar-nroparada").attr("disabled", "disabled");  
-		//$("#consultar-nrosparada").attr("disabled", "disabled");
-		// $("#consultar-nrosparada").val("");
+		$("#consultar-calle").html('<option value="0">Seleccionar calle</option>');
+		$("#consultar-interseccion").html('<option value="0">Seleccionar intersecci&oacute;n</option>');
+		$("#consultar-nroparada").val("");  
+		$("#consultar-nrosparada").html('<option value="0">Seleccionar parada</option>');
 	
 		this.busqueda = {};	
-		//if(idlinea == 0) { 
-		//	$("#idparada").attr("disabled", "disabled");
-		//	return;
-		//}
 
 		//$("#consultar-nrosparada").attr("disabled", "");
 		var url = this.baseURL + '/getData.php?accion=getCalle&idLinea=' + encodeURI(idlinea);
@@ -158,7 +153,6 @@ function _etr(){
 			obj.busqueda.idlinea = idlinea;
 			obj.busqueda.linea = linea;
 
-	
 		app.startSpinning();
 		$.get(url,{}, function(data){
 			app.stopSpinning();
@@ -168,7 +162,7 @@ function _etr(){
 	this.parseCalles = function(calles) {
 
 		var len = calles.length;
-		var html_calles = '<option value="0">Seleccionar calle</option>';
+		var html_calles = '';
 		for(var i = 0; i < len; i++) {
 			var calle = calles[i];
 			html_calles+= '<option value="' + calle.id +'">' + calle.desc + '</option>';
@@ -186,6 +180,10 @@ function _etr(){
 		this.busqueda.idcalle = 0;
 		this.busqueda.idinter = 0;
 		
+		$("#consultar-interseccion").html('<option value="0">Seleccionar intersecci&oacute;n</option>');
+		$("#consultar-nrosparada").html('<option value="0">Seleccionar parada</option>');
+		$("#consultar-nroparada").val(""); 
+
 		if(idcalle == 0) {
 			return;
 		}
@@ -222,6 +220,9 @@ function _etr(){
 
 	this.obtenerParadas = function() {
 
+		$("#consultar-nrosparada").html('<option value="0">Seleccionar parada</option>');
+		$("#consultar-nroparada").val(""); 
+
 		var idinter = $("#consultar-interseccion").val();
 		this.busqueda.idinter = 0;
 		if(idinter == 0) {		
@@ -244,11 +245,9 @@ function _etr(){
 	}
 
 	this.parseParadas = function(html_paradas) {
-		alert("parseando paradas");
 		var aux = document.createElement("div");
 			aux.innerHTML = html_paradas;
 	
-		console.log(html_paradas);
 		var trs = aux.getElementsByTagName('tr');
 		var len = trs.length;
 		var paradas = [];
@@ -266,15 +265,13 @@ function _etr(){
 			paradas.push({id : td_id, desc: td_desc});
 		}
 		var len = paradas.length;
-		var html_paradas = "";
+		var html_paradas = '';
 		for(var i = 0; i < len; i++) {
 			var parada = paradas[i];
 			html_paradas += '<option value="' + parada.id + '">' + parada.desc + '</option>';
 		}		
 		$("#consultar-nrosparada").html(html_paradas);
-//		$("#parada").attr("disabled", "");
 		$("#consultar-nroparada").val(paradas[0].id);
-//		$("#idparada").attr("disabled", "");
 	}
 
 	this.selecParada = function(idparada) {
@@ -288,22 +285,20 @@ function _etr(){
 			return;
 		}	
 		var idparada = parseInt(etr.busqueda.idparada); 
-		alert(idparada);
 		if( isNaN(idparada) || idparada == 0) {
 			alert("Debe ingresar el nro. de parada");
 			return;
 		}
-		
-		console.log(this.busqueda);
-
+	
+		$("#consultar-refresh").css("visibility","hidden");
 		var url = "http://www.etr.gov.ar/getSmsResponse.php";
 		var params = "parada=" + idparada;
 			params+= "&linea=" + this.busqueda.linea;
 
-			console.log(url);
 		var obj = this;
+		app.startSpinning();
 		$.post(url, params, function(response){
-            console.log(response);
+			app.stopSpinning();
 			response = response.replace('-', '<br />');
 			$("#result-container").html(response);
 			if(obj.hasFavorito(idparada, idlinea) != false) {
@@ -311,6 +306,9 @@ function _etr(){
 			}else {
 				$('#fav_button').val('Agregar a favoritos');
 			}
+			setTimeout(function(){
+				$("#consultar-refresh").css("visibility","visible");
+			}, 15000);
 		}); 		
 	}
 }

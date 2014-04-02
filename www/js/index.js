@@ -106,7 +106,6 @@ var app = {
     showResult: function(){
         var idparada = 9781;
         var idlinea = 17;
-        app.startSpinning();
         $("#linea-num").html("Linea "+etr.busqueda.idlinea);
         etr.cuandollega();
     },
@@ -123,7 +122,6 @@ var app = {
 			return;
 		}
 		etr.busqueda.idparada = idparada;
-		alert(etr.busqueda.idparada);
 		document.location.href = "#resultado";
 	}
 };
@@ -144,7 +142,9 @@ function toggle(id){
 	}
 }
 
+/*
 function alert(msj){
     navigator.notification.alert(msj, function(){},"Cuando Llega?");
 }
+*/
 
