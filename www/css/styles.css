@@ -1,4 +1,3 @@
-
 @font-face{
     font-family:Calibri;
     src:url('CALIBRI.TTF');
@@ -147,7 +146,7 @@ a:active{text-decoration:none;}
     cursor:pointer;
 }
 #menu{
-    width:60%;
+    width:85%;
     float:left;
     display:inline-block;
     height:100%;
@@ -488,4 +487,38 @@ a:active{text-decoration:none;}
     position:fixed;
     top:0;
     left:0;
+}
+
+.ui-select {
+	width:90%;
+	border-radius:5px;
+	border:1px solid #ccc;
+	padding-top: 25px;
+	padding-bottom:25px;
+ 	-webkit-appearance: button;
+	font-size:20px;
+	text-align:center;
+ 	font-family:Calibri, sans-serif;
+	color:#8f99a0;
+	text-indent:60px;
+	background-image: url("../img/arrow_down.png"), url("../img/icon_calle.png");
+	background-repeat: no-repeat;
+	background-position:  95% 50%, 10px 50%;
+	background-size: 19px 14px, 36px 36px;
+}
+
+.ui-select-interseccion{
+	background-image: url("../img/arrow_down.png"), url("../img/icon_interseccion.png");
+	background-repeat: no-repeat;
+	background-position:  95% 50%, 10px 50%;
+	background-size: 19px 14px, 36px 36px;
+
+}
+
+.ui-select-linea{
+	background-image: url("../img/arrow_down.png"), url("../img/icon_linea.png");
+	background-repeat: no-repeat;
+	background-position:  95% 50%, 10px 50%;
+	background-size: 19px 14px, 36px 36px;
+
 }

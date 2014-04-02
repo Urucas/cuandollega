@@ -1,9 +1,8 @@
-
 var app = {
 	
 	baseURL: "http://cinema.urucas.com/api",
 	modules: [
-		{ id: "principal", view: "principal.html"},
+		{ id: "consultar", view: "consultar.html"},
 		{ id: "cartelera", view: "cartelera.html", callback: function() { app.listCartelera();} },
 		{ id: "cines", view: "cines.html"},
 		{ id: "estrenos", view: "estrenos.html", callback: function() { app.listEstrenos(); }},
@@ -21,12 +20,10 @@ var app = {
 			}
 		});
 	},
-
 	loadView: function(view, callback, view_id) {
 
 		try { scroll(0,0); }catch(e){};
 		$("#wrapper").include(view, function(){
-			try { toggle('menu'); } catch(e) { }
 			try { callback(); } catch(e) { }
 		});
 
@@ -77,7 +74,7 @@ var app = {
 
 		}catch(e) { }
 
-		document.location.href = "#principal";
+		document.location.href = "#consultar";
     },
 
 	adCreateBannerVewSuccess: function() {
@@ -106,7 +103,7 @@ function toggle(id){
 		if(el.style.display == 'none') {
 			el.style.display = 'block'; 		
 			// el.style.zIndex = (el.style.zIndex == '-1') ? '1' : '-1';
-			general.style.marginLeft = '60%';
+			general.style.marginLeft = '85%';
 			// general.style.position = (general.style.position == 'absolute') ? 'fixed' : 'absolute';
 		}else {
 			el.style.display = 'none'; 	
