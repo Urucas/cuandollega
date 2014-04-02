@@ -65,32 +65,15 @@ a:active{text-decoration:none;}
 }
 
 #general{
-<<<<<<< HEAD
 	width:100%;
 	text-align:center;
-=======
-    width:100%;
-    text-align:center;
-    background-color:#FFF;
->>>>>>> a27ef422499d89047df3519597187d6a87f332a2
 }
 #header{
     display:inline-block;
     width:100%;
     clear:both;
 }
-#menu{
-	width:60%;
-	float:left;
-	display:inline-block;
-	height:100%;
-    min-height:100%;
-    top:0; 
-    left:0; 
-    bottom:0;
-	position:fixed;
-	z-index:-1;
-}
+
 #menu p {
     color:white;
     font-family:Calibri, sans-serif;
@@ -150,7 +133,7 @@ a:active{text-decoration:none;}
     cursor:pointer;
 }
 #menu{
-    width:90%;
+    width:60%;
     float:left;
     display:inline-block;
     height:100%;
