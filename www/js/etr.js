@@ -42,14 +42,15 @@ function _etr(){
 
 	this.addFavorito = function() {
 		var favs = this.favoritos;
-		if(favs.length == 8) {
-			alert('Solo puedes tener 8 favoritos!'); 
+		if(favs.length == 20) {
+			alert('Solo puedes tener 20 favoritos!'); 
 			return;
 		}
 
 		var busqueda = this.busqueda;
 		var idparada = busqueda.idparada;
 		var idlinea  = busqueda.idlinea;
+        alert("favoriteando->"+idlinea);
 		var fav = this.hasFavorito(idparada, idlinea);
 		if(fav == false) {
 			this.favoritos.push({
@@ -60,14 +61,13 @@ function _etr(){
 
 			try{ 
 				var strfavs = JSON.stringify(this.favoritos); 
-				extPhonegap.saveValue("favoritos", strfavs); 
+				app.saveValue("favoritos", strfavs); 
 
 			}catch(e) { 
 				//alert(e); 
 			}
 
-			$('#fav_button').css('background-position-y','162%');
-			$('#fav_button > span').html('Agregado a favoritos');
+			$('#fav_button').val('Agregado a favoritos');
 		}
 	}
 
@@ -85,7 +85,7 @@ function _etr(){
 		this.favoritos = aux;
 		try{ 
 			var strfavs = JSON.stringify(this.favoritos); 
-			extPhonegap.saveValue("favoritos", strfavs);  
+			app.saveValue("favoritos", strfavs);  
 		}catch(e) { 
 			//alert(e); 
 		}
@@ -294,7 +294,7 @@ function _etr(){
 			return;
 		}
 		
-		console.log(this.busqueda);
+		console.log(JSON.stringify(this.busqueda));
 
 		var url = "http://www.etr.gov.ar/getSmsResponse.php";
 		var params = "parada=" + idparada;
@@ -305,12 +305,17 @@ function _etr(){
 		$.post(url, params, function(response){
             console.log(response);
 			response = response.replace('-', '<br />');
+			response = response.replace(',', '<br />');
+			response = response.replace('Resultado: ', '');
+			response = response.replace('Linea '+etr.busqueda.linea+":", 'Pr&oacute;ximo: ');
+
 			$("#result-container").html(response);
 			if(obj.hasFavorito(idparada, idlinea) != false) {
 				$('#fav_button').val('Agregado a favoritos');			
 			}else {
 				$('#fav_button').val('Agregar a favoritos');
 			}
+            app.stopSpinning();
 		}); 		
 	}
 }

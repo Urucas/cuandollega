@@ -104,10 +104,8 @@ var app = {
         $("#btn-config").css("visibility","hidden");
     },
     showResult: function(){
-        var idparada = 9781;
-        var idlinea = 17;
         app.startSpinning();
-        $("#linea-num").html("Linea "+etr.busqueda.idlinea);
+        $("#linea-num").html("Linea "+etr.busqueda.linea);
         etr.cuandollega();
     },
 	validarConsultar: function() {
@@ -123,8 +121,16 @@ var app = {
 			return;
 		}
 		etr.busqueda.idparada = idparada;
-		alert(etr.busqueda.idparada);
 		document.location.href = "#resultado";
+	},
+    saveValue: function(name, value) {
+		try { window.localStorage.setItem(name, value); }catch(e) {};
+	},
+	getValue: function(name) {
+		try { return window.localStorage.getItem(name); }catch(e) {};
+	},
+	clearValues: function() {
+		try { window.localStorage.clear();} catch(e) {};
 	}
 };
 
