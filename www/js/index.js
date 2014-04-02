@@ -72,7 +72,7 @@ var app = {
 
 		}catch(e) { }
 
-		document.location.href = "#consultar";
+		document.location.href = "#favoritos";
     },
 
 	adCreateBannerVewSuccess: function() {
