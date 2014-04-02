@@ -557,6 +557,7 @@ a:active{text-decoration:none;}
 	margin-right:auto;
 }
 
+
 .ui-input-text{
 	width:80%;
 	font-family:Calibri, sans-serif;
@@ -564,9 +565,55 @@ a:active{text-decoration:none;}
 	margin-right:auto;
 	font-size:30px;
 	text-align:center;
-	-wap
+
 }
 
 .ui-input-text-numbers{
 	
+}
+
+.ui-title-box {
+	width:90%;
+	border-radius:5px;
+	border:1px solid #ccc;
+ 	font-size:20px;
+	text-align:center;
+ 	font-family:Calibri, sans-serif;
+	color:#8f99a0;
+	background:#fff;
+	margin-left:auto;
+	margin-right:auto;
+    background-image: url("../img/icon_linea.png");
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+	background-size: 36px 36px;
+    margin-top:5px;
+    margin-bottom:9px;
+}
+.ui-content-box {
+	width:90%;
+	border-radius:5px;
+	border:1px solid #ccc;
+ 	font-size:20px;
+	text-align:center;
+ 	font-family:Calibri, sans-serif;
+	color:#8f99a0;
+	background:#fff;
+	margin-left:auto;
+	margin-right:auto;
+}
+.ui-button {
+	width:90%;
+	border-radius:4px;
+ 	font-size:20px;
+	text-align:center;
+ 	font-family:Calibri, sans-serif;
+	color:#ffffff;
+	background:#67b8de;
+	margin-left:auto;
+	margin-right:auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 8px;
+	-webkit-appearance: button;
 }

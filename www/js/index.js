@@ -2,17 +2,13 @@ var app = {
 	
 	baseURL: "http://cinema.urucas.com/api",
 	modules: [
-		{ id: "consultar", view: "consultar.html"},
-		{ id: "cartelera", view: "cartelera.html", callback: function() { app.listCartelera();} },
-		{ id: "cines", view: "cines.html"},
-		{ id: "estrenos", view: "estrenos.html", callback: function() { app.listEstrenos(); }},
-		{ id: "pelicula", view: "pelicula.html", callback: function() { app.loadMovieInfo(); }},
-		{ id: "configuracion", view: "configuracion.html"},
-		{ id: "recomendados", view: "recomendados.html", callback: function() {  app.listRecomendados(); }},
+		{ id: "consultar", view: "views/consultar.html"},
+		{ id: "configuracion", view: "views/configuracion.html"},
+		{ id: "resultado", view: "views/resultado.html"},
 		{ id: "search", view: "cartelera.html", callback: function() { app.search(); } },
 	],
 	load: function(hash) {
-		//	console.log("page to open -> "+hash);
+			//console.log("page to open -> "+hash);
 		app.modules.forEach(function(m){
 			if(hash == m.id) {
 				app.loadView(m.view, m.callback, m.id);
