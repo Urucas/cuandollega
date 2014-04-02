@@ -240,14 +240,15 @@ function _etr(){
 		$.get(url, function(response){
 			obj.parseParadas(response);		
 			app.stopSpinning();
-		},'json');
+		});
 	}
 
 	this.parseParadas = function(html_paradas) {
 		alert("parseando paradas");
 		var aux = document.createElement("div");
 			aux.innerHTML = html_paradas;
-		
+	
+		console.log(html_paradas);
 		var trs = aux.getElementsByTagName('tr');
 		var len = trs.length;
 		var paradas = [];
@@ -291,7 +292,7 @@ function _etr(){
 			alert("Debe ingresar el nro. de parada");
 			return;
 		}
-
+		
 		console.log(this.busqueda);
 
 		var url = "http://www.etr.gov.ar/getSmsResponse.php";
