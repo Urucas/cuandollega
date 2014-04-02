@@ -529,3 +529,22 @@ a:active{text-decoration:none;}
 	background-size: 19px 14px, 36px 36px;
 
 }
+
+/* Resultados */
+.ui-title-seccion {
+	width:90%;
+	border-radius:5px;
+	border:1px solid #ccc;
+	padding-top: 25px;
+	padding-bottom:25px;
+ 	-webkit-appearance: button;
+	font-size:20px;
+	text-align:center;
+ 	font-family:Calibri, sans-serif;
+	color:#8f99a0;
+	text-indent:60px;
+	background-image: url("../img/icon_calle.png");
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+	background-size: 36px 36px;
+}

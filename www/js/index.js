@@ -8,7 +8,7 @@ var app = {
 		{ id: "search", view: "cartelera.html", callback: function() { app.search(); } },
 	],
 	load: function(hash) {
-			console.log("page to open -> "+hash);
+			//console.log("page to open -> "+hash);
 		app.modules.forEach(function(m){
 			if(hash == m.id) {
 				app.loadView(m.view, m.callback, m.id);
@@ -55,7 +55,6 @@ var app = {
 		window.onhashchange = function() {
 			var hash = window.location.hash;
 			hash = hash.replace("#","");
-            alert(hash);
 			app.load(hash);
 		}
 		try{ app.uuid = device.uuid; }catch(e){ console.log("cant get device uuid"+e.message); }
