@@ -278,46 +278,38 @@ function _etr(){
 	}
 
 	this.selecParada = function(idparada) {
-		$("#idparada").val(idparada);
+		$("#consultar-nroparada").val(idparada);
 	}
 
 	this.cuandollega = function() {
-		$("#message").html("");
 		var idlinea = parseInt(this.busqueda.idlinea);
 		if( isNaN(idlinea) || idlinea == 0) {
-			$("#message").html("Debe seleccionar la linea");
+			alert("Debe seleccionar la linea");
 			return;
 		}	
-		var idparada = parseInt($("#idparada").val()); 
+		var idparada = parseInt($("#consultar-nroparada").val()); 
 		if( isNaN(idparada) || idparada == 0) {
-			$("#message").html("Debe ingresa el nro. de parada");
+			alert("Debe ingresa el nro. de parada");
 			return;
 		}
 
 		this.busqueda.idparada = idparada;
-		//console.log(this.busqueda);
+		console.log(this.busqueda);
 
 		var url = "http://www.etr.gov.ar/getSmsResponse.php";
 		var params = "parada=" + idparada;
 			params+= "&linea=" + this.busqueda.linea;
 
-		$("#cuando_llega").html("");
-		$("#preloader").show();
 		var obj = this;
-		app.startSpinning();
 		$.post(url, params, function(response){
+            console.log(response);
 			response = response.replace('-', '<br />');
-			$("#cuando_llega").html(response);
+			$("#result-container").html(response);
 			if(obj.hasFavorito(idparada, idlinea) != false) {
-				$('#fav_button').css('background-position-y','162%');
-				$('#fav_button > span').html('Agregado a favoritos');			
+				$('#fav_button').val('Agregado a favoritos');			
 			}else {
-				$('#fav_button').css('background-position-y','2px');
-				$('#fav_button > span').html('Agregar a favoritos');
+				$('#fav_button').val('Agregar a favoritos');
 			}
-			$("#popup").show();
-			app.startSpinning();
-
 		}); 		
 	}
 }

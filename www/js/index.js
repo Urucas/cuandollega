@@ -5,7 +5,7 @@ var app = {
 		{ id: "consultar", view: "views/consultar.html"},
 		{ id: "favoritos", view: "views/favoritos.html"},
 		{ id: "configuracion", view: "views/configuracion.html"},
-		{ id: "resultado", view: "views/resultado.html"},
+		{ id: "resultado", view: "views/resultado.html", callback: function()app.showResult();},
 		{ id: "search", view: "cartelera.html", callback: function() { app.search(); } },
 	],
 	load: function(hash) {
@@ -103,6 +103,13 @@ var app = {
     stopSpinning: function(){
         $("#btn-config").css("visibility","hidden");
     },
+    showResult: function(){
+        var idparada = 9781;
+        var idlinea = 17;
+        app.startSpinning();
+        $("#linea-num").html("Linea "+etr.busqueda.idlinea);
+        etr.cuandollega();
+    }
 
 };
 
