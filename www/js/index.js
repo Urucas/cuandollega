@@ -104,7 +104,6 @@ var app = {
         $("#btn-config").css("visibility","hidden");
     },
     showResult: function(){
-        app.startSpinning();
         $("#linea-num").html("Linea "+etr.busqueda.linea);
         etr.cuandollega();
     },
@@ -150,7 +149,9 @@ function toggle(id){
 	}
 }
 
+/*
 function alert(msj){
     navigator.notification.alert(msj, function(){},"Cuando Llega?");
 }
+*/
 
