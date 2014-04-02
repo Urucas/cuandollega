@@ -140,7 +140,6 @@ function _etr(){
         var linea = $('#consultar-linea').find(":selected").val();
         var idlinea = $('#consultar-linea').find(":selected").attr("idlinea");
 		
-		$("#message").html("");
 //		$("#consultar-calle").attr("disabled", "disabled");
 		//$("#consultar-interseccion").attr("disabled", "disabled");
 		//$("#consultar-nroparada").attr("disabled", "disabled");  
@@ -181,7 +180,6 @@ function _etr(){
 
 	this.obtenerInter = function() {
 	
-		$("#message").html("");
 	//	$("#inter").attr("disabled", "disabled");
 	//	$("#parada").attr("disabled", "disabled");
 		var idcalle = $("#consultar-calle").val();
@@ -199,19 +197,23 @@ function _etr(){
 			url+= "&idLinea=" + encodeURI(obj.busqueda.idlinea) 
 			url+= "&idCalle=" + encodeURI(obj.busqueda.idcalle);
 
+		console.log(url);
 		app.startSpinning();
 		$.get(url, function(data){
 			app.stopSpinning();
 			obj.parseInter(data);			
-		});
+		}, 'json');
 	}
 
 	this.parseInter = function(inters) {
 		
 		var len = inters.length;
 		var html_inters = '<option value="0">Seleccionar intersecci&oacute;n</option>';
+		console.log(inters);
 		for(var i = 0; i < len; i++) {
 			var inter = inters[i];
+			console.log(inter);
+			console.log(inter.desc);
 			html_inters+= '<option value="' + inter.id +'">' + inter.desc + '</option>';
 		}
 		$("#consultar-interseccion").html(html_inters);
@@ -220,7 +222,6 @@ function _etr(){
 
 	this.obtenerParadas = function() {
 
-		$("#message").html("");
 		var idinter = $("#consultar-interseccion").val();
 		this.busqueda.idinter = 0;
 		if(idinter == 0) {		
@@ -233,16 +234,17 @@ function _etr(){
 			url+= "&idLinea=" + encodeURI(obj.busqueda.idlinea);
 			url+= "&idCalle=" + encodeURI(obj.busqueda.idcalle);
 			url+= "&idInt=" + encodeURI(obj.busqueda.idinter);
-		
+	
+		console.log(url);
 		app.startSpinning();
 		$.get(url, function(response){
 			obj.parseParadas(response);		
 			app.stopSpinning();
-		});
+		},'json');
 	}
 
 	this.parseParadas = function(html_paradas) {
-
+		alert("parseando paradas");
 		var aux = document.createElement("div");
 			aux.innerHTML = html_paradas;
 		
@@ -268,26 +270,25 @@ function _etr(){
 			var parada = paradas[i];
 			html_paradas += '<option value="' + parada.id + '">' + parada.desc + '</option>';
 		}		
-		$("#parada").html(html_paradas);
+		$("#consultar-nrosparada").html(html_paradas);
 //		$("#parada").attr("disabled", "");
-		$("#idparada").val(paradas[0].id);
+		$("#consultar-nroparada").val(paradas[0].id);
 //		$("#idparada").attr("disabled", "");
 	}
 
 	this.selecParada = function(idparada) {
-		$("#idparada").val(idparada);
+		$("#consultar-nroparada").val(idparada);
 	}
 
 	this.cuandollega = function() {
-		$("#message").html("");
 		var idlinea = parseInt(this.busqueda.idlinea);
 		if( isNaN(idlinea) || idlinea == 0) {
-			$("#message").html("Debe seleccionar la linea");
+			alert("Debe seleccionar la linea");
 			return;
 		}	
-		var idparada = parseInt($("#idparada").val()); 
+		var idparada = parseInt($("#consultar-nroparada").val()); 
 		if( isNaN(idparada) || idparada == 0) {
-			$("#message").html("Debe ingresa el nro. de parada");
+			alert("Debe ingresa el nro. de parada");
 			return;
 		}
 
