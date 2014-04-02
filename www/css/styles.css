@@ -184,12 +184,16 @@ a:active{text-decoration:none;}
 #btn-config{
     float:right;
     margin:4px;
-    width:40px;
-    height:40px;
+    width:35px;
+    height:35px;
+    background-color:#fff;
+    border-radius:5px;
+    padding:5px;
 }
 #btn-config img{
-    width:40px;
-    height:40px;
+    width:35px;
+    height:35px;
+    margin-right:5px;
 }
 
 #buscador{
