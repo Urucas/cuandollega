@@ -530,21 +530,75 @@ a:active{text-decoration:none;}
 
 }
 
-/* Resultados */
-.ui-title-seccion {
+#consultar {
+	padding-top;15px;
+}
+
+.ui-line {
+	border-bottom:1px solid #ccc;
+	width: 90%;
+	height: 1px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ui-box {
 	width:90%;
 	border-radius:5px;
 	border:1px solid #ccc;
 	padding-top: 25px;
 	padding-bottom:25px;
- 	-webkit-appearance: button;
-	font-size:20px;
+ 	font-size:20px;
 	text-align:center;
  	font-family:Calibri, sans-serif;
 	color:#8f99a0;
-	text-indent:60px;
-	background-image: url("../img/icon_calle.png");
+	background:#fff;
+	margin-left:auto;
+	margin-right:auto;
+}
+.ui-title-box {
+	width:90%;
+	border-radius:5px;
+	border:1px solid #ccc;
+ 	font-size:20px;
+	text-align:center;
+ 	font-family:Calibri, sans-serif;
+	color:#8f99a0;
+	background:#fff;
+	margin-left:auto;
+	margin-right:auto;
+    background-image: url("../img/icon_linea.png");
 	background-repeat: no-repeat;
 	background-position: 10px 50%;
 	background-size: 36px 36px;
+    margin-top:5px;
+    margin-bottom:9px;
+}
+.ui-content-box {
+	width:90%;
+	border-radius:5px;
+	border:1px solid #ccc;
+ 	font-size:20px;
+	text-align:center;
+ 	font-family:Calibri, sans-serif;
+	color:#8f99a0;
+	background:#fff;
+	margin-left:auto;
+	margin-right:auto;
+}
+.ui-button {
+	width:90%;
+	border-radius:4px;
+ 	font-size:20px;
+	text-align:center;
+ 	font-family:Calibri, sans-serif;
+	color:#ffffff;
+	background:#67b8de;
+	margin-left:auto;
+	margin-right:auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 8px;
 }
