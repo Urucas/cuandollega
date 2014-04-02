@@ -31,7 +31,7 @@ var app = {
 			window.plugins.socialsharing.available(function(isAvailable) {
 				if (isAvailable) {
 					window.plugins.socialsharing.share(
-						"Sos cinero? Descargate la app para tener la cartelera de cine en tu smartphone!", 
+						"No hagas cálculos con los horarios, quedate en la cama hasta que llegue el cole!", 
 						null, 
 						null, 
 						"http://cineros.com.ar"
@@ -47,7 +47,7 @@ var app = {
     },
     // Bind Event Listeners
     bindEvents: function() {
-		console.log("binding events");
+		//console.log("binding events");
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
