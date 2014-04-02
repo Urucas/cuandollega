@@ -77,6 +77,7 @@ var app = {
 
 		}catch(e) { }
 
+		document.location.href = "#principal";
     },
 
 	adCreateBannerVewSuccess: function() {

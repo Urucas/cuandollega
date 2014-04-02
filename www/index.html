@@ -3,22 +3,43 @@
     <head>
         <meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1" />
-	    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="styles.css" media="all" />
+	  	<link rel="stylesheet" type="text/css" href="/css/styles.css" media="all" />
     </head>
 
     <body>
-		<div id="wrapper"></div>
-		
-		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="js/index.js"></script>
-		<script type="text/javascript" src="js/jquery.render.js"></script>
-		<script type="text/javascript" src="js/json2.js"></script>
-		<script type="text/javascript" src="js/hintJS.js"></script>
-		<script type="text/javascript" src="js/enterKey.js"></script>
-	
-		<script>app.initialize()</script>
-	 </body>
+
+	<div id="header">
+		<div id="btn-menu"><img src="images/btn-menu-off.png"></div>
+		<div id="btn-config"><a href="#configuracion"><img src="images/btn-config.png"></a></div>
+		<div id="titulo"><img src="images/titu-principal.png"></div>
+	</div>
+
+	<div id="menu">
+		<a href="#recomendados"><div class="btn-izq recomendados">
+			<p>Recomendados</p>
+		</div></a>
+		<a href="#estrenos"><div class="btn-izq estrenos">
+			<p>Estrenos</p>
+		</div></a>
+		<a href="#cartelera"><div class="btn-izq cartelera">
+			<p>Cartelera</p>
+		</div></a>
+		<a href="#cines"><div class="btn-izq cines">
+			<p>Cines</p>
+		</div></a>
+	</div>
+
+	<div id="wrapper"></div>
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/jquery.render.js"></script>
+	<script type="text/javascript" src="js/json2.js"></script>
+	<script type="text/javascript" src="js/hintJS.js"></script>
+	<script type="text/javascript" src="js/enterKey.js"></script>
+
+	<script>app.initialize()</script>
+	</body>
 
 </html>
