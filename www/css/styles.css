@@ -430,31 +430,11 @@ a:active{text-decoration:none;}
     white-space:pre;
 }
 
-#movie-horarios b{
-    font-family:RobotoRegular;
-    font-size:1.2em;
-    line-height:1em;
-    color:#14aad6;
-    margin-top:12px;
-    margin-bottom:4px;
-}
-.btn-trailer{
-    width:100%;
-    height:30px;
-    background-color:#14aad6;
-    text-align:center;
-    font-family:RobotoRegular;
-    font-size:1.5em;
-    padding-top:12px;
-    margin-top:14px;
-    color:#fff;
-}
-
-
 /* CONFIGURACION */
 
 #configuracion{
-    width:100%;
+    width:90%;
+    margin-top: 9px;
 }
 .config{
     width:96%;
@@ -470,7 +450,7 @@ a:active{text-decoration:none;}
     margin:0px 10px;
 }
 .config p{
-    font-family:RobotoLight;
+    font-family:Calibri, sans-serif;
     font-size:1.3em;
     line-height:1.1em;
     color:#999;
