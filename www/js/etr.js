@@ -282,11 +282,12 @@ function _etr(){
 	}
 
 	this.cuandollega = function() {
-		var idlinea = parseInt(this.busqueda.idlinea);
+		var idlinea = parseInt(etr.busqueda.idlinea);
 		if( isNaN(idlinea) || idlinea == 0) {
 			alert("Debe seleccionar la linea");
 			return;
 		}	
+
 		var idparada = parseInt($("#consultar-nroparada").val()); 
 		if( isNaN(idparada) || idparada == 0) {
 			alert("Debe ingresa el nro. de parada");
@@ -300,6 +301,7 @@ function _etr(){
 		var params = "parada=" + idparada;
 			params+= "&linea=" + this.busqueda.linea;
 
+			console.log(url);
 		var obj = this;
 		$.post(url, params, function(response){
             console.log(response);
