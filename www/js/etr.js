@@ -286,13 +286,12 @@ function _etr(){
 			alert("Debe seleccionar la linea");
 			return;
 		}	
-		var idparada = parseInt($("#consultar-nroparada").val()); 
+		var idparada = parseInt(this.busqueda.idparada); 
 		if( isNaN(idparada) || idparada == 0) {
-			alert("Debe ingresa el nro. de parada");
+			alert("Debe ingresar el nro. de parada");
 			return;
 		}
 
-		this.busqueda.idparada = idparada;
 		console.log(this.busqueda);
 
 		var url = "http://www.etr.gov.ar/getSmsResponse.php";

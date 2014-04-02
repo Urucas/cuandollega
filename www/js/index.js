@@ -36,7 +36,7 @@ var app = {
 			window.plugins.socialsharing.available(function(isAvailable) {
 				if (isAvailable) {
 					window.plugins.socialsharing.share(
-						"No hagas cálculos con los horarios, quedate en la cama hasta que llegue el cole!", 
+						"No hagas cálculos de horarios, quedate en la cama hasta que llegue el cole!", 
 						null, 
 						null, 
 						"http://cineros.com.ar"
