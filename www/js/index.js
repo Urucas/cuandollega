@@ -21,7 +21,13 @@ var app = {
 
 		try { scroll(0,0); }catch(e){};
 		$("#wrapper").include(view, function(){
-			try { toggle("menu"); }catch(e) {}
+			try {
+				// hide menu
+				menu.style.display = 'none'; 	
+				general.style.marginLeft = '0px';
+				menu.style.zIndex = '-1';
+
+			}catch(e) {}
 			try { callback(); } catch(e) {}
 		});
 
