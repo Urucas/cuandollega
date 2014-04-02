@@ -145,6 +145,6 @@ function toggle(id){
 }
 
 function alert(msj){
-    navigator.notification.alert(msj);
+    navigator.notification.alert(msj, function(){},"Cuando Llega?");
 }
 
