@@ -1,26 +1,26 @@
 
 @font-face{
-	font-family:Calibri;
-	src:url('CALIBRI.TTF');
+    font-family:Calibri;
+    src:url('CALIBRI.TTF');
 }
 
 a{
-	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-	color:#999;
-	text-decoration:none;
-	margin:0;
-	padding:0;
-	border:none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    color:#999;
+    text-decoration:none;
+    margin:0;
+    padding:0;
+    border:none;
 }
 ul li{
-	list-style:none;
-	margin:0;
-	padding:0;
+    list-style:none;
+    margin:0;
+    padding:0;
 }
 img{
-	border:none;
-	margin:0;
-	padding:0;
+    border:none;
+    margin:0;
+    padding:0;
 }
 html{height:100%;}
 div{display:block;}
@@ -28,16 +28,16 @@ body{
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-	font:10px Arial, Helvetica, sans-serif;
-	margin:0;
-	padding:0;
-	background:#e5eaee;
-	width:100%;
-	color:#999;
-	height:100%; 
+    font:10px Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+    background:#e5eaee;
+    width:100%;
+    color:#999;
+    height:100%; 
     min-height:100%;
     position:relative;
-	overflow-x:hidden;
+    overflow-x:hidden;
 }
 a:link{text-decoration:none;}
 a:visited{text-decoration:none;}
@@ -45,422 +45,422 @@ a:hover{text-decoration:none;}
 a:active{text-decoration:none;}
 
 #splash{
-	width:100%;
-	height:100%; 
+    width:100%;
+    height:100%; 
     min-height:100%; 
     position:absolute;
-	margin:0;
-	padding:0;
-	text-align:center;
-	background:#14aad6;
+    margin:0;
+    padding:0;
+    text-align:center;
+    background:#14aad6;
 }
 
 #logo-splash img{
-	width:200px;
-	height:75px;
-	margin:-40px 0 0 -100px;
-	position:absolute;
-	left:50%;
-	top:50%;
+    width:200px;
+    height:75px;
+    margin:-40px 0 0 -100px;
+    position:absolute;
+    left:50%;
+    top:50%;
 }
 
 #general{
-	width:100%;
-	text-align:center;
-	background-color:#FFF;
+    width:100%;
+    text-align:center;
+    background-color:#FFF;
 }
 #header{
-	display:inline-block;
-	width:100%;
-	clear:both;
+    display:inline-block;
+    width:100%;
+    clear:both;
 }
 #menu p {
-	color:white;
+    color:white;
     font-family:Calibri, sans-serif;
     font-size:19px;
-	position: absolute;
-	bottom: 0;
-	text-align: left;
-	width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: left;
+    width: 100%;
     padding-left:20px;
 }
 
 .btn-izq{
-	width:100%;
-	position:relative;
+    width:100%;
+    position:relative;
     background-color:#7ec2e1;
-   background: rgb(126,194,225); /* Old browsers */
-background: -moz-linear-gradient(left, rgba(126,194,225,1) 6%, rgba(126,194,225,1) 6%, rgba(126,194,225,1) 92%, rgba(92,142,165,1) 99%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(6%,rgba(126,194,225,1)), color-stop(6%,rgba(126,194,225,1)), color-stop(92%,rgba(126,194,225,1)), color-stop(99%,rgba(92,142,165,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left, rgba(126,194,225,1) 6%,rgba(126,194,225,1) 6%,rgba(126,194,225,1) 92%,rgba(92,142,165,1) 99%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left, rgba(126,194,225,1) 6%,rgba(126,194,225,1) 6%,rgba(126,194,225,1) 92%,rgba(92,142,165,1) 99%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left, rgba(126,194,225,1) 6%,rgba(126,194,225,1) 6%,rgba(126,194,225,1) 92%,rgba(92,142,165,1) 99%); /* IE10+ */
-background: linear-gradient(to right, rgba(126,194,225,1) 6%,rgba(126,194,225,1) 6%,rgba(126,194,225,1) 92%,rgba(92,142,165,1) 99%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ec2e1', endColorstr='#5c8ea5',GradientType=1 ); /* IE6-9 */
+    background: rgb(126,194,225); /* Old browsers */
+    background: -moz-linear-gradient(left, rgba(126,194,225,1) 6%, rgba(126,194,225,1) 6%, rgba(126,194,225,1) 92%, rgba(92,142,165,1) 99%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(6%,rgba(126,194,225,1)), color-stop(6%,rgba(126,194,225,1)), color-stop(92%,rgba(126,194,225,1)), color-stop(99%,rgba(92,142,165,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(126,194,225,1) 6%,rgba(126,194,225,1) 6%,rgba(126,194,225,1) 92%,rgba(92,142,165,1) 99%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(126,194,225,1) 6%,rgba(126,194,225,1) 6%,rgba(126,194,225,1) 92%,rgba(92,142,165,1) 99%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(126,194,225,1) 6%,rgba(126,194,225,1) 6%,rgba(126,194,225,1) 92%,rgba(92,142,165,1) 99%); /* IE10+ */
+    background: linear-gradient(to right, rgba(126,194,225,1) 6%,rgba(126,194,225,1) 6%,rgba(126,194,225,1) 92%,rgba(92,142,165,1) 99%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ec2e1', endColorstr='#5c8ea5',GradientType=1 ); /* IE6-9 */
     border-bottom:1px solid #e5eaee;
     padding:35px 0 35px 0;
-/*	display:inline-block;
-	float:left;*/
+    /*	display:inline-block;
+    float:left;*/
 }
 #menu .logomenu{
     background:#e5eaee;
     padding:0;
     background: rgb(229,234,238); /* Old browsers */
-background: -moz-linear-gradient(left, rgba(229,234,238,1) 0%, rgba(229,234,238,1) 92%, rgba(151,154,157,1) 99%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(229,234,238,1)), color-stop(92%,rgba(229,234,238,1)), color-stop(99%,rgba(151,154,157,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left, rgba(229,234,238,1) 0%,rgba(229,234,238,1) 92%,rgba(151,154,157,1) 99%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left, rgba(229,234,238,1) 0%,rgba(229,234,238,1) 92%,rgba(151,154,157,1) 99%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left, rgba(229,234,238,1) 0%,rgba(229,234,238,1) 92%,rgba(151,154,157,1) 99%); /* IE10+ */
-background: linear-gradient(to right, rgba(229,234,238,1) 0%,rgba(229,234,238,1) 92%,rgba(151,154,157,1) 99%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5eaee', endColorstr='#979a9d',GradientType=1 ); /* IE6-9 */
+    background: -moz-linear-gradient(left, rgba(229,234,238,1) 0%, rgba(229,234,238,1) 92%, rgba(151,154,157,1) 99%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(229,234,238,1)), color-stop(92%,rgba(229,234,238,1)), color-stop(99%,rgba(151,154,157,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(229,234,238,1) 0%,rgba(229,234,238,1) 92%,rgba(151,154,157,1) 99%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(229,234,238,1) 0%,rgba(229,234,238,1) 92%,rgba(151,154,157,1) 99%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(229,234,238,1) 0%,rgba(229,234,238,1) 92%,rgba(151,154,157,1) 99%); /* IE10+ */
+    background: linear-gradient(to right, rgba(229,234,238,1) 0%,rgba(229,234,238,1) 92%,rgba(151,154,157,1) 99%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5eaee', endColorstr='#979a9d',GradientType=1 ); /* IE6-9 */
 }
 .btn-izq img{
-	width:auto;
-	height:45px;
+    width:auto;
+    height:45px;
     padding: 8px 0 8px 8px;
     text-align: left !important;
 }
 
 #btn-menu{
-	float:left;
-	margin:4px;
-	width:40px;
-	height:40px;
+    float:left;
+    margin:4px;
+    width:40px;
+    height:40px;
 }
 #btn-menu img{
-	width:40px;
-	height:40px;
-	cursor:pointer;
+    width:40px;
+    height:40px;
+    cursor:pointer;
 }
 #menu{
-	width:90%;
-	float:left;
-	display:inline-block;
-	height:100%;
+    width:90%;
+    float:left;
+    display:inline-block;
+    height:100%;
     min-height:100%;
     top:0; 
     left:0; 
     bottom:0;
-	position:fixed;
-	z-index:-1;
-background: -moz-linear-gradient(left,  rgba(137,137,137,0) 86%, rgba(101,101,101,0) 92%, rgba(53,53,53,0.73) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(86%,rgba(137,137,137,0)), color-stop(92%,rgba(101,101,101,0)), color-stop(100%,rgba(53,53,53,0.73))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left,  rgba(137,137,137,0) 86%,rgba(101,101,101,0) 92%,rgba(53,53,53,0.73) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left,  rgba(137,137,137,0) 86%,rgba(101,101,101,0) 92%,rgba(53,53,53,0.73) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left,  rgba(137,137,137,0) 86%,rgba(101,101,101,0) 92%,rgba(53,53,53,0.73) 100%); /* IE10+ */
-background: linear-gradient(to right,  rgba(137,137,137,0) 86%,rgba(101,101,101,0) 92%,rgba(53,53,53,0.73) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00898989', endColorstr='#ba353535',GradientType=1 ); /* IE6-9 */
-    
+    position:fixed;
+    z-index:-1;
+    background: -moz-linear-gradient(left,  rgba(137,137,137,0) 86%, rgba(101,101,101,0) 92%, rgba(53,53,53,0.73) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(86%,rgba(137,137,137,0)), color-stop(92%,rgba(101,101,101,0)), color-stop(100%,rgba(53,53,53,0.73))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  rgba(137,137,137,0) 86%,rgba(101,101,101,0) 92%,rgba(53,53,53,0.73) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  rgba(137,137,137,0) 86%,rgba(101,101,101,0) 92%,rgba(53,53,53,0.73) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  rgba(137,137,137,0) 86%,rgba(101,101,101,0) 92%,rgba(53,53,53,0.73) 100%); /* IE10+ */
+    background: linear-gradient(to right,  rgba(137,137,137,0) 86%,rgba(101,101,101,0) 92%,rgba(53,53,53,0.73) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00898989', endColorstr='#ba353535',GradientType=1 ); /* IE6-9 */
+
 }
 
 #titulo{
-	margin:0 auto;
-	margin-top:4px;
+    margin:0 auto;
+    margin-top:4px;
 }
 #titulo img{
-	width:auto;
-	height:55px;
+    width:auto;
+    height:55px;
 }
 #btn-config{
-	float:right;
-	margin:4px;
-	width:40px;
-	height:40px;
+    float:right;
+    margin:4px;
+    width:40px;
+    height:40px;
 }
 #btn-config img{
-	width:40px;
-	height:40px;
+    width:40px;
+    height:40px;
 }
 
 #buscador{
-	background-color:#14aad6;
-	width:100%;
-	height:65px;
-	padding-top:15px;
-	margin-bottom:1px;
+    background-color:#14aad6;
+    width:100%;
+    height:65px;
+    padding-top:15px;
+    margin-bottom:1px;
 }
 #blanco{
-	background-color:#FFF;
-	width:90%;
-	height:48px;
-	margin:0 auto;
+    background-color:#FFF;
+    width:90%;
+    height:48px;
+    margin:0 auto;
 }
 #campo{
-	float:left;
-	margin:0;
-	padding:0;
-	width:72%;
-	height:40px;
+    float:left;
+    margin:0;
+    padding:0;
+    width:72%;
+    height:40px;
 }
 #field{
-	width:100%;
-	border:none;
-	color:#999;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:1.3em;
-	padding-top:6px;
-	padding-left:10px;
-	height:35px;
+    width:100%;
+    border:none;
+    color:#999;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:1.3em;
+    padding-top:6px;
+    padding-left:10px;
+    height:35px;
 }
 #btn-buscar{
-	float:right;
-	margin:4px;
-	width:40px;
-	height:40px;
+    float:right;
+    margin:4px;
+    width:40px;
+    height:40px;
 }
 #btn-buscar img{
-	width:40px;
-	height:40px;
+    width:40px;
+    height:40px;
 }
 
 
 /* BOTONES HOME */
 #botones{
-	color:#FFF;
-	width:100%;
+    color:#FFF;
+    width:100%;
 }
 
 .bloque{
-	display:inline-block;
-	border:0;
-	width:49%;
-	clear:both;
+    display:inline-block;
+    border:0;
+    width:49%;
+    clear:both;
 }
 .btn{
-	display:inline-block;
-	margin:0% 3% 1px 3%;
-	width:94%;
-	padding:12% 0%;
-	clear:both;
+    display:inline-block;
+    margin:0% 3% 1px 3%;
+    width:94%;
+    padding:12% 0%;
+    clear:both;
 }
 .sombra{
-	display:inline-block;
-	width:100%;
-	margin:0 auto;
-	padding:0;
-	height:6px;
-	clear:both;
+    display:inline-block;
+    width:100%;
+    margin:0 auto;
+    padding:0;
+    height:6px;
+    clear:both;
 }
 .sombra img{
-	vertical-align:top;
-	border:0;
-	margin:0;
-	padding:0;
-	height:10px;
+    vertical-align:top;
+    border:0;
+    margin:0;
+    padding:0;
+    height:10px;
 }
 
 .btn img{
-	max-width:50%;
-	max-height:50%;
-	display:block;
-	margin:0 auto;
+    max-width:50%;
+    max-height:50%;
+    display:block;
+    margin:0 auto;
 }
 .btn p{
-	font-family:RobotoLight;
-	font-size:1.4em;
+    font-family:RobotoLight;
+    font-size:1.4em;
     color:#FFF;
-	margin:6% 0% 0% 0%;
-	padding:0;
+    margin:6% 0% 0% 0%;
+    padding:0;
 }
 
 /* INTERNAS */
 
 .sombra-int{
-	width:100%;
-	margin:0 auto;
-	padding:0;
-	height:6px;
+    width:100%;
+    margin:0 auto;
+    padding:0;
+    height:6px;
 }
 #pelis{
-	width:100%;
+    width:100%;
 }
 .peli{
-	width:96%;
-	height:auto;
-	padding:10px 0px;
-	border-bottom:#CCC 1px solid;
-	text-align:left;
-	display:inline-block;
-	background:url(images/flecha.png) right no-repeat;
-	background-size:50px;
+    width:96%;
+    height:auto;
+    padding:10px 0px;
+    border-bottom:#CCC 1px solid;
+    text-align:left;
+    display:inline-block;
+    background:url(images/flecha.png) right no-repeat;
+    background-size:50px;
 }
 .cine{
-	width:96%;
-	height:auto;
-	padding:10px 0px;
-	border-bottom:#CCC 1px solid;
-	text-align:left;
-	display:inline-block;
+    width:96%;
+    height:auto;
+    padding:10px 0px;
+    border-bottom:#CCC 1px solid;
+    text-align:left;
+    display:inline-block;
 }
 .thumb{
 
-/*	background-color:#14aad6;*/
+    /*	background-color:#14aad6;*/
     background:url(images/icon_cineros.png) no-repeat;
     background-size:74px 74px;
     height: 140px;
-	float:left;
-	margin-right:10px;
+    float:left;
+    margin-right:10px;
 }
 .titulo{
-	font-family:RobotoRegular;
-	font-size:1.8em;
-	line-height:1em;
-	color:#14aad6;
-	margin-bottom:4px;
+    font-family:RobotoRegular;
+    font-size:1.8em;
+    line-height:1em;
+    color:#14aad6;
+    margin-bottom:4px;
 }
 .votos,
 .info{
-	font-family:RobotoLight;
-	font-size:1.5em;
-	line-height:1.1em;
-	color:#999;
-	margin-bottom:4px;
+    font-family:RobotoLight;
+    font-size:1.5em;
+    line-height:1.1em;
+    color:#999;
+    margin-bottom:4px;
 }
 .btns a{
 }
 .btn-buena{
-	margin-right:1px;
-	width:48px;
-	height:40px;
+    margin-right:1px;
+    width:48px;
+    height:40px;
 }
 .btn-mala,
 .btn-buena img,
 .btn-mala img{
-	width:48px;
-	height:40px;
+    width:48px;
+    height:40px;
 }
 .km{
-	font-family:RobotoLight;
-	font-size:0.7em;
-	line-height:1em;
-	color:#999;
-	margin-left:4px;
+    font-family:RobotoLight;
+    font-size:0.7em;
+    line-height:1em;
+    color:#999;
+    margin-left:4px;
 }
 .como{
-	font-family:RobotoRegular;
-	font-size:1.5em;
-	line-height:1.2em;
-	color:#14aad6;
-	margin-top:10px;
-	margin-bottom:4px;
+    font-family:RobotoRegular;
+    font-size:1.5em;
+    line-height:1.2em;
+    color:#14aad6;
+    margin-top:10px;
+    margin-bottom:4px;
 }
 
 
 /* Pelicula */
 
 .img-peli{
-	display:block;
+    display:block;
 }
 .votos-peli{
-	position:relative;
-	float:right;
-	top:-103px;
-	height:50px;
+    position:relative;
+    float:right;
+    top:-103px;
+    height:50px;
 }
 .porcentaje{
-	width:97px;
-	height:68px;
-	background-color:#14aad6;
+    width:97px;
+    height:68px;
+    background-color:#14aad6;
 }
 .porcentaje p{
-	font-family:RobotoRegular;
-	letter-spacing:-1px;
-	font-size:4.5em;
-	line-height:1.2em;
-	color:#fff;
+    font-family:RobotoRegular;
+    letter-spacing:-1px;
+    font-size:4.5em;
+    line-height:1.2em;
+    color:#fff;
 }
 
 .porcentaje .cant_votos {
-	font-size: 11px;
-	color: white;
-	line-height: 1px !important;
-	display: block;
-	padding: 0px;
-	margin: 0px;
-	margin-top: -8px;
+    font-size: 11px;
+    color: white;
+    line-height: 1px !important;
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    margin-top: -8px;
 }
 
 .simbolo{
-	font-size:0.5em;
-	margin-left:2px;
+    font-size:0.5em;
+    margin-left:2px;
 }
 .peli-descripcion{
-	width:96%;
-	height:auto;
-	padding:10px 0px;
-	text-align:left;
-	margin:0 auto;
-	display:block;
+    width:96%;
+    height:auto;
+    padding:10px 0px;
+    text-align:left;
+    margin:0 auto;
+    display:block;
 }
 .descripcion{
-	font-family:RobotoLight;
-	font-size:1.5em;
-	line-height:1.3em;
-	color:#999;
-	margin-top:8px;
-	margin-bottom:4px;
+    font-family:RobotoLight;
+    font-size:1.5em;
+    line-height:1.3em;
+    color:#999;
+    margin-top:8px;
+    margin-bottom:4px;
 }
 .linea{
-	width:100%;
-	height:1px;
-	line-height:1px;
-	border-top:#CCC 1px solid;
-	margin:10px 0px;
+    width:100%;
+    height:1px;
+    line-height:1px;
+    border-top:#CCC 1px solid;
+    margin:10px 0px;
 }
 #movie-horarios{
-	font-family:RobotoLight;
-	font-size:1.4em;
-	line-height:1.3em;
-	color:#999;
-	margin-bottom:4px;
-	white-space:pre;
+    font-family:RobotoLight;
+    font-size:1.4em;
+    line-height:1.3em;
+    color:#999;
+    margin-bottom:4px;
+    white-space:pre;
 }
 
 #movie-horarios b{
-	font-family:RobotoRegular;
-	font-size:1.2em;
-	line-height:1em;
-	color:#14aad6;
-	margin-top:12px;
-	margin-bottom:4px;
+    font-family:RobotoRegular;
+    font-size:1.2em;
+    line-height:1em;
+    color:#14aad6;
+    margin-top:12px;
+    margin-bottom:4px;
 }
 .btn-trailer{
-	width:100%;
-	height:30px;
-	background-color:#14aad6;
-	text-align:center;
-	font-family:RobotoRegular;
-	font-size:1.5em;
-	padding-top:12px;
-	margin-top:14px;
-	color:#fff;
+    width:100%;
+    height:30px;
+    background-color:#14aad6;
+    text-align:center;
+    font-family:RobotoRegular;
+    font-size:1.5em;
+    padding-top:12px;
+    margin-top:14px;
+    color:#fff;
 }
 
 
 /* CONFIGURACION */
 
 #configuracion{
-	width:100%;
+    width:100%;
 }
 .config{
-	width:96%;
-	padding:10px 0px;
-	border-bottom:#CCC 1px solid;
-	text-align:center;
-	display:inline-block;
-	margin:0 auto;
+    width:96%;
+    padding:10px 0px;
+    border-bottom:#CCC 1px solid;
+    text-align:center;
+    display:inline-block;
+    margin:0 auto;
 }
 .config img{
-	width:80px;
-	height:80px;
-	margin:0px 10px;
+    width:80px;
+    height:80px;
+    margin:0px 10px;
 }
 .config p{
-	font-family:RobotoLight;
-	font-size:1.3em;
-	line-height:1.1em;
-	color:#999;
-	margin-bottom:4px;
+    font-family:RobotoLight;
+    font-size:1.3em;
+    line-height:1.1em;
+    color:#999;
+    margin-bottom:4px;
 }
 
 .peli .sinopsis{
