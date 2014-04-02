@@ -107,12 +107,16 @@ a:active{text-decoration:none;}
 }
 
 .btn-izq{
-	width:80px;
-	height:25%;
-    min-height:25%;
+	width:100%;
 	position:relative;
-	display:inline-block;
-	float:left;
+    background-color:#7ec2e1;
+    border-bottom:1px solid white;
+    padding:30px 0 30px 0;
+/*	display:inline-block;
+	float:left;*/
+}
+#menu .logomenu{
+    background:#e5eaee;
 }
 .btn-izq img{
 	width:50px;
@@ -243,12 +247,6 @@ a:active{text-decoration:none;}
 	margin:6% 0% 0% 0%;
 	padding:0;
 }
-
-.recomendados{background:#09C;}
-.estrenos{background:#069;}
-.cartelera{background:#036;}
-.cines{background:#003;}
-
 
 /* INTERNAS */
 
