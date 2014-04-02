@@ -98,6 +98,12 @@ var app = {
 			);
 		}catch(e) { }
 	},
+    startSpinning: function(){
+        $("#btn-config").show();
+    },
+    stopSpinning: function(){
+        $("#btn-config").hide();
+    },
 
 };
 
