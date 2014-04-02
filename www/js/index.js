@@ -129,3 +129,7 @@ function toggle(id){
 	}
 }
 
+function alert(msj){
+    navigator.notification.alert(msj);
+}
+
