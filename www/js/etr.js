@@ -132,53 +132,54 @@ function _etr(){
 	}
 
 
-	this.ajax = new _ajax();
-	this.version = 1;
 	this.baseURL = "http://www.etr.gov.ar/";
 	
 	this.busqueda = {};
 
 	this.obtenerCalle = function() {
 		
-        var linea = $('#linea').find(":selected").val();
-        var idlinea = $('#linea').find(":selected").attr("idlinea");
+        var linea = $('#consultar-linea').find(":selected").val();
+        var idlinea = $('#consultar-linea').find(":selected").attr("idlinea");
 		
 		$("#message").html("");
-		$("#calle").attr("disabled", "disabled");
-		$("#inter").attr("disabled", "disabled");
-		$("#parada").attr("disabled", "disabled");
-		$("#idparada").attr("disabled", "disabled");
-		$("#idparada").val("");
+		$("#consultar-calle").attr("disabled", "disabled");
+		//$("#consultar-interseccion").attr("disabled", "disabled");
+		//$("#consultar-nroparada").attr("disabled", "disabled");  
+		//$("#consultar-nrosparada").attr("disabled", "disabled");
+		$("#consultar-nrosparada").val("");
 	
 		this.busqueda = {};	
-		if(idlinea == 0) { 
-			$("#idparada").attr("disabled", "disabled");
-			return;
-		}
+		//if(idlinea == 0) { 
+		//	$("#idparada").attr("disabled", "disabled");
+		//	return;
+		//}
 
-		$("#idparada").attr("disabled", "");
+		//$("#consultar-nrosparada").attr("disabled", "");
 		var url = this.baseURL + '/getData.php?accion=getCalle&idLinea=' + encodeURI(idlinea);
 		var obj = this;				
 			obj.busqueda.idlinea = idlinea;
 			obj.busqueda.linea = linea;
 
 		$("#preloader").show();
-		this.ajax.get(url, function(data){
+		$.ajax(url,{}, function(data){
+            console.log('vuelve');
 			obj.parseCalles(data);			
 			$("#preloader").hide();
-		});
+		},'json');
 	}
 	this.parseCalles = function(calles) {
 
+        console.log(calles);
 		var len = calles.length;
 		var html_calles = '<option value="0">Seleccionar calle</option>';
 		for(var i = 0; i < len; i++) {
 			var calle = calles[i];
 			html_calles+= '<option value="' + calle.id +'">' + calle.desc + '</option>';
 		}
-		$("#calle").html(html_calles);
-		$("#calle").attr("disabled", "");
-		$("#idparada").attr("disabled", "");
+        console.log(html_calles)
+		$("#consultar-calle").html(html_calles);
+		//$("#consultar-calle").attr("disabled", "");
+		//$("#consultar-nrosparada").attr("disabled", "");
 	}
 
 	this.obtenerInter = function(idcalle) {
@@ -320,23 +321,3 @@ function _etr(){
 }
 
 var etr  = new _etr();
-var view = new _view();
-
-function onDeviceReady() { 
-
-	try { 
-        console.log("deviceready");
-		var favs = JSON.parse(extPhonegap.getValue("favoritos")); 
-        console.log(favs);
-		etr.setFavoritos(favs);		
-	} catch(e) { 
-	}	
-	Home.load(); 
-}
-
-
-
-function onLoad() {	
-	try { document.addEventListener("deviceready", onDeviceReady, true); }catch(e) { alert(e); }	
-}
-

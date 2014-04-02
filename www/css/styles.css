@@ -308,7 +308,7 @@ a:active{text-decoration:none;}
 .config p{
     font-family:Calibri, sans-serif;
     font-size:1.3em;
-    line-height:1.1em;
+    line-height:0.8em;
     color:#999;
     margin-bottom:4px;
 }
@@ -449,6 +449,7 @@ a:active{text-decoration:none;}
     padding-top: 20px;
     margin-bottom: 8px;
 	-webkit-appearance: button;
+    border:none;
 }
 
 #favs ul {
