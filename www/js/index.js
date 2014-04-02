@@ -98,10 +98,10 @@ var app = {
 		}catch(e) { }
 	},
     startSpinning: function(){
-        $("#btn-config").show();
+        $("#btn-config").css("visibility","visible");
     },
     stopSpinning: function(){
-        $("#btn-config").hide();
+        $("#btn-config").css("visibility","hidden");
     },
 
 };
