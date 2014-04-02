@@ -99,12 +99,13 @@ function toggle(id){
 		var el = document.getElementById(id); 	
 		if(el.style.display == 'none') {
 			el.style.display = 'block'; 		
-			// el.style.zIndex = (el.style.zIndex == '-1') ? '1' : '-1';
+			el.style.zIndex = '99';
 			general.style.marginLeft = '85%';
 			// general.style.position = (general.style.position == 'absolute') ? 'fixed' : 'absolute';
 		}else {
 			el.style.display = 'none'; 	
 			general.style.marginLeft = '0px';
+			el.style.zIndex = '-1';
 		}
 	}
 }
