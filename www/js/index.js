@@ -101,12 +101,17 @@ var app = {
 };
 
 function toggle(id){
-	if (document.getElementById){ //se obtiene el id
-		var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
-		el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
-		el.style.zIndex = (el.style.zIndex == '-1') ? '1' : '-1';
-		general.style.marginLeft = (general.style.marginLeft == '0px') ? '80px' : '0px';
-		general.style.position = (general.style.position == 'absolute') ? 'fixed' : 'absolute';
+	if (document.getElementById){ 
+		var el = document.getElementById(id); 	
+		if(el.style.display == 'none') {
+			el.style.display = 'block'; 		
+			// el.style.zIndex = (el.style.zIndex == '-1') ? '1' : '-1';
+			general.style.marginLeft = '60%';
+			// general.style.position = (general.style.position == 'absolute') ? 'fixed' : 'absolute';
+		}else {
+			el.style.display = 'none'; 	
+			general.style.marginLeft = '0px';
+		}
 	}
 }
 
