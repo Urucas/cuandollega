@@ -102,6 +102,20 @@ a:active{text-decoration:none;}
     /*	display:inline-block;
     float:left;*/
 }
+.btn-izq-selected{
+    width:100%;
+    position:relative;
+    border-bottom:1px solid #e5eaee;
+    padding:35px 0 35px 0;
+    background: rgb(80,148,180), url("../img/icon_linea.png") no-repeat; /* Old browsers */
+    background: -moz-linear-gradient(left, rgba(80,148,180,1) 0%, rgba(80,148,180,1) 92%, rgba(55,102,124,1) 99%), url("../img/icon_linea.png") 0 80% no-repeat; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(80,148,180,1)), color-stop(92%,rgba(80,148,180,1)), color-stop(99%,rgba(55,102,124,1))), url("../img/icon_linea.png") no-repeat right top; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(80,148,180,1) 0%,rgba(80,148,180,1) 92%,rgba(55,102,124,1) 99%), url("../img/icon_linea.png") no-repeat right top; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(80,148,180,1) 0%,rgba(80,148,180,1) 92%,rgba(55,102,124,1) 99%), url("../img/icon_linea.png") no-repeat; /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(80,148,180,1) 0%,rgba(80,148,180,1) 92%,rgba(55,102,124,1) 99%), url("../img/icon_linea.png") no-repeat; /* IE10+ */
+    background: linear-gradient(to right, rgba(80,148,180,1) 0%,rgba(80,148,180,1) 92%,rgba(55,102,124,1) 99%), url("../img/icon_linea.png") no-repeat; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5094b4', endColorstr='#37667c',GradientType=1 ); /* IE6-9 */
+}
 #menu .logomenu{
     background:#e5eaee;
     padding:0;
