@@ -137,16 +137,16 @@ function _etr(){
 	this.busqueda = {};
 
 	this.obtenerCalle = function() {
-		
+		alert("obtener calle");
         var linea = $('#consultar-linea').find(":selected").val();
         var idlinea = $('#consultar-linea').find(":selected").attr("idlinea");
 		
 		$("#message").html("");
-		$("#consultar-calle").attr("disabled", "disabled");
+//		$("#consultar-calle").attr("disabled", "disabled");
 		//$("#consultar-interseccion").attr("disabled", "disabled");
 		//$("#consultar-nroparada").attr("disabled", "disabled");  
 		//$("#consultar-nrosparada").attr("disabled", "disabled");
-		$("#consultar-nrosparada").val("");
+		// $("#consultar-nrosparada").val("");
 	
 		this.busqueda = {};	
 		//if(idlinea == 0) { 
@@ -160,16 +160,15 @@ function _etr(){
 			obj.busqueda.idlinea = idlinea;
 			obj.busqueda.linea = linea;
 
-		$("#preloader").show();
-		$.ajax(url,{}, function(data){
-            console.log('vuelve');
+	
+		app.startSpinning();
+		$.get(url,{}, function(data){
+			app.stopSpinning();
 			obj.parseCalles(data);			
-			$("#preloader").hide();
 		},'json');
 	}
 	this.parseCalles = function(calles) {
 
-        console.log(calles);
 		var len = calles.length;
 		var html_calles = '<option value="0">Seleccionar calle</option>';
 		for(var i = 0; i < len; i++) {
@@ -182,12 +181,12 @@ function _etr(){
 		//$("#consultar-nrosparada").attr("disabled", "");
 	}
 
-	this.obtenerInter = function(idcalle) {
-
+	this.obtenerInter = function() {
+		alert("obtener inter");
 		$("#message").html("");
-		$("#inter").attr("disabled", "disabled");
-		$("#parada").attr("disabled", "disabled");
-		
+	//	$("#inter").attr("disabled", "disabled");
+	//	$("#parada").attr("disabled", "disabled");
+		var idcalle = $("#consultar-calle").val();
 		this.busqueda.idcalle = 0;
 		this.busqueda.idinter = 0;
 		
@@ -202,10 +201,10 @@ function _etr(){
 			url+= "&idLinea=" + encodeURI(obj.busqueda.idlinea) 
 			url+= "&idCalle=" + encodeURI(obj.busqueda.idcalle);
 
-		$("#preloader").show();
-		this.ajax.get(url, function(data){
+		app.startSpinning();
+		$.get(url, function(data){
+			app.stopSpinning();
 			obj.parseInter(data);			
-			$("#preloader").hide();
 		});
 	}
 
@@ -218,12 +217,14 @@ function _etr(){
 			html_inters+= '<option value="' + inter.id +'">' + inter.desc + '</option>';
 		}
 		$("#inter").html(html_inters);
-		$("#inter").attr("disabled", "");
+//		$("#inter").attr("disabled", "");
 	}
 
-	this.obtenerParadas = function(idinter) {
+	this.obtenerParadas = function() {
 
+		alert("obtener paradas");
 		$("#message").html("");
+		var idinter = $("#consultar-interseccion").val();
 		this.busqueda.idinter = 0;
 		if(idinter == 0) {		
 			return;
@@ -236,10 +237,10 @@ function _etr(){
 			url+= "&idCalle=" + encodeURI(obj.busqueda.idcalle);
 			url+= "&idInt=" + encodeURI(obj.busqueda.idinter);
 		
-		$("#preloader").show();
-		this.ajax.getText(url, function(response){
-			obj.parseParadas(response);			
-			$("#preloader").hide();
+		app.startSpinning();
+		$.get(url, function(response){
+			obj.parseParadas(response);		
+			app.stopSpinning();
 		});
 	}
 
@@ -271,9 +272,9 @@ function _etr(){
 			html_paradas += '<option value="' + parada.id + '">' + parada.desc + '</option>';
 		}		
 		$("#parada").html(html_paradas);
-		$("#parada").attr("disabled", "");
+//		$("#parada").attr("disabled", "");
 		$("#idparada").val(paradas[0].id);
-		$("#idparada").attr("disabled", "");
+//		$("#idparada").attr("disabled", "");
 	}
 
 	this.selecParada = function(idparada) {
@@ -303,6 +304,7 @@ function _etr(){
 		$("#cuando_llega").html("");
 		$("#preloader").show();
 		var obj = this;
+		app.startSpinning();
 		$.post(url, params, function(response){
 			response = response.replace('-', '<br />');
 			$("#cuando_llega").html(response);
@@ -313,9 +315,9 @@ function _etr(){
 				$('#fav_button').css('background-position-y','2px');
 				$('#fav_button > span').html('Agregar a favoritos');
 			}
-
 			$("#popup").show();
-			$("#preloader").hide();
+			app.startSpinning();
+
 		}); 		
 	}
 }

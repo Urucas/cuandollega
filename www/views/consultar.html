@@ -44,11 +44,11 @@
 	</select>
 	<div class="ui-line"></div>
 
-	<select id="consultar-calle" class="ui-select">
-		<option>Seleccionar calle</option>
+	<select id="consultar-calle" class="ui-select" onchange="etr.obtenerInter()">
+		<option value="0">Seleccionar calle</option>
 	</select>
 
-	<select id="consultar-interseccion" class="ui-select ui-select-interseccion">
+	<select id="consultar-interseccion" class="ui-select ui-select-interseccion" onchange="etr.obtenerParadas();">
 		<option>Seleccionar interseccion</option>
 	</select>
 

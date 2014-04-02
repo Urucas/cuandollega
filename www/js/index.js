@@ -30,7 +30,6 @@ var app = {
 			}catch(e) {}
 			try { callback(); } catch(e) {}
 		});
-
 	},
 	share: function(){
 		try {
