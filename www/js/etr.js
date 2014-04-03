@@ -46,9 +46,6 @@ function _etr(){
 		var idparada = busqueda.idparada;
 		var idlinea  = busqueda.idlinea;
         alert("favoriteando->"+idlinea);
-        console.log("----------busqueda---------------");
-        console.log(JSON.stringify(busqueda));
-        console.log("----------favoritos---------------");
 		var fav = etr.hasFavorito(idparada, idlinea);
 		if(fav == false) {
 			this.favoritos.push({
@@ -65,7 +62,6 @@ function _etr(){
 				alert(e); 
 			}
 
-            console.log(JSON.stringify(etr.favoritos));
 			$('#fav-button').val('Agregado a favoritos');
 		}
 	}
@@ -165,11 +161,8 @@ function _etr(){
 		
 		var len = inters.length;
 		var html_inters = '<option value="0">Seleccionar intersecci&oacute;n</option>';
-		console.log(inters);
 		for(var i = 0; i < len; i++) {
 			var inter = inters[i];
-			console.log(inter);
-			console.log(inter.desc);
 			html_inters+= '<option value="' + inter.id +'">' + inter.desc + '</option>';
 		}
 		$("#consultar-interseccion").html(html_inters);
@@ -255,6 +248,7 @@ function _etr(){
 		var params = "parada=" + idparada;
 			params+= "&linea=" + this.busqueda.linea;
 
+        console.log(url+"?"+params);
 		var obj = this;
 		app.startSpinning();
 		$.post(url, params, function(response){
