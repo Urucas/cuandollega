@@ -1,6 +1,5 @@
 var app = {
 	
-	baseURL: "http://cinema.urucas.com/api",
 	modules: [
 		{ id: "consultar", view: "views/consultar.html"},
 		{ id: "favoritos", view: "views/favoritos.html"},
@@ -149,9 +148,14 @@ function toggle(id){
 	}
 }
 
-/*
+
 function alert(msj){
-    navigator.notification.alert(msj, function(){},"Cuando Llega?");
+	console.log(navigator.notification);
+	try {
+	    navigator.notification.alert(msj, function(){},"Cuando Llega?");
+	}catch(e) {
+		console.log(e);
+	}
 }
-*/
+
 
