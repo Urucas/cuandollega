@@ -1,7 +1,7 @@
 var app = {
 	
 	modules: [
-		{ id: "consultar", view: "views/consultar.html"},
+		{ id: "consultar", view: "views/consultar.html", callback: function(){ app.loadBusqueda(); }},
 		{ id: "favoritos", view: "views/favoritos.html", callback: function(){ app.getFavs();}},
 		{ id: "configuracion", view: "views/configuracion.html"},
 		{ id: "resultado", view: "views/resultado.html", callback: function() { app.showResult(); } },
@@ -120,6 +120,19 @@ var app = {
 		}
 		etr.busqueda.idparada = idparada;
 		document.location.href = "#resultado";
+	},
+	loadBusqueda: function() {
+	
+		var busqueda = etr.busqueda;
+		console.log(JSON.stringify(busqueda));
+		if(busqueda.idlinea.length) {
+			alert(busqueda.idlinea);
+			$("#consultar-linea").val(busqueda.idlinea);
+		}
+		if(busqueda.idparada.length) {
+			alert(busqueda.idparada);
+			$("#consultar-nroparada").val(busqueda.idparada);
+		}
 	},
     getFavs: function(){
         if(etr.favoritos.length == 0) {
