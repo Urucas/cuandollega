@@ -60,6 +60,8 @@ function _etr(){
 							'idlinea'  : busqueda.idlinea,
 							'idparada' : busqueda.idparada,
 							'linea'    : busqueda.linea,
+							'nomcalle' : busqueda.nomcalle,
+							'nominter' : busqueda.nominter,
 							'descripcion': desc
 						});	
 
@@ -79,7 +81,6 @@ function _etr(){
 			alert("Ya se encuentra agregada esta linea y parada a favoritos");
 		}
 	}
-
 
 	this.removeFavorito = function(idparada, idlinea) {
 		var favs = etr.favoritos;
@@ -247,18 +248,17 @@ function _etr(){
 
 	this.selecParada = function() {
 		var idparada = $("#consultar-nrosparada").val();
-		alert(idparada);
 		etr.busqueda.idparada = idparada;
 		$("#consultar-nroparada").val(idparada);
 	}
 
 	this.cuandollega = function() {
-
+	
 		var idlinea = etr.busqueda.idlinea;
 		if(idlinea.length == 0) {
 			alert("Debe seleccionar la linea");
 			return;
-		}	
+		}
 		var idparada = etr.busqueda.idparada; 
 		if(idparada.length == 0) {
 			alert("Debe ingresar el nro. de parada");
