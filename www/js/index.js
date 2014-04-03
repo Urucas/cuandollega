@@ -105,7 +105,11 @@ var app = {
         $("#btn-config").css("visibility","hidden");
     },
     showResult: function(){
-        $("#linea-num").html("Linea "+etr.busqueda.linea+'<br /><span class="linea-addr">'+etr.busqueda.nomcalle+' - '+etr.busqueda.nominter+'</span>');
+		
+        $("#linea-num").html("Linea "+etr.busqueda.linea);
+		if(etr.busqueda.nomcalle != undefined && etr.busqueda.nominter != undefined) {
+			$("#linea-num").append('<br /><span class="linea-addr">'+etr.busqueda.nomcalle+' - '+etr.busqueda.nominter+'</span>');
+		}
 		
         etr.cuandollega();
     },
