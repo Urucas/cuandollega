@@ -60,6 +60,8 @@ function _etr(){
 							'idlinea'  : busqueda.idlinea,
 							'idparada' : busqueda.idparada,
 							'linea'    : busqueda.linea,
+							'nomcalle' : busqueda.nomcalle,
+							'nominter' : busqueda.nominter,
 							'descripcion': desc
 						});	
 
@@ -79,7 +81,6 @@ function _etr(){
 			alert("Ya se encuentra agregada esta linea y parada a favoritos");
 		}
 	}
-
 
 	this.removeFavorito = function(idparada, idlinea) {
 		var favs = etr.favoritos;
@@ -146,6 +147,8 @@ function _etr(){
 		//	$("#inter").attr("disabled", "disabled");
 		//	$("#parada").attr("disabled", "disabled");
 		var idcalle = $("#consultar-calle").val();
+		var nomcalle = $('#consultar-calle').find(":selected").text();
+
 		this.busqueda.idcalle = 0;
 		this.busqueda.idinter = 0;
 
@@ -158,9 +161,10 @@ function _etr(){
 		}
 
 		var obj = this;
-		obj.busqueda.idcalle = idcalle
+		obj.busqueda.idcalle = idcalle;
+		obj.busqueda.nomcalle = nomcalle;
 
-			var url = this.baseURL + "/getData.php?accion=getInterseccion"
+		var url = this.baseURL + "/getData.php?accion=getInterseccion"
 			url+= "&idLinea=" + encodeURI(obj.busqueda.idlinea) 
 			url+= "&idCalle=" + encodeURI(obj.busqueda.idcalle);
 
@@ -189,17 +193,20 @@ function _etr(){
 		$("#consultar-nroparada").val(""); 
 
 		var idinter = $("#consultar-interseccion").val();
+		var nominter = $('#consultar-interseccion').find(":selected").text();
+
 		this.busqueda.idinter = 0;
 		if(idinter == 0) {		
 			return;
 		}
 		var obj = this;
 		obj.busqueda.idinter = idinter
+		obj.busqueda.nominter = nominter;
 
-			var url = this.baseURL + "getData.php?accion=getInfoParadas"
+		var url = this.baseURL + "getData.php?accion=getInfoParadas"
 			url+= "&idLinea=" + encodeURI(obj.busqueda.idlinea);
-		url+= "&idCalle=" + encodeURI(obj.busqueda.idcalle);
-		url+= "&idInt=" + encodeURI(obj.busqueda.idinter);
+			url+= "&idCalle=" + encodeURI(obj.busqueda.idcalle);
+			url+= "&idInt=" + encodeURI(obj.busqueda.idinter);
 
 		console.log(url);
 		app.startSpinning();
@@ -239,17 +246,19 @@ function _etr(){
 		$("#consultar-nroparada").val(paradas[0].id);
 	}
 
-	this.selecParada = function(idparada) {
+	this.selecParada = function() {
+		var idparada = $("#consultar-nrosparada").val();
+		etr.busqueda.idparada = idparada;
 		$("#consultar-nroparada").val(idparada);
 	}
 
 	this.cuandollega = function() {
-
+	
 		var idlinea = etr.busqueda.idlinea;
 		if(idlinea.length == 0) {
 			alert("Debe seleccionar la linea");
 			return;
-		}	
+		}
 		var idparada = etr.busqueda.idparada; 
 		if(idparada.length == 0) {
 			alert("Debe ingresar el nro. de parada");
