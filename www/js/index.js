@@ -125,9 +125,8 @@ var app = {
 	loadBusqueda: function() {
 	
 		var busqueda = etr.busqueda;
-		console.log(JSON.stringify(busqueda));
-		if(busqueda.idlinea.length) {
-			$("#consultar-linea").val(busqueda.idlinea);
+		if(busqueda.linea.length) {
+			$("#consultar-linea").val(busqueda.linea);
 		}
 		if(busqueda.idparada.length) {
 			$("#consultar-nroparada").val(busqueda.idparada);
