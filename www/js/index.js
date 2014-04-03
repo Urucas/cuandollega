@@ -25,7 +25,8 @@ var app = {
 				menu.style.display = 'none'; 	
 				general.style.marginLeft = '0px';
 				menu.style.zIndex = '-1';
-
+                $(".menu-option > div").removeClass().addClass("btn-izq");
+                $("#"+view_id).addClass("btn-izq-selected");
 			}catch(e) {}
 			try { callback(); } catch(e) {}
 		});
@@ -126,27 +127,23 @@ var app = {
 		var busqueda = etr.busqueda;
 		console.log(JSON.stringify(busqueda));
 		if(busqueda.idlinea.length) {
-			alert(busqueda.idlinea);
 			$("#consultar-linea").val(busqueda.idlinea);
 		}
 		if(busqueda.idparada.length) {
-			alert(busqueda.idparada);
 			$("#consultar-nroparada").val(busqueda.idparada);
 		}
 	},
     getFavs: function(){
         if(etr.favoritos.length == 0) {
             var favs = this.getValue("favoritos");
-            alert(favs)
             if(favs == null){
                 favs = [];
             }
             etr.favoritos = JSON.parse(favs);
         }
-        alert("hay "+etr.favoritos.length);
         try{
             $("#favoritos-list").render("views/favorito-list-item.html", etr.favoritos);
-        }catch(e){alert(e)}
+        }catch(e){console.log(e)}
     },
     deleteFavorito: function(idlinea,idparada){
         etr.removeFavorito(idparada, idlinea);

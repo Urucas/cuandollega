@@ -26,13 +26,14 @@ try {
 
 			// create replace function
 			var replace = function(key, value, str, modifier) {
-				var reg = new RegExp("{%"+key+"}");
+				var reg = new RegExp("{%"+key+"}","g");
 				try {
 					if(modifier != undefined && modifier instanceof Function) {
 						value = modifier(value);
 					}
 				}catch(e) { console.log("jquery.render.js modifier error: "+e); }
-				return str.replace(reg, value);
+				str = str.replace(reg, value)
+                return str;
 			}
 			
 			var modifiers = config.modifiers;

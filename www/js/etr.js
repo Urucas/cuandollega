@@ -67,7 +67,7 @@ function _etr(){
 							var strfavs = JSON.stringify(etr.favoritos); 
 							app.saveValue("favoritos", strfavs); 
 
-						}catch(e) { alert(e); }
+						}catch(e) { console.log(e); }
 
 						$('#fav-button').val('Agregado a favoritos');
 

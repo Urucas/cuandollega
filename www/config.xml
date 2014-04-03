@@ -22,7 +22,7 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
-    <preference name="splashscreen" value="splash" />    
+    <preference name="splashscreen" value="screen" />    
     <preference name="splashScreenDelay" value="10000" />
     <icon src="icon.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
