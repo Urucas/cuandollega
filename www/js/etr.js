@@ -250,7 +250,7 @@ function _etr(){
 			alert("Debe seleccionar la linea");
 			return;
 		}	
-		var idparada = parseInt(etr.busqueda.idparada); 
+		var idparada = etr.busqueda.idparada; 
 		if(idparada.length == 0) {
 			alert("Debe ingresar el nro. de parada");
 			return;
