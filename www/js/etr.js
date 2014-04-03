@@ -2,7 +2,11 @@ function _etr(){
 	
 	this.favoritos = [];
 
-	this.hasFavorito = function(idparada, idlinea) {
+	this.baseURL = "http://www.etr.gov.ar/";
+	
+	this.busqueda = {};
+	
+    this.hasFavorito = function(idparada, idlinea) {
 		var favs = this.favoritos;
 		var len  = favs.length;
 		for(var i =0; i < len; i++) {
@@ -20,7 +24,6 @@ function _etr(){
 		var html = '';
 		for(var i = 0; i< len; i++) {
 			var fav   = favs[i];
-			var style = i == 7 ? "border-bottom:0;" : ""
 			html +=	'<div class="fav_container">';
 			html += '<div class="fav_left" onclick="etr.openFavorito(' + fav.idparada + ', \'' + fav.idlinea + '\')" style="' + style + '">';
 			html +=	'<span class="fav_linea">Linea: ' + fav.linea + '</span>';
@@ -30,16 +33,8 @@ function _etr(){
 			html += '</div>';
 		}
 		$("#favs_results").html(html);
-		$("#home_container").hide();
-		$("#popup").hide();
-		$("#favs_container").show();
 	}
 	
-	this.hideFavoritos = function() {
-		$("#home_container").show();
-		$("#favs_container").hide();
-	}
-
 	this.addFavorito = function() {
 		var favs = this.favoritos;
 		if(favs.length == 20) {
@@ -64,15 +59,15 @@ function _etr(){
 				app.saveValue("favoritos", strfavs); 
 
 			}catch(e) { 
-				//alert(e); 
+				alert(e); 
 			}
 
-			$('#fav_button').val('Agregado a favoritos');
+			$('#fav-button').val('Agregado a favoritos');
 		}
 	}
 
 	this.removeFavorito = function(idparada, idlinea) {
-		var favs = this.favoritos;
+		var favs = etr.favoritos;
 		var aux  = [];
 		var len  = favs.length;
 		for(var i =0; i < len; i++) {
@@ -82,59 +77,18 @@ function _etr(){
 			}
 			aux.push(fav);
 		}
-		this.favoritos = aux;
+		etr.favoritos = aux;
 		try{ 
-			var strfavs = JSON.stringify(this.favoritos); 
+			var strfavs = JSON.stringify(etr.favoritos); 
 			app.saveValue("favoritos", strfavs);  
 		}catch(e) { 
 			//alert(e); 
 		}
-		this.showFavoritos();
 	}
 
-	this.openFavorito = function(idparada, idlinea) {
-		var fav = this.hasFavorito(idparada, idlinea);
-		if(fav == false) {
-			alert("Wops! Algo ha pasado. Intenta de nuevo!");
-			return;
-		}
-		var url = "http://www.etr.gov.ar/getSmsResponse.php";
-		var params = "parada=" + idparada;
-			params+= "&linea=" + fav.linea;
-		
-		this.busqueda = {}
-		this.busqueda.idlinea  = fav.idlinea;
-		this.busqueda.linea    = fav.linea;
-		this.busqueda.idparada = fav.idparada;		
-
-		this.selecParada(idparada);
-
-		$("#cuando_llega").html("");
-		$("#preloader").show();
-		var obj = this;
-		$.post(url, params, function(response){
-			obj.hideFavoritos();
-			response = response.replace('-', '<br />');
-			$("#cuando_llega").html(response);
-			if(obj.hasFavorito(idparada, idlinea) != false) {
-				$('#fav_button').css('background-position-y','162%');
-				$('#fav_button > span').html('Agregado a favoritos');			
-			}else {
-				$('#fav_button').css('background-position-y','2px');
-				$('#fav_button > span').html('Agregar a favoritos');
-			}
-			$("#popup").show();
-			$("#preloader").hide();
-		}); 		
-	}
 	this.setFavoritos = function(favs) { 
 		this.favoritos = favs == undefined ? [] : favs;
 	}
-
-
-	this.baseURL = "http://www.etr.gov.ar/";
-	
-	this.busqueda = {};
 
 	this.obtenerCalle = function() {
         var linea = $('#consultar-linea').find(":selected").val();

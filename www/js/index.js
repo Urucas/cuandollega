@@ -3,7 +3,7 @@ var app = {
 	baseURL: "http://cinema.urucas.com/api",
 	modules: [
 		{ id: "consultar", view: "views/consultar.html"},
-		{ id: "favoritos", view: "views/favoritos.html"},
+		{ id: "favoritos", view: "views/favoritos.html", callback: function(){ app.getFavs();}},
 		{ id: "configuracion", view: "views/configuracion.html"},
 		{ id: "resultado", view: "views/resultado.html", callback: function() { app.showResult(); } },
 		{ id: "search", view: "cartelera.html", callback: function() { app.search(); } },
@@ -122,6 +122,29 @@ var app = {
 		etr.busqueda.idparada = idparada;
 		document.location.href = "#resultado";
 	},
+    getFavs: function(){
+        if(etr.favoritos.length == 0) {
+            var favs = this.getValue("favoritos");
+            if(favs.length == null){
+                favs = [];
+            }
+            etr.favoritos = JSON.parse(favs);
+        }
+        alert("hay "+etr.favoritos.length);
+        try{
+            $("#favoritos-list").render("views/favorito-list-item.html",etr.favoritos);
+        }catch(e){alert(e)}
+    },
+    deleteFavorito: function(idlinea,idparada){
+        etr.removeFavorito(idparada, idlinea);
+        app.getFavs();
+    },
+    openFavorito: function(idlinea,idparada){
+        alert(idlinea)
+        etr.busqueda.idparada = idparada;
+        etr.busqueda.idlinea = idlinea;
+        document.location.href="#resultado";
+    },
     saveValue: function(name, value) {
 		try { window.localStorage.setItem(name, value); }catch(e) {};
 	},
