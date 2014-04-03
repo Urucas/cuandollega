@@ -131,7 +131,7 @@ var app = {
         }
         alert("hay "+etr.favoritos.length);
         try{
-            $("#favoritos-list").render("views/favorito-list-item.html",etr.favoritos);
+            $("#favoritos-list").render("views/favorito-list-item.html", etr.favoritos);
         }catch(e){alert(e)}
     },
     deleteFavorito: function(idlinea,idparada){
