@@ -57,7 +57,7 @@ var app = {
     },
     // deviceready Event Handler
     onDeviceReady: function() {
-		try { navigator.splashscreen.show(); }catch(e){ console.log(e); }
+		try { navigator.splashscreen.hide(); }catch(e){ console.log(e); }
 			// important event to autolod the modules and views
 		window.onhashchange = function() {
 			var hash = window.location.hash;
@@ -125,7 +125,8 @@ var app = {
     getFavs: function(){
         if(etr.favoritos.length == 0) {
             var favs = this.getValue("favoritos");
-            if(favs.length == null){
+            alert(favs)
+            if(favs == null){
                 favs = [];
             }
             etr.favoritos = JSON.parse(favs);

@@ -46,7 +46,10 @@ function _etr(){
 		var idparada = busqueda.idparada;
 		var idlinea  = busqueda.idlinea;
         alert("favoriteando->"+idlinea);
-		var fav = this.hasFavorito(idparada, idlinea);
+        console.log("----------busqueda---------------");
+        console.log(JSON.stringify(busqueda));
+        console.log("----------favoritos---------------");
+		var fav = etr.hasFavorito(idparada, idlinea);
 		if(fav == false) {
 			this.favoritos.push({
 				'idlinea'  : busqueda.idlinea,
@@ -55,13 +58,14 @@ function _etr(){
 			});	
 
 			try{ 
-				var strfavs = JSON.stringify(this.favoritos); 
+				var strfavs = JSON.stringify(etr.favoritos); 
 				app.saveValue("favoritos", strfavs); 
 
 			}catch(e) { 
 				alert(e); 
 			}
 
+            console.log(JSON.stringify(etr.favoritos));
 			$('#fav-button').val('Agregado a favoritos');
 		}
 	}
@@ -233,13 +237,13 @@ function _etr(){
 	}
 
 	this.cuandollega = function() {
-		var idlinea = parseInt(etr.busqueda.idlinea);
-		if( isNaN(idlinea) || idlinea == 0) {
+		var idlinea = etr.busqueda.idlinea;
+		if( idlinea.length == 0) {
 			alert("Debe seleccionar la linea");
 			return;
 		}	
-		var idparada = parseInt(etr.busqueda.idparada); 
-		if( isNaN(idparada) || idparada == 0) {
+		var idparada = etr.busqueda.idparada; 
+		if( idparada.length == 0) {
 			alert("Debe ingresar el nro. de parada");
 			return;
 		}
