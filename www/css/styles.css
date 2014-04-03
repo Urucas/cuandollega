@@ -449,6 +449,21 @@ a:active{text-decoration:none;}
 	margin-left:auto;
 	margin-right:auto;
 }
+.ui-content-box-noticias {
+	width:90%;
+	border-radius:5px;
+	border:1px solid #ccc;
+ 	font-size:18px;
+	text-align:justify;
+ 	font-family:Calibri, sans-serif;
+	color:#8f99a0;
+	background:#fff;
+    padding-left:4px;
+    padding-right:4px;
+    margin-top:8px;
+	margin-left:auto;
+	margin-right:auto;
+}
 .ui-button {
 	width:90%;
 	border-radius:4px;

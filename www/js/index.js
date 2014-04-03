@@ -157,8 +157,17 @@ var app = {
         document.location.href="#resultado";
     },
     showNoticias: function(){
-        $.get("http://www.etr.gov.ar/cont-noticias_vigentes2.php",{tipo:"Cortes y Desvios"},function(response){
-            var html = $.parseHTML(response);
+        app.startSpinning();
+        var tipo = $("#tipo").val();
+        $.get("http://www.etr.gov.ar/cont-noticias_vigentes2.php",{tipo:tipo},function(response){
+            app.stopSpinning();
+            try{
+                var html = $.parseHTML(response);
+                $("#contenido-noticias1").html(html);
+                var table = $("#contenido-noticias1").find("table").html();
+            }catch(e){alert(e)}
+            $("#contenido-noticias1").html("");
+            $("#contenido-noticias").html(table);
         })
     },
     saveValue: function(name, value) {
