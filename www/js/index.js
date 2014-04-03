@@ -108,13 +108,13 @@ var app = {
     },
 	validarConsultar: function() {
 
-		var idparada = parseInt($("#consultar-nroparada").val());
-		var idlinea = parseInt(etr.busqueda.idlinea);
-		if( isNaN(idlinea) || idlinea == 0) {
+		var idparada = $("#consultar-nroparada").val();
+		var idlinea = etr.busqueda.idlinea;
+		if( idlinea.length == 0) {
 			alert("Debe seleccionar la linea");
 			return;
 		}	
-		if( isNaN(idparada) || idparada == 0) {
+		if( idparada.length == 0) {
 			alert("Debe ingresar el nro. de parada");
 			return;
 		}
@@ -150,10 +150,10 @@ var app = {
     },
     deleteFavorito: function(idlinea,idparada){
         etr.removeFavorito(idparada, idlinea);
-        app.getFavs();
+        document.location.href="#favoritos";
     },
-    openFavorito: function(idlinea,idparada){
-        alert(idlinea)
+    openFavorito: function(idlinea,idparada, linea){
+        etr.busqueda.linea = linea;
         etr.busqueda.idparada = idparada;
         etr.busqueda.idlinea = idlinea;
         document.location.href="#resultado";

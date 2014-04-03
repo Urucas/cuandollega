@@ -49,31 +49,31 @@ function _etr(){
 		var fav = this.hasFavorito(idparada, idlinea);
 		if(fav == false) {
 			navigator.notification.prompt("Por favor ingrese una descripcion", 
-				function(response){
-					if(response.buttonIndex == 2) {
-						return;
-					}
-						
-					desc = response.input1;
-					
-					etr.favoritos.push({
-						'idlinea'  : busqueda.idlinea,
-						'idparada' : busqueda.idparada,
-						'linea'    : busqueda.linea,
-						'descripcion': desc
-					});	
-					
-					try{ 
-						var strfavs = JSON.stringify(etr.favoritos); 
-						app.saveValue("favoritos", strfavs); 
+					function(response){
+						if(response.buttonIndex == 2) {
+							return;
+						}
 
-					}catch(e) { alert(e); }
+						desc = response.input1;
 
-					$('#fav-button').val('Agregado a favoritos');
-						
-				}, 
-				"Cuando llega?"
-			);
+						etr.favoritos.push({
+							'idlinea'  : busqueda.idlinea,
+							'idparada' : busqueda.idparada,
+							'linea'    : busqueda.linea,
+							'descripcion': desc
+						});	
+
+						try{ 
+							var strfavs = JSON.stringify(etr.favoritos); 
+							app.saveValue("favoritos", strfavs); 
+
+						}catch(e) { alert(e); }
+
+						$('#fav-button').val('Agregado a favoritos');
+
+					}, 
+						"Cuando llega?"
+							);
 
 		}else {
 			alert("Ya se encuentra agregada esta linea y parada a favoritos");
@@ -81,211 +81,210 @@ function _etr(){
 	}
 
 
-this.removeFavorito = function(idparada, idlinea) {
-	var favs = etr.favoritos;
-	var aux  = [];
-	var len  = favs.length;
-	for(var i =0; i < len; i++) {
-		var fav = favs[i];
-		if(fav.idparada == idparada && fav.idlinea == idlinea) {
-			continue;
+	this.removeFavorito = function(idparada, idlinea) {
+		var favs = etr.favoritos;
+		var aux  = [];
+		var len  = favs.length;
+		for(var i =0; i < len; i++) {
+			var fav = favs[i];
+			if(fav.idparada == idparada && fav.idlinea == idlinea) {
+				continue;
+			}
+			aux.push(fav);
 		}
-		aux.push(fav);
-	}
-	etr.favoritos = aux;
-	try{ 
-		var strfavs = JSON.stringify(etr.favoritos); 
-		app.saveValue("favoritos", strfavs);  
-	}catch(e) { 
-		//alert(e); 
-	}
-}
-
-this.setFavoritos = function(favs) { 
-	this.favoritos = favs == undefined ? [] : favs;
-}
-
-this.obtenerCalle = function() {
-	var linea = $('#consultar-linea').find(":selected").val();
-	var idlinea = $('#consultar-linea').find(":selected").attr("idlinea");
-
-	$("#consultar-calle").html('<option value="0">Seleccionar calle</option>');
-	$("#consultar-interseccion").html('<option value="0">Seleccionar intersecci&oacute;n</option>');
-	$("#consultar-nroparada").val("");  
-	$("#consultar-nrosparada").html('<option value="0">Seleccionar parada</option>');
-
-	this.busqueda = {};	
-
-	//$("#consultar-nrosparada").attr("disabled", "");
-	var url = this.baseURL + '/getData.php?accion=getCalle&idLinea=' + encodeURI(idlinea);
-	var obj = this;				
-	obj.busqueda.idlinea = idlinea;
-	obj.busqueda.linea = linea;
-
-	app.startSpinning();
-	$.get(url,{}, function(data){
-		app.stopSpinning();
-		obj.parseCalles(data);			
-	},'json');
-}
-this.parseCalles = function(calles) {
-
-	var len = calles.length;
-	var html_calles = '';
-	for(var i = 0; i < len; i++) {
-		var calle = calles[i];
-		html_calles+= '<option value="' + calle.id +'">' + calle.desc + '</option>';
-	}
-	$("#consultar-calle").html(html_calles);
-	//$("#consultar-calle").attr("disabled", "");
-	//$("#consultar-nrosparada").attr("disabled", "");
-}
-
-this.obtenerInter = function() {
-
-	//	$("#inter").attr("disabled", "disabled");
-	//	$("#parada").attr("disabled", "disabled");
-	var idcalle = $("#consultar-calle").val();
-	this.busqueda.idcalle = 0;
-	this.busqueda.idinter = 0;
-
-	$("#consultar-interseccion").html('<option value="0">Seleccionar intersecci&oacute;n</option>');
-	$("#consultar-nrosparada").html('<option value="0">Seleccionar parada</option>');
-	$("#consultar-nroparada").val(""); 
-
-	if(idcalle == 0) {
-		return;
+		etr.favoritos = aux;
+		try{ 
+			var strfavs = JSON.stringify(etr.favoritos); 
+			app.saveValue("favoritos", strfavs);  
+		}catch(e) { 
+			//alert(e); 
+		}
 	}
 
-	var obj = this;
-	obj.busqueda.idcalle = idcalle
+	this.setFavoritos = function(favs) { 
+		this.favoritos = favs == undefined ? [] : favs;
+	}
 
-		var url = this.baseURL + "/getData.php?accion=getInterseccion"
-		url+= "&idLinea=" + encodeURI(obj.busqueda.idlinea) 
+	this.obtenerCalle = function() {
+		var linea = $('#consultar-linea').find(":selected").val();
+		var idlinea = $('#consultar-linea').find(":selected").attr("idlinea");
+
+		$("#consultar-calle").html('<option value="0">Seleccionar calle</option>');
+		$("#consultar-interseccion").html('<option value="0">Seleccionar intersecci&oacute;n</option>');
+		$("#consultar-nroparada").val("");  
+		$("#consultar-nrosparada").html('<option value="0">Seleccionar parada</option>');
+
+		this.busqueda = {};	
+
+		//$("#consultar-nrosparada").attr("disabled", "");
+		var url = this.baseURL + '/getData.php?accion=getCalle&idLinea=' + encodeURI(idlinea);
+		var obj = this;				
+		obj.busqueda.idlinea = idlinea;
+		obj.busqueda.linea = linea;
+
+		app.startSpinning();
+		$.get(url,{}, function(data){
+			app.stopSpinning();
+			obj.parseCalles(data);			
+		},'json');
+	}
+	this.parseCalles = function(calles) {
+
+		var len = calles.length;
+		var html_calles = '';
+		for(var i = 0; i < len; i++) {
+			var calle = calles[i];
+			html_calles+= '<option value="' + calle.id +'">' + calle.desc + '</option>';
+		}
+		$("#consultar-calle").html(html_calles);
+		//$("#consultar-calle").attr("disabled", "");
+		//$("#consultar-nrosparada").attr("disabled", "");
+	}
+
+	this.obtenerInter = function() {
+
+		//	$("#inter").attr("disabled", "disabled");
+		//	$("#parada").attr("disabled", "disabled");
+		var idcalle = $("#consultar-calle").val();
+		this.busqueda.idcalle = 0;
+		this.busqueda.idinter = 0;
+
+		$("#consultar-interseccion").html('<option value="0">Seleccionar intersecci&oacute;n</option>');
+		$("#consultar-nrosparada").html('<option value="0">Seleccionar parada</option>');
+		$("#consultar-nroparada").val(""); 
+
+		if(idcalle == 0) {
+			return;
+		}
+
+		var obj = this;
+		obj.busqueda.idcalle = idcalle
+
+			var url = this.baseURL + "/getData.php?accion=getInterseccion"
+			url+= "&idLinea=" + encodeURI(obj.busqueda.idlinea) 
+			url+= "&idCalle=" + encodeURI(obj.busqueda.idcalle);
+
+		app.startSpinning();
+		$.get(url, function(data){
+			app.stopSpinning();
+			obj.parseInter(data);			
+		}, 'json');
+	}
+
+	this.parseInter = function(inters) {
+
+		var len = inters.length;
+		var html_inters = '<option value="0">Seleccionar intersecci&oacute;n</option>';
+		console.log(inters);
+		for(var i = 0; i < len; i++) {
+			var inter = inters[i];
+			html_inters+= '<option value="' + inter.id +'">' + inter.desc + '</option>';
+		}
+		$("#consultar-interseccion").html(html_inters);
+	}
+
+	this.obtenerParadas = function() {
+
+		$("#consultar-nrosparada").html('<option value="0">Seleccionar parada</option>');
+		$("#consultar-nroparada").val(""); 
+
+		var idinter = $("#consultar-interseccion").val();
+		this.busqueda.idinter = 0;
+		if(idinter == 0) {		
+			return;
+		}
+		var obj = this;
+		obj.busqueda.idinter = idinter
+
+			var url = this.baseURL + "getData.php?accion=getInfoParadas"
+			url+= "&idLinea=" + encodeURI(obj.busqueda.idlinea);
 		url+= "&idCalle=" + encodeURI(obj.busqueda.idcalle);
+		url+= "&idInt=" + encodeURI(obj.busqueda.idinter);
 
-	console.log(url);
-	app.startSpinning();
-	$.get(url, function(data){
-		app.stopSpinning();
-		obj.parseInter(data);			
-	}, 'json');
-}
-
-this.parseInter = function(inters) {
-
-	var len = inters.length;
-	var html_inters = '<option value="0">Seleccionar intersecci&oacute;n</option>';
-	console.log(inters);
-	for(var i = 0; i < len; i++) {
-		var inter = inters[i];
-		console.log(inter);
-		console.log(inter.desc);
-		html_inters+= '<option value="' + inter.id +'">' + inter.desc + '</option>';
-	}
-	$("#consultar-interseccion").html(html_inters);
-	//		$("#inter").attr("disabled", "");
-}
-
-this.obtenerParadas = function() {
-
-	$("#consultar-nrosparada").html('<option value="0">Seleccionar parada</option>');
-	$("#consultar-nroparada").val(""); 
-
-	var idinter = $("#consultar-interseccion").val();
-	this.busqueda.idinter = 0;
-	if(idinter == 0) {		
-		return;
-	}
-	var obj = this;
-	obj.busqueda.idinter = idinter
-
-		var url = this.baseURL + "getData.php?accion=getInfoParadas"
-		url+= "&idLinea=" + encodeURI(obj.busqueda.idlinea);
-	url+= "&idCalle=" + encodeURI(obj.busqueda.idcalle);
-	url+= "&idInt=" + encodeURI(obj.busqueda.idinter);
-
-	console.log(url);
-	app.startSpinning();
-	$.get(url, function(response){
-		obj.parseParadas(response);		
-		app.stopSpinning();
-	});
-}
-
-this.parseParadas = function(html_paradas) {
-	var aux = document.createElement("div");
-	aux.innerHTML = html_paradas;
-
-	var trs = aux.getElementsByTagName('tr');
-	var len = trs.length;
-	var paradas = [];
-	for(var i = 0; i < len; i++) {
-		var tr = trs[i];
-		if(tr.getElementsByTagName('th').length != 0) continue;
-
-		var tds = tr.getElementsByTagName('td');
-		try { var td_id = tds[0].firstChild.firstChild.nodeValue; } 
-		catch(e) { continue; }
-
-		try { var td_desc = tds[1].firstChild.nodeValue; } 
-		catch(e) { continue; }
-
-		paradas.push({id : td_id, desc: td_desc});
-	}
-	var len = paradas.length;
-	var html_paradas = '';
-	for(var i = 0; i < len; i++) {
-		var parada = paradas[i];
-		html_paradas += '<option value="' + parada.id + '">' + parada.desc + '</option>';
-	}		
-	$("#consultar-nrosparada").html(html_paradas);
-	$("#consultar-nroparada").val(paradas[0].id);
-}
-
-this.selecParada = function(idparada) {
-	$("#consultar-nroparada").val(idparada);
-}
-
-this.cuandollega = function() {
-	var idlinea = parseInt(etr.busqueda.idlinea);
-	if( isNaN(idlinea) || idlinea == 0) {
-		alert("Debe seleccionar la linea");
-		return;
-	}	
-	var idparada = parseInt(etr.busqueda.idparada); 
-	if( isNaN(idparada) || idparada == 0) {
-		alert("Debe ingresar el nro. de parada");
-		return;
+		console.log(url);
+		app.startSpinning();
+		$.get(url, function(response){
+			obj.parseParadas(response);		
+			app.stopSpinning();
+		});
 	}
 
-	console.log(JSON.stringify(this.busqueda));
+	this.parseParadas = function(html_paradas) {
+		var aux = document.createElement("div");
+		aux.innerHTML = html_paradas;
 
-	$("#consultar-refresh").css("visibility","hidden");
-	var url = "http://www.etr.gov.ar/getSmsResponse.php";
-	var params = "parada=" + idparada;
-	params+= "&linea=" + this.busqueda.linea;
+		var trs = aux.getElementsByTagName('tr');
+		var len = trs.length;
+		var paradas = [];
+		for(var i = 0; i < len; i++) {
+			var tr = trs[i];
+			if(tr.getElementsByTagName('th').length != 0) continue;
 
-	var obj = this;
-	app.startSpinning();
-	$.post(url, params, function(response){
-		app.stopSpinning();
-		response = response.replace('-', '<br />');
-		response = response.replace(',', '<br />');
-		response = response.replace('Resultado: ', '');
-		response = response.replace('Linea '+etr.busqueda.linea+":", 'Pr&oacute;ximo: ');
+			var tds = tr.getElementsByTagName('td');
+			try { var td_id = tds[0].firstChild.firstChild.nodeValue; } 
+			catch(e) { continue; }
 
-		$("#result-container").html(response);
-		if(obj.hasFavorito(idparada, idlinea) != false) {
-			$('#fav_button').val('Agregado a favoritos');			
-		}else {
-			$('#fav_button').val('Agregar a favoritos');
+			try { var td_desc = tds[1].firstChild.nodeValue; } 
+			catch(e) { continue; }
+
+			paradas.push({id : td_id, desc: td_desc});
 		}
-		setTimeout(function(){
-			$("#consultar-refresh").css("visibility","visible");
-		}, 15000);
-	}); 		
-}
+		var len = paradas.length;
+		var html_paradas = '';
+		for(var i = 0; i < len; i++) {
+			var parada = paradas[i];
+			html_paradas += '<option value="' + parada.id + '">' + parada.desc + '</option>';
+		}		
+		$("#consultar-nrosparada").html(html_paradas);
+		$("#consultar-nroparada").val(paradas[0].id);
+	}
+
+	this.selecParada = function(idparada) {
+		$("#consultar-nroparada").val(idparada);
+	}
+
+	this.cuandollega = function() {
+
+		var idlinea = etr.busqueda.idlinea;
+		if(idlinea.length == 0) {
+			alert("Debe seleccionar la linea");
+			return;
+		}	
+		var idparada = parseInt(etr.busqueda.idparada); 
+		if(idparada.length == 0) {
+			alert("Debe ingresar el nro. de parada");
+			return;
+		}
+
+		console.log(JSON.stringify(this.busqueda));
+
+		$("#consultar-refresh").css("visibility","hidden");
+
+		var url = "http://www.etr.gov.ar/getSmsResponse.php";
+		var params = "parada=" + idparada;
+		params+= "&linea=" + this.busqueda.linea;
+
+		var obj = this;
+		app.startSpinning();
+		$.post(url, params, function(response){
+			app.stopSpinning();
+			response = response.replace('-', '<br />');
+			response = response.replace(',', '<br />');
+			response = response.replace('Resultado: ', '');
+			response = response.replace('Linea '+etr.busqueda.linea+":", 'Pr&oacute;ximo: ');
+
+			$("#result-container").html(response);
+			if(obj.hasFavorito(idparada, idlinea) != false) {
+				$('#fav_button').val('Agregado a favoritos');			
+			}else {
+				$('#fav_button').val('Agregar a favoritos');
+			}
+
+			setTimeout(function(){
+				$("#consultar-refresh").css("visibility","visible");
+			}, 15000);
+		}); 		
+	}
 }
 
 var etr  = new _etr();
