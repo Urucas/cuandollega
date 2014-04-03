@@ -165,9 +165,17 @@ var app = {
                 var html = $.parseHTML(response);
                 $("#contenido-noticias1").html(html);
                 var table = $("#contenido-noticias1").find("table").html();
-            }catch(e){alert(e)}
-            $("#contenido-noticias1").html("");
-            $("#contenido-noticias").html(table);
+				$("#contenido-noticias1").html("");
+				$("#contenido-noticias").html("<table>"+table+"</table>");
+				$("#contenido-noticias").find("img").each(function(el){
+					var src = this.getAttribute("src");
+						src = "http://www.etr.gov.ar/"+src;
+					this.setAttribute("src",src);
+				})
+
+            }catch(e){
+				$("#contenido-noticias").html("<p>No se han podido obtener las noticias</p>");
+			}
         })
     },
     saveValue: function(name, value) {
