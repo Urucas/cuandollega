@@ -5,6 +5,7 @@ var app = {
 		{ id: "favoritos", view: "views/favoritos.html", callback: function(){ app.getFavs();}},
 		{ id: "configuracion", view: "views/configuracion.html"},
 		{ id: "resultado", view: "views/resultado.html", callback: function() { app.showResult(); } },
+		{ id: "noticias", view: "views/noticias.html", callback: function() { app.showNoticias(); } },
 		{ id: "search", view: "cartelera.html", callback: function() { app.search(); } },
 	],
 	load: function(hash) {
@@ -153,6 +154,11 @@ var app = {
         etr.busqueda.idparada = idparada;
         etr.busqueda.idlinea = idlinea;
         document.location.href="#resultado";
+    },
+    showNoticias: function(){
+        $.get("http://www.etr.gov.ar/cont-noticias_vigentes2.php",{tipo:"Cortes y Desvios"},function(response){
+            var html = $.parseHTML(response);
+        })
     },
     saveValue: function(name, value) {
 		try { window.localStorage.setItem(name, value); }catch(e) {};
