@@ -149,17 +149,27 @@ var app = {
         }
     },
     getFavs: function(){
-        if(etr.favoritos.length == 0) {
-            var favs = this.getValue("favoritos");
-            if(favs == null){
-                favs = [];
-            }
-            etr.favoritos = JSON.parse(favs);
-        }
-        try{
-            $("#favoritos-list").render("views/favorito-list-item.html", etr.favoritos);
-        }catch(e){console.log(e)}
-    },
+		if(etr.favoritos != undefined && etr.favoritos.length == 0) {
+			var favs = this.getValue("favoritos");
+			try{
+				if(!favs){
+					favs = [];
+				}else {
+					favs =  JSON.parse(favs);
+				}
+				etr.favoritos = favs;
+			}catch(e) {  
+				etr.favoritos = [];
+			}
+		}else {
+			$("#favoritos-list").html("No has agregado ningun favorito a tu lista!");
+		}
+		if(etr.favoritos.length) {
+			$("#favoritos-list").render("views/favorito-list-item.html", etr.favoritos);
+		}else{
+			$("#favoritos-list").html("<p>No has agregado ningun favorito a tu lista!</p>");
+		}
+	},
     deleteFavorito: function(idlinea,idparada){
         etr.removeFavorito(idparada, idlinea);
         document.location.href="#favoritos";
@@ -322,33 +332,32 @@ var app = {
 
         return newpos;
     }
-
 };
 
 function toggle(id){
-    if (document.getElementById){ 
-        var el = document.getElementById(id); 	
-        if(el.style.display == 'none') {
-            el.style.display = 'block'; 		
-            el.style.zIndex = '99';
-            general.style.marginLeft = '85%';
-            // general.style.position = (general.style.position == 'absolute') ? 'fixed' : 'absolute';
-        }else {
-            el.style.display = 'none'; 	
-            general.style.marginLeft = '0px';
-            el.style.zIndex = '-1';
-        }
-    }
+	if (document.getElementById){ 
+		var el = document.getElementById(id); 	
+		if(el.style.display == 'none') {
+			el.style.display = 'block'; 		
+			el.style.zIndex = '99';
+			general.style.marginLeft = '85%';
+			// general.style.position = (general.style.position == 'absolute') ? 'fixed' : 'absolute';
+		}else {
+			el.style.display = 'none'; 	
+			general.style.marginLeft = '0px';
+			el.style.zIndex = '-1';
+		}
+	}
 }
 
 
 function alert(msj){
-    console.log(navigator.notification);
-    try {
-        navigator.notification.alert(msj, function(){},"Cuando Llega?");
-    }catch(e) {
-        console.log(e);
-    }
+	console.log(navigator.notification);
+	try {
+		navigator.notification.alert(msj, function(){},"Cuando Llega?");
+	}catch(e) {
+		console.log(e);
+	}
 }
 
 
