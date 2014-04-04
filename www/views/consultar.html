@@ -42,7 +42,7 @@
 		<option value="LC" idlinea="65">Línea de la Costa</option>
 		<option value="RC" idlinea="66">Ronda del Centro</option>
 	</select>
-	<div id="advanced-search">
+	<div>
 		<div class="ui-line"></div>
 
 		<select id="consultar-calle" class="ui-select" onchange="etr.obtenerInter()">
@@ -63,7 +63,6 @@
 	<div class="ui-box">
 		<label>Numero de parada</label><br />
 		<input type="tel" id="consultar-nroparada" class="ui-input-text" />
-		<a class="ui-a" onclick="$('#advanced-search').show();">No recordas el nro. de la parada ?</a>
 	</div>
 	<button class="ui-button" onclick="app.validarConsultar()">Consultar</button>
 </div>
