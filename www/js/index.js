@@ -244,7 +244,6 @@ var app = {
                     });
 
                     flightPath.setMap(map);
-                    console.log(newida);
                     var geojson_format = new OpenLayers.Format.GeoJSON(); 
                 }catch(e) {
                     console.log(e);
@@ -291,8 +290,6 @@ var app = {
                                                 );
     },
     transformProjections: function(projections){
-        console.log("---------projections-----")
-        console.log(JSON.stringify(projections));
         var toProjection    = new OpenLayers.Projection("EPSG:4326");   // google projections
         var fromProjection  = new OpenLayers.Projection("EPSG:22185"); // fuckin' argentine projections
 
@@ -300,12 +297,9 @@ var app = {
 
         for(var i=0;i<projections.length;i++){
             var projection = projections[i];
-            console.log("----------one projection--------");
-            console.log(JSON.stringify(projection));
             var gposition = new OpenLayers.LonLat(projection[0],projection[1]).transform( fromProjection, toProjection);
             gposition = new google.maps.LatLng(gposition.lat, gposition.lon);
             newpos.push(gposition);
-            console.log(JSON.stringify(gposition));
         }
 
         return newpos;
