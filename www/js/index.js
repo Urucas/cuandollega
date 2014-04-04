@@ -1,12 +1,14 @@
+var map;
 var app = {
 	
 	modules: [
 		{ id: "consultar", view: "views/consultar.html", callback: function(){ app.loadBusqueda(); }},
 		{ id: "favoritos", view: "views/favoritos.html", callback: function(){ app.getFavs();}},
 		{ id: "configuracion", view: "views/configuracion.html"},
+		{ id: "recorridos", view: "views/recorridos.html", callback: function() { app.prepareRecorridos() }},
 		{ id: "resultado", view: "views/resultado.html", callback: function() { app.showResult(); } },
 		{ id: "noticias", view: "views/noticias.html", callback: function() { app.showNoticias(); } },
-		{ id: "search", view: "cartelera.html", callback: function() { app.search(); } },
+		{ id: "recargas", view: "views/puntos-recarga.html", callback: function() { app.loadRecargas(); } },
 	],
 	load: function(hash) {
 			//console.log("page to open -> "+hash);
@@ -78,6 +80,10 @@ var app = {
 
 		}catch(e) { }
 
+		document.addEventListener("menubutton", function(){
+			toggle('menu');
+		}, false);
+
 		document.location.href = "#consultar";
     },
 
@@ -110,8 +116,7 @@ var app = {
 		if(etr.busqueda.nomcalle != undefined && etr.busqueda.nominter != undefined) {
 			$("#linea-num").append('<br /><span class="linea-addr">'+etr.busqueda.nomcalle+' - '+etr.busqueda.nominter+'</span>');
 		}
-		
-        etr.cuandollega();
+		etr.cuandollega();
     },
 	validarConsultar: function() {
 
@@ -133,6 +138,7 @@ var app = {
 		var busqueda = etr.busqueda;
 		if(busqueda.linea.length) {
 			$("#consultar-linea").val(busqueda.linea);
+			etr.obtenerCalle();
 		}
 		if(busqueda.idparada.length) {
 			$("#consultar-nroparada").val(busqueda.idparada);
@@ -190,7 +196,88 @@ var app = {
 	},
 	clearValues: function() {
 		try { window.localStorage.clear();} catch(e) {};
+	},
+	prepareRecorridos: function() {
+	
+		var w = $("#recorrido-canvas").width();
+		$("#map-canvas").css("width", w+"px").css("height",w+"px");
+
+		map = new google.maps.Map(document.getElementById('map-canvas'), {
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var defaultBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(-32.944365, -60.650725),
+            new google.maps.LatLng(-32.969365, -60.640725)
+		);
+		map.fitBounds(defaultBounds);
+	
+	},
+	loadRecorrido: function() {
+	
+		var linea = $("#recorrido-linea").val();
+		if(linea == 0) return;
+
+		app.startSpinning(); 
+		$.ajax({
+		    type : 'POST',
+            url: "http://infomapa.rosario.gov.ar/emapa/tup/TransporteUrbano/buscarLinea.htm",
+            dataType: "json",
+            contentType : "application/json; charset=utf-8",
+            data : JSON.stringify({
+            	linea:120,
+            	tipo :"Urbano"
+            }), 
+            success: function( data ) {
+				app.stopSpinning();
+				var ida = data.geoJsonIda;
+				try { 
+					var geojson_format = new OpenLayers.Format.GeoJSON(); 
+					var d = geojson_format.read(ida);
+				}catch(e) {
+					console.log(e);
+				}
+            }, error: function(e) {
+				app.stopSpinning();
+				alert("Ha ocurrido un error al intentar obtener el recorrido!");
+			}
+	    });
+	},
+	loadRecargas: function() {
+		
+		var w = $("#puntos-recargas").width();
+		$("#map-canvas").css("width", w+"px").css("height",w+"px");
+
+		map = new google.maps.Map(document.getElementById('map-canvas'), {
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var defaultBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(-32.944365, -60.650725),
+            new google.maps.LatLng(-32.969365, -60.640725)
+		);
+
+		map.fitBounds(defaultBounds);
+
+		var ctaLayer = new google.maps.KmlLayer('http://www.etr.gov.ar/etrkml/tsc/zonas.kml');
+        	ctaLayer.setMap(map);
+	},
+	getGeoPosition: function() {
+			
+		app.startSpinning();
+		navigator.geolocation.getCurrentPosition(function(latLng){
+				app.stopSpinning();
+				var myLatLng = new google.maps.LatLng(latLng.coords.latitude, latLng.coords.longitude); 
+			
+				map.panTo(myLatLng);
+				map.setZoom(15);
+			
+			}, function(error){
+				app.stopSpinning();
+				alert("Ocurrio un error al intentar obtener tu posicion!");
+			
+			},{timeout: 6000, enableHighAccuracy: false, maximumAge: 0, allowHighAccuracy: true }
+		);
 	}
+
 };
 
 function toggle(id){

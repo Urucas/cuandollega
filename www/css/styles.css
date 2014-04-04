@@ -412,7 +412,7 @@ a:active{text-decoration:none;}
 	margin-right:auto;
 	font-size:30px;
 	text-align:center;
-
+	border:1px solid #ccc;
 }
 
 .ui-input-text-numbers{
@@ -519,4 +519,14 @@ a:active{text-decoration:none;}
 	color:#8f99a0;
 }
 
+#advanced-search {
+	display:none;
+}
 
+.ui-a{
+	display:block;
+	text-decoration:underline;
+	font-style:italic;
+	color:#67b8de;
+	font-size:16px;
+}

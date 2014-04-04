@@ -42,25 +42,28 @@
 		<option value="LC" idlinea="65">Línea de la Costa</option>
 		<option value="RC" idlinea="66">Ronda del Centro</option>
 	</select>
-	<div class="ui-line"></div>
+	<div id="advanced-search">
+		<div class="ui-line"></div>
 
-	<select id="consultar-calle" class="ui-select" onchange="etr.obtenerInter()">
-		<option value="0">Seleccionar calle</option>
-	</select>
+		<select id="consultar-calle" class="ui-select" onchange="etr.obtenerInter()">
+			<option value="0">Seleccionar calle</option>
+		</select>
 
-	<select id="consultar-interseccion" class="ui-select ui-select-interseccion" onchange="etr.obtenerParadas();">
-		<option>Seleccionar interseccion</option>
-	</select>
+		<select id="consultar-interseccion" class="ui-select ui-select-interseccion" onchange="etr.obtenerParadas();">
+			<option>Seleccionar interseccion</option>
+		</select>
 
-	<select id="consultar-nrosparada" class="ui-select ui-select-parada" onchange="etr.selecParada()">
-		<option>Seleccionar parada</option>
-	</select>
+		<select id="consultar-nrosparada" class="ui-select ui-select-parada" onchange="etr.selecParada()">
+			<option>Seleccionar parada</option>
+		</select>
 	
-	<div class="ui-line"></div>
+		<div class="ui-line"></div>
+	</div>
 	
 	<div class="ui-box">
 		<label>Numero de parada</label><br />
 		<input type="tel" id="consultar-nroparada" class="ui-input-text" />
+		<a class="ui-a" onclick="$('#advanced-search').show();">No recordas el nro. de la parada ?</a>
 	</div>
 	<button class="ui-button" onclick="app.validarConsultar()">Consultar</button>
 </div>
