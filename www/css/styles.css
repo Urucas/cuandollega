@@ -3,8 +3,6 @@
     src:url('CALIBRI.TTF');
 }
 
-
-
 a{
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     color:#999;
@@ -348,14 +346,14 @@ a:active{text-decoration:none;}
 	background-image: url("../img/arrow_down.png"), url("../img/icon_calle.png");
 	background-repeat: no-repeat;
 	background-position:  95% 50%, 10px 50%;
-	background-size: 19px 14px, 36px 36px;
+	background-size: 19px 14px, 28px 28px;
 }
 
 .ui-select-interseccion{
 	background-image: url("../img/arrow_down.png"), url("../img/icon_interseccion.png");
 	background-repeat: no-repeat;
 	background-position:  95% 50%, 10px 50%;
-	background-size: 19px 14px, 36px 36px;
+	background-size: 19px 14px, 28px 28px;
 
 }
 
@@ -363,13 +361,13 @@ a:active{text-decoration:none;}
 	background-image: url("../img/arrow_down.png"), url("../img/icon_linea.png");
 	background-repeat: no-repeat;
 	background-position:  95% 50%, 10px 50%;
-	background-size: 19px 14px, 36px 36px;
+	background-size: 19px 14px, 28px 28px;
 }
 .ui-select-parada{
 	background-image: url("../img/arrow_down.png"), url("../img/icon_parada.png");
 	background-repeat: no-repeat;
 	background-position:  95% 50%, 10px 50%;
-	background-size: 19px 14px, 36px 36px;
+	background-size: 19px 14px, 28px 28px;
 }
 #consultar {
 	padding-top;15px;
@@ -529,4 +527,31 @@ a:active{text-decoration:none;}
 	font-style:italic;
 	color:#67b8de;
 	font-size:16px;
+}
+
+.leyendas {
+	text-align:left;
+	margin-top:4px;
+}
+
+.leyenda {
+	float:left;
+	width:40%;
+	margin:8px;
+}
+
+.ida {
+	width:15px;
+	height:15px;
+	background-color:#69b9de;
+	display:inline-block;
+	margin-right:6px;
+}
+
+.vuelta {
+	width:15px;
+	height:15px;
+	background-color:#adb0b1;
+	display:inline-block;
+	margin-right:6px;
 }
