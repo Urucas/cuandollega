@@ -1,4 +1,0 @@
-[32mINFO:[39m Server instance running on: [36mhttp://localhost:4400[39m
-[32mINFO:[39m CORS XHR proxy service on: [36mhttp://localhost:4400/ripple/xhr_proxy[39m
-[32mINFO:[39m JSONP XHR proxy service on: [36mhttp://localhost:4400/ripple/jsonp_xhr_proxy[39m
-[32mINFO:[39m Set Device User Agent (String): "Mozilla/5.0 (Linux; U; Android 2.1; en-us; Nexus One Build/ERD62) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17"
