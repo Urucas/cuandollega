@@ -456,8 +456,10 @@ a:active{text-decoration:none;}
  	font-family:Calibri, sans-serif;
 	color:#8f99a0;
 	background:#fff;
+	/*
     padding-left:4px;
     padding-right:4px;
+	*/
     margin-top:8px;
 	margin-left:auto;
 	margin-right:auto;
@@ -558,4 +560,8 @@ a:active{text-decoration:none;}
 
 .linea-addr {
     font-size: 16px;
+}
+
+#contenido-noticias table{
+	padding:10px;
 }
