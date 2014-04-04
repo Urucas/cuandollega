@@ -1,0 +1,6 @@
+<li onclick="app.openFavorito('{%idlinea}','{%idparada}','{%linea}');">
+    <div class="fav-del">
+        <a onclick="app.deleteFavorito('{%idlinea}','{%idparada}');event.stopPropagation();"><img src="img/trash-icon.png" /></a>
+    </div>
+    <div class="fav-desc">{%descripcion}<br /><span>Linea {%linea}, {%calle}</span> </div>
+</li>

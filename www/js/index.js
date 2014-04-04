@@ -261,6 +261,7 @@ var app = {
             success: function( data ) {
 				app.stopSpinning();
 				var ida = data.geoJsonIda;
+				console.log(ida);
 				try { 
 					var geojson_format = new OpenLayers.Format.GeoJSON(); 
 					var d = geojson_format.read(ida);
