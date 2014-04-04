@@ -202,8 +202,6 @@ var app = {
         var w = $("#recorrido-canvas").width();
         $("#map-canvas").css("width", w+"px").css("height",w+"px");
 
-        transformProjection()
-
         map = new google.maps.Map(document.getElementById('map-canvas'), {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
@@ -214,12 +212,6 @@ var app = {
         );
         //map.setCenter(new google.maps.LatLng(position));
         map.fitBounds(defaultBounds);
-
-        var marker = new google.maps.Marker({
-              position: position,
-              map: map,
-              title: 'Hello World!'
-          });
 
     },
     loadRecorrido: function() {
@@ -239,9 +231,20 @@ var app = {
             }), 
             success: function( data ) {
                 app.stopSpinning();
-                var ida = data.geoJsonIda;
                 try { 
-                    var recorrido = data;
+                    var ida = data.geoJsonIda;
+                    ida = JSON.parse(ida)
+                    newida = app.transformProjections(ida.coordinates[0]);
+                    var flightPath = new google.maps.Polyline({
+                        path: newida,
+                        geodesic: true,
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2
+                    });
+
+                    flightPath.setMap(map);
+                    console.log(newida);
                     var geojson_format = new OpenLayers.Format.GeoJSON(); 
                 }catch(e) {
                     console.log(e);
@@ -287,14 +290,25 @@ var app = {
         },{timeout: 6000, enableHighAccuracy: false, maximumAge: 0, allowHighAccuracy: true }
                                                 );
     },
-    transformProjection(projection){
+    transformProjections: function(projections){
+        console.log("---------projections-----")
+        console.log(JSON.stringify(projections));
         var toProjection    = new OpenLayers.Projection("EPSG:4326");   // google projections
         var fromProjection  = new OpenLayers.Projection("EPSG:22185"); // fuckin' argentine projections
-        var position        = new OpenLayers.LonLat(projection).transform( fromProjection, toProjection);
 
-        position = new google.maps.LatLng(position.lat, position.lon)
+        var newpos = [];
 
-        return position;
+        for(var i=0;i<projections.length;i++){
+            var projection = projections[i];
+            console.log("----------one projection--------");
+            console.log(JSON.stringify(projection));
+            var gposition = new OpenLayers.LonLat(projection[0],projection[1]).transform( fromProjection, toProjection);
+            gposition = new google.maps.LatLng(gposition.lat, gposition.lon);
+            newpos.push(gposition);
+            console.log(JSON.stringify(gposition));
+        }
+
+        return newpos;
     }
 
 };

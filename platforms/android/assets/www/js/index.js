@@ -1,53 +1,53 @@
 var map;
 var app = {
-	
-	modules: [
-		{ id: "consultar", view: "views/consultar.html", callback: function(){ app.loadBusqueda(); }},
-		{ id: "favoritos", view: "views/favoritos.html", callback: function(){ app.getFavs();}},
-		{ id: "configuracion", view: "views/configuracion.html"},
-		{ id: "recorridos", view: "views/recorridos.html", callback: function() { app.prepareRecorridos() }},
-		{ id: "resultado", view: "views/resultado.html", callback: function() { app.showResult(); } },
-		{ id: "noticias", view: "views/noticias.html", callback: function() { app.showNoticias(); } },
-		{ id: "recargas", view: "views/puntos-recarga.html", callback: function() { app.loadRecargas(); } },
-	],
-	load: function(hash) {
-			//console.log("page to open -> "+hash);
-		app.modules.forEach(function(m){
-			if(hash == m.id) {
-				app.loadView(m.view, m.callback, m.id);
-				return;
-			}
-		});
-	},
-	loadView: function(view, callback, view_id) {
 
-		try { scroll(0,0); }catch(e){};
-		$("#wrapper").include(view, function(){
-			try {
-				// hide menu
-				menu.style.display = 'none'; 	
-				general.style.marginLeft = '0px';
-				menu.style.zIndex = '-1';
+    modules: [
+        { id: "consultar", view: "views/consultar.html", callback: function(){ app.loadBusqueda(); }},
+        { id: "favoritos", view: "views/favoritos.html", callback: function(){ app.getFavs();}},
+        { id: "configuracion", view: "views/configuracion.html"},
+        { id: "recorridos", view: "views/recorridos.html", callback: function() { app.prepareRecorridos() }},
+        { id: "resultado", view: "views/resultado.html", callback: function() { app.showResult(); } },
+        { id: "noticias", view: "views/noticias.html", callback: function() { app.showNoticias(); } },
+        { id: "recargas", view: "views/puntos-recarga.html", callback: function() { app.loadRecargas(); } },
+    ],
+    load: function(hash) {
+        //console.log("page to open -> "+hash);
+        app.modules.forEach(function(m){
+            if(hash == m.id) {
+                app.loadView(m.view, m.callback, m.id);
+                return;
+            }
+        });
+    },
+    loadView: function(view, callback, view_id) {
+
+        try { scroll(0,0); }catch(e){};
+        $("#wrapper").include(view, function(){
+            try {
+                // hide menu
+                menu.style.display = 'none'; 	
+                general.style.marginLeft = '0px';
+                menu.style.zIndex = '-1';
                 $(".menu-option > div").removeClass().addClass("btn-izq");
                 $("#"+view_id).addClass("btn-izq-selected");
-			}catch(e) {}
-			try { callback(); } catch(e) {}
-		});
-	},
-	share: function(){
-		try {
-			window.plugins.socialsharing.available(function(isAvailable) {
-				if (isAvailable) {
-					window.plugins.socialsharing.share(
-						"No hagas cálculos de horarios, quedate en la cama hasta que llegue el cole!", 
-						null, 
-						null, 
-						"http://cineros.com.ar"
-						);
-				}
-			});
-		}catch(e){ console.log(e); }
-	},
+            }catch(e) {}
+            try { callback(); } catch(e) {}
+        });
+    },
+    share: function(){
+        try {
+            window.plugins.socialsharing.available(function(isAvailable) {
+                if (isAvailable) {
+                    window.plugins.socialsharing.share(
+                        "No hagas cálculos de horarios, quedate en la cama hasta que llegue el cole!", 
+                        null, 
+                        null, 
+                        "http://cineros.com.ar"
+                    );
+                }
+            });
+        }catch(e){ console.log(e); }
+    },
 
     // Application Constructor
     initialize: function() {
@@ -55,55 +55,55 @@ var app = {
     },
     // Bind Event Listeners
     bindEvents: function() {
-		//console.log("binding events");
+        //console.log("binding events");
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     onDeviceReady: function() {
-		try { navigator.splashscreen.hide(); }catch(e){ console.log(e); }
-			// important event to autolod the modules and views
-		window.onhashchange = function() {
-			var hash = window.location.hash;
-			hash = hash.replace("#","");
-			app.load(hash);
-		}
-		try{ app.uuid = device.uuid; }catch(e){ console.log("cant get device uuid"+e.message); }
+        try { navigator.splashscreen.hide(); }catch(e){ console.log(e); }
+        // important event to autolod the modules and views
+        window.onhashchange = function() {
+            var hash = window.location.hash;
+            hash = hash.replace("#","");
+            app.load(hash);
+        }
+        try{ app.uuid = device.uuid; }catch(e){ console.log("cant get device uuid"+e.message); }
 
-		try {
+        try {
             admobCode = (device.platform=="Android") ? "ca-app-pub-7488172185490417/1616483686" : "ca-app-pub-7488172185490417/7015922082";
-			admob.createBannerView(
-					{'publisherId': admobCode, 'adSize': admob.AD_SIZE.BANNER}, 
-					function(){
-						app.adCreateBannerVewSuccess();
-					}, function(){
-					});
+            admob.createBannerView(
+                {'publisherId': admobCode, 'adSize': admob.AD_SIZE.BANNER}, 
+                function(){
+                    app.adCreateBannerVewSuccess();
+                }, function(){
+                });
 
-		}catch(e) { }
+        }catch(e) { }
 
-		document.addEventListener("menubutton", function(){
-			toggle('menu');
-		}, false);
+        document.addEventListener("menubutton", function(){
+            toggle('menu');
+        }, false);
 
-		document.location.href = "#consultar";
+        document.location.href = "#consultar";
     },
 
-	adCreateBannerVewSuccess: function() {
-		try{
-			admob.requestAd({
-				'isTesting': false,
-			'extras': {
-				'color_bg': 'AAAAFF',
-			'color_bg_top': 'FFFFFF',
-			'color_border': 'FFFFFF',
-			'color_link': '000080',
-			'color_text': '808080',
-			'color_url': '008000'
-			}},
-			function(){ },  
-			function(){ }
-			);
-		}catch(e) { }
-	},
+    adCreateBannerVewSuccess: function() {
+        try{
+            admob.requestAd({
+                'isTesting': false,
+                'extras': {
+                    'color_bg': 'AAAAFF',
+                    'color_bg_top': 'FFFFFF',
+                    'color_border': 'FFFFFF',
+                    'color_link': '000080',
+                    'color_text': '808080',
+                    'color_url': '008000'
+                }},
+                function(){ },  
+                function(){ }
+                           );
+        }catch(e) { }
+    },
     startSpinning: function(){
         $("#btn-config").css("visibility","visible");
     },
@@ -111,39 +111,39 @@ var app = {
         $("#btn-config").css("visibility","hidden");
     },
     showResult: function(){
-		
-        $("#linea-num").html("Linea "+etr.busqueda.linea);
-		if(etr.busqueda.nomcalle != undefined && etr.busqueda.nominter != undefined) {
-			$("#linea-num").append('<br /><span class="linea-addr">'+etr.busqueda.nomcalle+' - '+etr.busqueda.nominter+'</span>');
-		}
-		etr.cuandollega();
-    },
-	validarConsultar: function() {
 
-		var idparada = $("#consultar-nroparada").val();
-		var idlinea = etr.busqueda.idlinea;
-		if( idlinea.length == 0) {
-			alert("Debe seleccionar la linea");
-			return;
-		}	
-		if( idparada.length == 0) {
-			alert("Debe ingresar el nro. de parada");
-			return;
-		}
-		etr.busqueda.idparada = idparada;
-		document.location.href = "#resultado";
-	},
-	loadBusqueda: function() {
-	
-		var busqueda = etr.busqueda;
-		if(busqueda.linea.length) {
-			$("#consultar-linea").val(busqueda.linea);
-			etr.obtenerCalle();
-		}
-		if(busqueda.idparada.length) {
-			$("#consultar-nroparada").val(busqueda.idparada);
-		}
-	},
+        $("#linea-num").html("Linea "+etr.busqueda.linea);
+        if(etr.busqueda.nomcalle != undefined && etr.busqueda.nominter != undefined) {
+            $("#linea-num").append('<br /><span class="linea-addr">'+etr.busqueda.nomcalle+' - '+etr.busqueda.nominter+'</span>');
+        }
+        etr.cuandollega();
+    },
+    validarConsultar: function() {
+
+        var idparada = $("#consultar-nroparada").val();
+        var idlinea = etr.busqueda.idlinea;
+        if( idlinea.length == 0) {
+            alert("Debe seleccionar la linea");
+            return;
+        }	
+        if( idparada.length == 0) {
+            alert("Debe ingresar el nro. de parada");
+            return;
+        }
+        etr.busqueda.idparada = idparada;
+        document.location.href = "#resultado";
+    },
+    loadBusqueda: function() {
+
+        var busqueda = etr.busqueda;
+        if(busqueda.linea.length) {
+            $("#consultar-linea").val(busqueda.linea);
+            etr.obtenerCalle();
+        }
+        if(busqueda.idparada.length) {
+            $("#consultar-nroparada").val(busqueda.idparada);
+        }
+    },
     getFavs: function(){
         if(etr.favoritos.length == 0) {
             var favs = this.getValue("favoritos");
@@ -175,167 +175,168 @@ var app = {
                 var html = $.parseHTML(response);
                 $("#contenido-noticias1").html(html);
                 var table = $("#contenido-noticias1").find("table").html();
-				$("#contenido-noticias1").html("");
-				$("#contenido-noticias").html("<table>"+table+"</table>");
-				$("#contenido-noticias").find("img").each(function(el){
-					var src = this.getAttribute("src");
-						src = "http://www.etr.gov.ar/"+src;
-					this.setAttribute("src",src);
-				})
+                $("#contenido-noticias1").html("");
+                $("#contenido-noticias").html("<table>"+table+"</table>");
+                $("#contenido-noticias").find("img").each(function(el){
+                    var src = this.getAttribute("src");
+                    src = "http://www.etr.gov.ar/"+src;
+                    this.setAttribute("src",src);
+                })
 
             }catch(e){
-				$("#contenido-noticias").html("<p>No se han podido obtener las noticias</p>");
-			}
+                $("#contenido-noticias").html("<p>No se han podido obtener las noticias</p>");
+            }
         })
     },
     saveValue: function(name, value) {
-		try { window.localStorage.setItem(name, value); }catch(e) {};
-	},
-	getValue: function(name) {
-		try { return window.localStorage.getItem(name); }catch(e) {};
-	},
-	clearValues: function() {
-		try { window.localStorage.clear();} catch(e) {};
-	},
-	prepareRecorridos: function() {
-	
-		var w = $("#recorrido-canvas").width();
-		$("#map-canvas").css("width", w+"px").css("height",w+"px");
+        try { window.localStorage.setItem(name, value); }catch(e) {};
+    },
+    getValue: function(name) {
+        try { return window.localStorage.getItem(name); }catch(e) {};
+    },
+    clearValues: function() {
+        try { window.localStorage.clear();} catch(e) {};
+    },
+    prepareRecorridos: function() {
 
-        var center  = new OpenLayers.LonLat(5440194.808544915,6355674.349692853);
-        var map     = new OpenLayers.Map("map-canvas", {
-        projection: 'EPSG:3857',
-        layers: [
-            new OpenLayers.Layer.Google(
-                "Google Physical",
-                {type: google.maps.MapTypeId.TERRAIN}
-            ),
-            new OpenLayers.Layer.Google(
-                "Google Streets", // the default
-                {numZoomLevels: 20}
-            ),
-            new OpenLayers.Layer.Google(
-                "Google Hybrid",
-                {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20}
-            ),
-            new OpenLayers.Layer.Google(
-                "Google Satellite",
-                {type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22}
-            )
-        ],
-        center: new OpenLayers.LonLat(10.2, 48.9)
-            // Google.v3 uses web mercator as projection, so we have to
-            // transform our coordinates
-            .transform('EPSG:4326', 'EPSG:3857'),
-        zoom: 5
-    });
-        map.addLayer(new OpenLayers.Layer.OSM());
-        map.setCenter(center, 12);
-/*
-		map = new google.maps.Map(document.getElementById('map-canvas'), {
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+        var w = $("#recorrido-canvas").width();
+        $("#map-canvas").css("width", w+"px").css("height",w+"px");
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), {
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         });
+        
         var defaultBounds = new google.maps.LatLngBounds(
             new google.maps.LatLng(-32.944365, -60.650725),
             new google.maps.LatLng(-32.969365, -60.640725)
-		);
-		map.fitBounds(defaultBounds);
-        */
-	
-	},
-	loadRecorrido: function() {
-	
-		var linea = $("#recorrido-linea").val();
-		if(linea == 0) return;
+        );
+        //map.setCenter(new google.maps.LatLng(position));
+        map.fitBounds(defaultBounds);
 
-		app.startSpinning(); 
-		$.ajax({
-		    type : 'POST',
+    },
+    loadRecorrido: function() {
+
+        var linea = $("#recorrido-linea").val();
+        if(linea == 0) return;
+
+        app.startSpinning(); 
+        $.ajax({
+            type : 'POST',
             url: "http://infomapa.rosario.gov.ar/emapa/tup/TransporteUrbano/buscarLinea.htm",
             dataType: "json",
             contentType : "application/json; charset=utf-8",
             data : JSON.stringify({
-            	linea:120,
-            	tipo :"Urbano"
+                linea:120,
+                tipo :"Urbano"
             }), 
             success: function( data ) {
-				app.stopSpinning();
-				var ida = data.geoJsonIda;
-				console.log(ida);
-				try { 
-					var geojson_format = new OpenLayers.Format.GeoJSON(); 
-					var d = geojson_format.read(ida);
-				}catch(e) {
-					console.log(e);
-				}
-            }, error: function(e) {
-				app.stopSpinning();
-				alert("Ha ocurrido un error al intentar obtener el recorrido!");
-			}
-	    });
-	},
-	loadRecargas: function() {
-		
-		var w = $("#puntos-recargas").width();
-		$("#map-canvas").css("width", w+"px").css("height",w+"px");
+                app.stopSpinning();
+                try { 
+                    var ida = data.geoJsonIda;
+                    ida = JSON.parse(ida)
+                    newida = app.transformProjections(ida.coordinates[0]);
+                    var flightPath = new google.maps.Polyline({
+                        path: newida,
+                        geodesic: true,
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2
+                    });
 
-		map = new google.maps.Map(document.getElementById('map-canvas'), {
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+                    flightPath.setMap(map);
+                    console.log(newida);
+                    var geojson_format = new OpenLayers.Format.GeoJSON(); 
+                }catch(e) {
+                    console.log(e);
+                }
+            }, error: function(e) {
+                app.stopSpinning();
+                alert("Ha ocurrido un error al intentar obtener el recorrido!");
+            }
+        });
+    },
+    loadRecargas: function() {
+
+        var w = $("#puntos-recargas").width();
+        $("#map-canvas").css("width", w+"px").css("height",w+"px");
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), {
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         });
         var defaultBounds = new google.maps.LatLngBounds(
             new google.maps.LatLng(-32.944365, -60.650725),
             new google.maps.LatLng(-32.969365, -60.640725)
-		);
+        );
 
-		map.fitBounds(defaultBounds);
+        map.fitBounds(defaultBounds);
 
-		var ctaLayer = new google.maps.KmlLayer('http://www.etr.gov.ar/etrkml/tsc/zonas.kml');
-        	ctaLayer.setMap(map);
-	},
-	getGeoPosition: function() {
-			
-		app.startSpinning();
-		navigator.geolocation.getCurrentPosition(function(latLng){
-				app.stopSpinning();
-				var myLatLng = new google.maps.LatLng(latLng.coords.latitude, latLng.coords.longitude); 
-			
-				map.panTo(myLatLng);
-				map.setZoom(15);
-			
-			}, function(error){
-				app.stopSpinning();
-				alert("Ocurrio un error al intentar obtener tu posicion!");
-			
-			},{timeout: 6000, enableHighAccuracy: false, maximumAge: 0, allowHighAccuracy: true }
-		);
-	}
+        var ctaLayer = new google.maps.KmlLayer('http://www.etr.gov.ar/etrkml/tsc/zonas.kml');
+        ctaLayer.setMap(map);
+    },
+    getGeoPosition: function() {
+
+        app.startSpinning();
+        navigator.geolocation.getCurrentPosition(function(latLng){
+            app.stopSpinning();
+            var myLatLng = new google.maps.LatLng(latLng.coords.latitude, latLng.coords.longitude); 
+
+            map.panTo(myLatLng);
+            map.setZoom(15);
+
+        }, function(error){
+            app.stopSpinning();
+            alert("Ocurrio un error al intentar obtener tu posicion!");
+
+        },{timeout: 6000, enableHighAccuracy: false, maximumAge: 0, allowHighAccuracy: true }
+                                                );
+    },
+    transformProjections: function(projections){
+        console.log("---------projections-----")
+        console.log(JSON.stringify(projections));
+        var toProjection    = new OpenLayers.Projection("EPSG:4326");   // google projections
+        var fromProjection  = new OpenLayers.Projection("EPSG:22185"); // fuckin' argentine projections
+
+        var newpos = [];
+
+        for(var i=0;i<projections.length;i++){
+            var projection = projections[i];
+            console.log("----------one projection--------");
+            console.log(JSON.stringify(projection));
+            var gposition = new OpenLayers.LonLat(projection[0],projection[1]).transform( fromProjection, toProjection);
+            gposition = new google.maps.LatLng(gposition.lat, gposition.lon);
+            newpos.push(gposition);
+            console.log(JSON.stringify(gposition));
+        }
+
+        return newpos;
+    }
 
 };
 
 function toggle(id){
-	if (document.getElementById){ 
-		var el = document.getElementById(id); 	
-		if(el.style.display == 'none') {
-			el.style.display = 'block'; 		
-			el.style.zIndex = '99';
-			general.style.marginLeft = '85%';
-			// general.style.position = (general.style.position == 'absolute') ? 'fixed' : 'absolute';
-		}else {
-			el.style.display = 'none'; 	
-			general.style.marginLeft = '0px';
-			el.style.zIndex = '-1';
-		}
-	}
+    if (document.getElementById){ 
+        var el = document.getElementById(id); 	
+        if(el.style.display == 'none') {
+            el.style.display = 'block'; 		
+            el.style.zIndex = '99';
+            general.style.marginLeft = '85%';
+            // general.style.position = (general.style.position == 'absolute') ? 'fixed' : 'absolute';
+        }else {
+            el.style.display = 'none'; 	
+            general.style.marginLeft = '0px';
+            el.style.zIndex = '-1';
+        }
+    }
 }
 
 
 function alert(msj){
-	console.log(navigator.notification);
-	try {
-	    navigator.notification.alert(msj, function(){},"Cuando Llega?");
-	}catch(e) {
-		console.log(e);
-	}
+    console.log(navigator.notification);
+    try {
+        navigator.notification.alert(msj, function(){},"Cuando Llega?");
+    }catch(e) {
+        console.log(e);
+    }
 }
 
 
