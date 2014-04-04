@@ -1,8 +1,5 @@
-* poner mensaje cuando no hay favoritos
-* no poner linea, ni boton para actualizar cuando se entra directo a ultimos resultado si no se ha realizado una busqueda
 * agregar plugin share
 * ver q se acomode el mapa onresize
 * ver slidemenu en android
 * hacer clearTimeout cuando se inicia nuevamente la pantalla de resultados
-* agregar plugin de geolocation (vos PAM, yo ya lo agregue)
 * agregar admob ?

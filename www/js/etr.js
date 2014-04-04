@@ -275,7 +275,8 @@ function _etr(){
 		app.startSpinning();
 		$.post(url, params, function(response){
 			app.stopSpinning();
-			response = response.replace('-', '<br />');
+			response = response.replace('-', '<br /><br />');
+			response = response.replace(',', '<br />');
 			response = response.replace(',', '<br />');
 			response = response.replace('Resultado: ', '');
 			response = response.replace('Linea '+etr.busqueda.linea+":", 'Pr&oacute;ximo: ');

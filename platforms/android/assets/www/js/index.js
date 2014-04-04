@@ -1,4 +1,4 @@
-var map;
+var map, idaLine, vueltaLine;
 var app = {
 
     modules: [
@@ -226,7 +226,7 @@ var app = {
             dataType: "json",
             contentType : "application/json; charset=utf-8",
             data : JSON.stringify({
-                linea:120,
+                linea:linea,
                 tipo :"Urbano"
             }), 
             success: function( data ) {
@@ -238,14 +238,18 @@ var app = {
                     vuelta = JSON.parse(vuelta)
                     newida = app.transformProjections(ida.coordinates[0]);
                     newvuelta = app.transformProjections(vuelta.coordinates[0]);
-                    var idaLine = new google.maps.Polyline({
+                    try{
+                    idaLine.setMap(null);
+                    vueltaLine.setMap(null);
+                    }catch(e){}
+                    idaLine = new google.maps.Polyline({
                         path: newida,
                         geodesic: true,
                         strokeColor: '#69b9de',
                         strokeOpacity: 1.0,
                         strokeWeight: 2
                     });
-                    var vueltaLine = new google.maps.Polyline({
+                    vueltaLine = new google.maps.Polyline({
                         path: newvuelta,
                         geodesic: true,
                         strokeColor: '#adb0b1',
@@ -255,7 +259,6 @@ var app = {
 
                     idaLine.setMap(map);
                     vueltaLine.setMap(map);
-                    var geojson_format = new OpenLayers.Format.GeoJSON(); 
                 }catch(e) {
                     console.log(e);
                 }

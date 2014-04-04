@@ -555,3 +555,7 @@ a:active{text-decoration:none;}
 	display:inline-block;
 	margin-right:6px;
 }
+
+.linea-addr {
+    font-size: 16px;
+}
