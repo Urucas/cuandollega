@@ -132,14 +132,12 @@ function _etr(){
 	this.parseCalles = function(calles) {
 
 		var len = calles.length;
-		var html_calles = '';
+		var html_calles = '<option value="0">Seleccionar calle</option>';
 		for(var i = 0; i < len; i++) {
 			var calle = calles[i];
 			html_calles+= '<option value="' + calle.id +'">' + calle.desc + '</option>';
 		}
 		$("#consultar-calle").html(html_calles);
-		//$("#consultar-calle").attr("disabled", "");
-		//$("#consultar-nrosparada").attr("disabled", "");
 	}
 
 	this.obtenerInter = function() {
