@@ -11,6 +11,10 @@ a{
     padding:0;
     border:none;
 }
+ul {
+	margin:0;
+    padding:0;
+}
 ul li{
     list-style:none;
     margin:0;
@@ -37,7 +41,7 @@ body{
     height:100%; 
     min-height:100%;
     position:relative;
-    overflow-x:hidden;
+    overflow-x:hidden; 
 }
 a:link{text-decoration:none;}
 a:visited{text-decoration:none;}
@@ -153,16 +157,17 @@ a:active{text-decoration:none;}
     height:40px;
     cursor:pointer;
 }
+
 #menu{
     width:85%;
     float:left;
     display:inline-block;
-    height:100%;
-    min-height:100%;
+    height:auto;
+	min-height:100%;
     top:0; 
     left:0; 
     bottom:0;
-    position:fixed;
+    position:absolute;
     z-index:-1;
     background: -moz-linear-gradient(left,  rgba(137,137,137,0) 86%, rgba(101,101,101,0) 92%, rgba(53,53,53,0.73) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, right top, color-stop(86%,rgba(137,137,137,0)), color-stop(92%,rgba(101,101,101,0)), color-stop(100%,rgba(53,53,53,0.73))); /* Chrome,Safari4+ */
@@ -565,3 +570,29 @@ a:active{text-decoration:none;}
 #contenido-noticias table{
 	padding:10px;
 }
+
+#scroller {
+	/*
+	position: absolute;
+	z-index: 1;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	width: 100%;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-o-text-size-adjust: none;
+	text-size-adjust: none;
+	*/
+}
+
+

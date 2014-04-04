@@ -68,7 +68,21 @@ var app = {
             app.load(hash);
         }
         try{ app.uuid = device.uuid; }catch(e){ console.log("cant get device uuid"+e.message); }
-	
+
+		/*
+		try {
+					var fileref=document.createElement('script')
+						fileref.setAttribute("type","text/javascript")
+						fileref.setAttribute("src", "js/iscroll.js");
+						fileref.onload = function() {
+						menuScroll = new IScroll(document.getElementById("wrapper-menu"));
+						// containerScroll = new iScroll("container", {});
+						// document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+					}
+					document.getElementsByTagName("head")[0].appendChild(fileref);
+
+		}catch(e){}
+*/
 		/*
         try {
             admobCode = (device.platform=="Android") ? "ca-app-pub-7488172185490417/1616483686" : "ca-app-pub-7488172185490417/7015922082";
@@ -172,8 +186,10 @@ var app = {
 		}
 	},
     deleteFavorito: function(idlinea,idparada){
-        etr.removeFavorito(idparada, idlinea);
-        document.location.href="#favoritos";
+		if(confirm("Esta seguro que desea eliminar este favorito ?")) {
+	        etr.removeFavorito(idparada, idlinea);
+			app.getFavs();
+    	}
     },
     openFavorito: function(idlinea,idparada, linea){
         etr.busqueda.linea = linea;
@@ -330,7 +346,6 @@ var app = {
             gposition = new google.maps.LatLng(gposition.lat, gposition.lon);
             newpos.push(gposition);
         }
-
         return newpos;
     }
 };
@@ -351,9 +366,7 @@ function toggle(id){
 	}
 }
 
-
 function alert(msj){
-	console.log(navigator.notification);
 	try {
 		navigator.notification.alert(msj, function(){},"Cuando Llega?");
 	}catch(e) {

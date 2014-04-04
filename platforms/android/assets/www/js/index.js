@@ -69,6 +69,21 @@ var app = {
         }
         try{ app.uuid = device.uuid; }catch(e){ console.log("cant get device uuid"+e.message); }
 
+		/*
+		try {
+					var fileref=document.createElement('script')
+						fileref.setAttribute("type","text/javascript")
+						fileref.setAttribute("src", "js/iscroll.js");
+						fileref.onload = function() {
+						menuScroll = new IScroll(document.getElementById("wrapper-menu"));
+						// containerScroll = new iScroll("container", {});
+						// document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+					}
+					document.getElementsByTagName("head")[0].appendChild(fileref);
+
+		}catch(e){}
+*/
+		/*
         try {
             admobCode = (device.platform=="Android") ? "ca-app-pub-7488172185490417/1616483686" : "ca-app-pub-7488172185490417/7015922082";
             admob.createBannerView(
@@ -79,7 +94,7 @@ var app = {
                 });
 
         }catch(e) { }
-
+		*/
         document.addEventListener("menubutton", function(){
             toggle('menu');
         }, false);
@@ -112,6 +127,10 @@ var app = {
     },
     showResult: function(){
 
+        if(etr.busqueda.linea == undefined){
+            alert("Todavía no has consultado ninguna línea");
+            window.location.href = "#consultar";
+        }
         $("#linea-num").html("Linea "+etr.busqueda.linea);
         if(etr.busqueda.nomcalle != undefined && etr.busqueda.nominter != undefined) {
             $("#linea-num").append('<br /><span class="linea-addr">'+etr.busqueda.nomcalle+' - '+etr.busqueda.nominter+'</span>');
@@ -145,20 +164,32 @@ var app = {
         }
     },
     getFavs: function(){
-        if(etr.favoritos.length == 0) {
-            var favs = this.getValue("favoritos");
-            if(favs == null){
-                favs = [];
-            }
-            etr.favoritos = JSON.parse(favs);
-        }
-        try{
-            $("#favoritos-list").render("views/favorito-list-item.html", etr.favoritos);
-        }catch(e){console.log(e)}
-    },
+		if(etr.favoritos != undefined && etr.favoritos.length == 0) {
+			var favs = this.getValue("favoritos");
+			try{
+				if(!favs){
+					favs = [];
+				}else {
+					favs =  JSON.parse(favs);
+				}
+				etr.favoritos = favs;
+			}catch(e) {  
+				etr.favoritos = [];
+			}
+		}else {
+			$("#favoritos-list").html("No has agregado ningun favorito a tu lista!");
+		}
+		if(etr.favoritos.length) {
+			$("#favoritos-list").render("views/favorito-list-item.html", etr.favoritos);
+		}else{
+			$("#favoritos-list").html("<p>No has agregado ningun favorito a tu lista!</p>");
+		}
+	},
     deleteFavorito: function(idlinea,idparada){
-        etr.removeFavorito(idparada, idlinea);
-        document.location.href="#favoritos";
+		if(confirm("Esta seguro que desea eliminar este favorito ?")) {
+	        etr.removeFavorito(idparada, idlinea);
+			app.getFavs();
+    	}
     },
     openFavorito: function(idlinea,idparada, linea){
         etr.busqueda.linea = linea;
@@ -315,36 +346,32 @@ var app = {
             gposition = new google.maps.LatLng(gposition.lat, gposition.lon);
             newpos.push(gposition);
         }
-
         return newpos;
     }
-
 };
 
 function toggle(id){
-    if (document.getElementById){ 
-        var el = document.getElementById(id); 	
-        if(el.style.display == 'none') {
-            el.style.display = 'block'; 		
-            el.style.zIndex = '99';
-            general.style.marginLeft = '85%';
-            // general.style.position = (general.style.position == 'absolute') ? 'fixed' : 'absolute';
-        }else {
-            el.style.display = 'none'; 	
-            general.style.marginLeft = '0px';
-            el.style.zIndex = '-1';
-        }
-    }
+	if (document.getElementById){ 
+		var el = document.getElementById(id); 	
+		if(el.style.display == 'none') {
+			el.style.display = 'block'; 		
+			el.style.zIndex = '99';
+			general.style.marginLeft = '85%';
+			// general.style.position = (general.style.position == 'absolute') ? 'fixed' : 'absolute';
+		}else {
+			el.style.display = 'none'; 	
+			general.style.marginLeft = '0px';
+			el.style.zIndex = '-1';
+		}
+	}
 }
 
-
 function alert(msj){
-    console.log(navigator.notification);
-    try {
-        navigator.notification.alert(msj, function(){},"Cuando Llega?");
-    }catch(e) {
-        console.log(e);
-    }
+	try {
+		navigator.notification.alert(msj, function(){},"Cuando Llega?");
+	}catch(e) {
+		console.log(e);
+	}
 }
 
 
