@@ -68,7 +68,8 @@ var app = {
             app.load(hash);
         }
         try{ app.uuid = device.uuid; }catch(e){ console.log("cant get device uuid"+e.message); }
-
+	
+		/*
         try {
             admobCode = (device.platform=="Android") ? "ca-app-pub-7488172185490417/1616483686" : "ca-app-pub-7488172185490417/7015922082";
             admob.createBannerView(
@@ -79,7 +80,7 @@ var app = {
                 });
 
         }catch(e) { }
-
+		*/
         document.addEventListener("menubutton", function(){
             toggle('menu');
         }, false);
