@@ -202,6 +202,36 @@ var app = {
 		var w = $("#recorrido-canvas").width();
 		$("#map-canvas").css("width", w+"px").css("height",w+"px");
 
+        var center  = new OpenLayers.LonLat(5440194.808544915,6355674.349692853);
+        var map     = new OpenLayers.Map("map-canvas", {
+        projection: 'EPSG:3857',
+        layers: [
+            new OpenLayers.Layer.Google(
+                "Google Physical",
+                {type: google.maps.MapTypeId.TERRAIN}
+            ),
+            new OpenLayers.Layer.Google(
+                "Google Streets", // the default
+                {numZoomLevels: 20}
+            ),
+            new OpenLayers.Layer.Google(
+                "Google Hybrid",
+                {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20}
+            ),
+            new OpenLayers.Layer.Google(
+                "Google Satellite",
+                {type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22}
+            )
+        ],
+        center: new OpenLayers.LonLat(10.2, 48.9)
+            // Google.v3 uses web mercator as projection, so we have to
+            // transform our coordinates
+            .transform('EPSG:4326', 'EPSG:3857'),
+        zoom: 5
+    });
+        map.addLayer(new OpenLayers.Layer.OSM());
+        map.setCenter(center, 12);
+/*
 		map = new google.maps.Map(document.getElementById('map-canvas'), {
           mapTypeId: google.maps.MapTypeId.ROADMAP
         });
@@ -210,6 +240,7 @@ var app = {
             new google.maps.LatLng(-32.969365, -60.640725)
 		);
 		map.fitBounds(defaultBounds);
+        */
 	
 	},
 	loadRecorrido: function() {
