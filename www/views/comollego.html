@@ -3,7 +3,7 @@
 	<div class="ui-tabs">
 		<a onclick="app.showTabComoLlego('origen');" class="comollego-origen-a">Origen</a>
 		<a onclick="app.showTabComoLlego('destino');" class="comollego-destino-a">Destino</a>
-		<a onclick="app.showTabComoLlego('cuadras');" class="comollego-cuadras-a">Cant. cuadras dispuesto a caminar</a>
+		<a onclick="app.showTabComoLlego('cuadras');" class="comollego-cuadras-a">Cant...</a>
 		<div style="clear:both;"></div>
 	</div>
 
@@ -20,6 +20,9 @@
 		<select class="ui-select" id="inter-select">
 			<option value="0">Seleccionar interseccion</option>
 		</select>
+		<button class="ui-button" onclick="app.showTabComoLlego('destino');">Siguiente</button>
+
+		<br /><br />
 	</div>
 	<div class="comollego-destino ui-tab">
 		<div class="ui-box">
@@ -34,8 +37,13 @@
 		<select class="ui-select" id="dest-inter-select">
 			<option value="0">Seleccionar interseccion</option>
 		</select>
+		<br />
+		<button class="ui-button ui-button-prev" onclick="app.showTabComoLlego('origen');"> < </button>
+		<button class="ui-button ui-button-next" onclick="app.showTabComoLlego('cuadras');">Siguiente</button>
+		<br /><br />
 	</div>
 	<div class="comollego-cuadras ui-tab">
+		<label class="ui-label">Cant. cuadras dispuesto a caminar</label>
 		<select class="ui-select" id="cant-cuadras-select">
 			<option value="2">2</option>
 			<option value="4">4</option>
@@ -49,7 +57,10 @@
 			<option value="14">14</option>
 			<option value="16">16</option>
 		</select>
-		<button class="ui-button" onclick="app.comollego();">Buscar</button>
+		<br />
+		<button class="ui-button ui-button-prev" onclick="app.showTabComoLlego('destino');"> < </button>
+		<button class="ui-button ui-button-next" onclick="app.comollego();">Buscar</button>
+		<br /><br />
 	</div>
 
 	<div class="comollego-result ui-tab">

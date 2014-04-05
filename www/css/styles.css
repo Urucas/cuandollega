@@ -621,11 +621,26 @@ a:active{text-decoration:none;}
 	border-bottom:0px;
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
-	margin-right:8px;
+	margin-right:4px;
 	margin-bottom:0px;
 }
 
 .ui-tabs a.active{
 	color:#ffffff;
 	background:#67b8de;	
+}
+
+.ui-label{
+	font-family:Calibri, sans-serif;
+	color:#8f99a0;
+	font-size:20px;
+	text-align:left;
+}
+
+.ui-button-prev{
+	width:10%;
+}
+
+.ui-button-next{
+	width:79%;
 }

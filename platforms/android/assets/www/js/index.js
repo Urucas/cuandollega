@@ -228,7 +228,16 @@ var app = {
 				}
 			});
 		});
+		
+		app.showTabComoLlego("origen");
+	},
+	showTabComoLlego: function(id) {
+	
+		$(".ui-tab").hide();
+		$(".ui-tabs").find("a").removeClass("active");
 
+		$(".comollego-"+id+'-a').addClass("active");
+		$(".comollego-"+id).show();
 	},
 	searchCalle: function(term, callback) {
 		
@@ -276,11 +285,13 @@ var app = {
 				contentType : "application/json; charset=utf-8",
 				data : JSON.stringify(comoLlego),
 				success : function(data) {
+					app.stopSpinning();
 					console.log("bien");
 					console.log(data);              
 				},
 				error : function() {
-					console.log("No se pudo obtener resultados");
+					app.stopSpinning();
+					alert("Mmm, ha ocurrido un error al intentar obtener los resultados");
 				}
 			});
 		}catch(e) {
@@ -495,7 +506,7 @@ function alert(msj){
 	try {
 		navigator.notification.alert(msj, function(){},"Cuando Llega?");
 	}catch(e) {
-		console.log(e);
+		console.log(msj);
 	}
 }
 
