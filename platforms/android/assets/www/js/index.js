@@ -262,29 +262,27 @@ var app = {
 			condigoInterseccion: $("#dest-inter-select").val()
 		};
 		var cantCuadras = $("#cant-cuadras-select").val();
-		console.log(JSON.stringify(origen));
+		var comoLlego = {
+			origen: origen,
+			destino: destino,
+			cantCuadras: cantCuadras
+		}
 		app.startSpinning();
 		try {
- 		$.ajax({
-            type : 'POST',
-            url: "http://infomapa.rosario.gov.ar/emapa/menuLateral/recorridos.jsp",
-            dataType: "json",
-            contentType : "application/json; charset=utf-8",
-            data : JSON.stringify({
-                cantCuadras: cantCuadras,
-                destino : destino,
-				origen: origen
-            }), 
-            success: function(data){
-				console.log("volvio");
-                app.stopSpinning();
-				console.log(JSON.stringify(data));
-			},
-			error: function(e) {
-				console.log("error");
-				console.log(e.message);
-			}
-		});
+			$.ajax({
+				type : 'POST',
+				url : 'http://infomapa.rosario.gov.ar/emapa/tup/comoLLego/invertirBusqueda.htm',
+				dataType : 'json',  
+				contentType : "application/json; charset=utf-8",
+				data : JSON.stringify(comoLlego),
+				success : function(data) {
+					console.log("bien");
+					console.log(data);              
+				},
+				error : function() {
+					console.log("No se pudo obtener resultados");
+				}
+			});
 		}catch(e) {
 			console.log(e);
 		}
