@@ -9,6 +9,7 @@ var app = {
         { id: "resultado", view: "views/resultado.html", callback: function() { app.showResult(); } },
         { id: "noticias", view: "views/noticias.html", callback: function() { app.showNoticias(); } },
         { id: "recargas", view: "views/puntos-recarga.html", callback: function() { app.loadRecargas(); } },
+        { id: "comollego", view: "views/comollego.html", callback: function() { app.loadComoLlego(); }  },
     ],
     load: function(hash) {
         //console.log("page to open -> "+hash);
@@ -162,7 +163,132 @@ var app = {
         if(busqueda.idparada.length) {
             $("#consultar-nroparada").val(busqueda.idparada);
         }
+
+		$("#consultar-nroparada").enterKey(function(){
+			app.validarConsultar();
+		});
     },
+	loadComoLlego: function() {
+	
+		$("#calle-search").enterKey(function(val){
+			$("#inter-select").html('<option value="0">Seleccionar interseccion</option>');
+			app.searchCalle(val, function(data) {
+				if(data.length) {
+					var html = '';
+					for(var i = 0; i< data.length; i++) {
+						html += '<option value="'+data[i].id+'">'+data[i].nombre+'</option>';
+					}
+					$("#calle-select").html(html);
+				}else{
+					alert("No se encontraron resultados");
+				}
+
+			});
+		});
+		$("#inter-search").enterKey(function(val){
+			app.searchCalle(val, function(data) {
+				if(data.length) {
+					var html = '';
+					for(var i = 0; i< data.length; i++) {
+						html += '<option value="'+data[i].id+'">'+data[i].nombre+'</option>';
+					}
+					$("#inter-select").html(html);
+				}else{
+					alert("No se encontraron resultados");
+				}
+			});
+		});
+
+		$("#dest-calle-search").enterKey(function(val){
+			$("#dest-inter-select").html('<option value="0">Seleccionar interseccion</option>');
+			app.searchCalle(val, function(data) {
+				if(data.length) {
+					var html = '';
+					for(var i = 0; i< data.length; i++) {
+						html += '<option value="'+data[i].id+'">'+data[i].nombre+'</option>';
+					}
+					$("#dest-calle-select").html(html);
+				}else{
+					alert("No se encontraron resultados");
+				}
+
+			});
+		});
+
+		$("#dest-inter-search").enterKey(function(val){
+			app.searchCalle(val, function(data) {
+				if(data.length) {
+					var html = '';
+					for(var i = 0; i< data.length; i++) {
+						html += '<option value="'+data[i].id+'">'+data[i].nombre+'</option>';
+					}
+					$("#dest-inter-select").html(html);
+				}else{
+					alert("No se encontraron resultados");
+				}
+			});
+		});
+
+	},
+	searchCalle: function(term, callback) {
+		
+		app.startSpinning();
+		$.ajax({
+            type : 'GET',
+            url: "http://infomapa.rosario.gov.ar/emapa/direccion/autocomplete.htm",
+            dataType: "json",
+            data : {
+                term:term,
+            }, 
+            success: function(data) {
+				app.stopSpinning();
+				callback(data);
+			}
+		});
+
+	},
+	comollego: function() {
+		
+		var origen = {
+			calle: jQuery.trim($('#calle-select').find(":selected").text()),
+			codigoCalle: $("#calle-select").val(),
+			interseccion: jQuery.trim($('#inter-select').find(":selected").text()),
+			condigoInterseccion: $("#inter-select").val()
+		};
+		var destino = {
+			calle: jQuery.trim($('#dest-calle-select').find(":selected").text()),
+			codigoCalle: $("#dest-calle-select").val(),
+			interseccion: jQuery.trim($('#dest-inter-select').find(":selected").text()),
+			condigoInterseccion: $("#dest-inter-select").val()
+		};
+		var cantCuadras = $("#cant-cuadras-select").val();
+		console.log(JSON.stringify(origen));
+		app.startSpinning();
+		try {
+ 		$.ajax({
+            type : 'POST',
+            url: "http://infomapa.rosario.gov.ar/emapa/menuLateral/recorridos.jsp",
+            dataType: "json",
+            contentType : "application/json; charset=utf-8",
+            data : JSON.stringify({
+                cantCuadras: cantCuadras,
+                destino : destino,
+				origen: origen
+            }), 
+            success: function(data){
+				console.log("volvio");
+                app.stopSpinning();
+				console.log(JSON.stringify(data));
+			},
+			error: function(e) {
+				console.log("error");
+				console.log(e.message);
+			}
+		});
+		}catch(e) {
+			console.log(e);
+		}
+	},
     getFavs: function(){
 		if(etr.favoritos != undefined && etr.favoritos.length == 0) {
 			var favs = this.getValue("favoritos");
@@ -347,7 +473,8 @@ var app = {
             newpos.push(gposition);
         }
         return newpos;
-    }
+    },
+
 };
 
 function toggle(id){
