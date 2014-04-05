@@ -256,6 +256,34 @@ var app = {
 		});
 
 	},
+	getOrigen: function() {
+		
+		var origen = {
+			nombreCalle: jQuery.trim($('#calle-select').find(":selected").text()),
+			codigoCalle: $("#calle-select").val(),
+			nombreInterseccion: jQuery.trim($('#inter-select').find(":selected").text()),
+			condigoInterseccion: $("#inter-select").val(),
+			altDesde: "",
+			altHasta: "",
+			letra: ""
+		};
+		console.log("aca");
+		
+		app.startSpinning();
+		$.ajax({
+			type : 'POST',
+			url : 'http://infomapa.rosario.gov.ar/emapa/tup/comoLLego/origen.htm',
+			dataType : 'json',  
+			contentType : "application/json; charset=utf-8",
+			data : origen,
+			success : function(data) {
+				app.stopSpinning();
+				console.log("bien");
+				console.log(data);
+			}
+		});
+
+	},
 	comollego: function() {
 		
 		var origen = {
@@ -271,11 +299,11 @@ var app = {
 			condigoInterseccion: $("#dest-inter-select").val()
 		};
 		var cantCuadras = $("#cant-cuadras-select").val();
-		var comoLlego = {
-			origen: origen,
-			destino: destino,
-			cantCuadras: cantCuadras
-		}
+		
+				
+		console.log(comoLlego);
+		console.log(JSON.stringify(comoLlego));
+
 		app.startSpinning();
 		try {
 			$.ajax({
@@ -283,13 +311,15 @@ var app = {
 				url : 'http://infomapa.rosario.gov.ar/emapa/tup/comoLLego/invertirBusqueda.htm',
 				dataType : 'json',  
 				contentType : "application/json; charset=utf-8",
-				data : '{"origen":{"calle":"IRIONDO GOBERNADOR SIMON ","altura":null,"bis":null,"letra":null,"interseccion":"SAN LUIS                                          ","geoJson":"{\"type\":\"Point\",\"coordinates\":[5437321.949999933,6355295.240000053]}","divsAdmins":[{"codigo":"3","nombreAbrev":"CENTRO                                            ","tipo":1,"valor":"CENTRO                                            "},{"codigo":"-1","nombreAbrev":"-1","tipo":4,"valor":"Sin Vecinal"},{"codigo":"6","nombreAbrev":"Comisaría 6      ","tipo":2,"valor":"Comisaría 6      "},{"codigo":"55","nombreAbrev":"80","tipo":5,"valor":"80"},{"codigo":"269","nombreAbrev":"8003","tipo":6,"valor":"8003"}],"codigoCalle":58700,"codigoInterseccion":85750},"destino":{"calle":"JUJUY                                             ","altura":null,"bis":null,"letra":null,"interseccion":"PARAGUAY                                          ","geoJson":"{\"type\":\"Point\",\"coordinates\":[5439991.569999959,6355992.599999966]}","divsAdmins":[{"codigo":"3","nombreAbrev":"CENTRO                                            ","tipo":1,"valor":"CENTRO                                            "},{"codigo":"66","nombreAbrev":"88","tipo":4,"valor":"Parque Espana             "},{"codigo":"3","nombreAbrev":"Comisaría 3      ","tipo":2,"valor":"Comisaría 3      "},{"codigo":"18","nombreAbrev":"20","tipo":5,"valor":"20"},{"codigo":"501","nombreAbrev":"2002","tipo":6,"valor":"2002"}],"codigoCalle":59750,"codigoInterseccion":74950},"cantCuadras":"14","recorridos":[]}"',
+				data : JSON.stringify(comoLlego),
 				success : function(data) {
 					app.stopSpinning();
 					console.log("bien");
-					console.log(data);              
+					console.log(data);          
 				},
-				error : function() {
+				error : function(xhr, ajaxOptions, thrownError) {
+					console.log(xhr.status);
+					console.log(thrownError);
 					app.stopSpinning();
 					alert("Mmm, ha ocurrido un error al intentar obtener los resultados");
 				}
