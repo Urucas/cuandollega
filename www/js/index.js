@@ -228,7 +228,16 @@ var app = {
 				}
 			});
 		});
+		
+		app.showTabComoLlego("origen");
+	},
+	showTabComoLlego: function(id) {
+	
+		$(".ui-tab").hide();
+		$(".ui-tabs").find("a").removeClass("active");
 
+		$(".comollego-"+id+'-a').addClass("active");
+		$(".comollego-"+id).show();
 	},
 	searchCalle: function(term, callback) {
 		

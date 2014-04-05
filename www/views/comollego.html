@@ -1,44 +1,58 @@
 <div class="comollego-form">
-	<p>Origen</p>
-	<div class="ui-box">
-		<label>Buscar Calle</label><br /><input type="text" id="calle-search" class="ui-input-text" />
+	
+	<div class="ui-tabs">
+		<a onclick="app.showTabComoLlego('origen');" class="comollego-origen-a">Origen</a>
+		<a onclick="app.showTabComoLlego('destino');" class="comollego-destino-a">Destino</a>
+		<a onclick="app.showTabComoLlego('cuadras');" class="comollego-cuadras-a">Cant. cuadras dispuesto a caminar</a>
+		<div style="clear:both;"></div>
 	</div>
-	<select class="ui-select" id="calle-select">
-		<option value="0">Seleccionar calle</option>
-	</select>
-	<div class="ui-box">
-		<label>Buscar Interseccion</label><br /><input type="text" id="inter-search" class="ui-input-text"/>
+
+	<div class="comollego-origen ui-tab">
+		<div class="ui-box">
+			<label>Buscar Calle</label><br /><input type="text" id="calle-search" class="ui-input-text" />
+		</div>
+		<select class="ui-select" id="calle-select">
+			<option value="0">Seleccionar calle</option>
+		</select>
+		<div class="ui-box">
+			<label>Buscar Interseccion</label><br /><input type="text" id="inter-search" class="ui-input-text"/>
+		</div>
+		<select class="ui-select" id="inter-select">
+			<option value="0">Seleccionar interseccion</option>
+		</select>
 	</div>
-	<select class="ui-select" id="inter-select">
-		<option value="0">Seleccionar interseccion</option>
-	</select>
-		
-	<p>Destino</p>
-	<div class="ui-box">
-		<label>Buscar Calle</label><br /><input type="text" id="dest-calle-search" class="ui-input-text" />
+	<div class="comollego-destino ui-tab">
+		<div class="ui-box">
+			<label>Buscar Calle</label><br /><input type="text" id="dest-calle-search" class="ui-input-text" />
+		</div>
+		<select class="ui-select" id="dest-calle-select">
+			<option value="0">Seleccionar calle</option>
+		</select>
+		<div class="ui-box">
+			<label>Buscar Interseccion</label><br /><input type="text" id="dest-inter-search" class="ui-input-text"/>
+		</div>
+		<select class="ui-select" id="dest-inter-select">
+			<option value="0">Seleccionar interseccion</option>
+		</select>
 	</div>
-	<select class="ui-select" id="dest-calle-select">
-		<option value="0">Seleccionar calle</option>
-	</select>
-	<div class="ui-box">
-		<label>Buscar Interseccion</label><br /><input type="text" id="dest-inter-search" class="ui-input-text"/>
+	<div class="comollego-cuadras ui-tab">
+		<select class="ui-select" id="cant-cuadras-select">
+			<option value="2">2</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="12">12</option>
+			<option value="14">14</option>
+			<option value="16">16</option>
+		</select>
+		<button class="ui-button" onclick="app.comollego();">Buscar</button>
 	</div>
-	<select class="ui-select" id="dest-inter-select">
-		<option value="0">Seleccionar interseccion</option>
-	</select>
-	<p>Cant. cuadras dispuesto a caminar</p>
-	<select class="ui-select" id="cant-cuadras-select">
-		<option value="2">2</option>
-		<option value="4">4</option>
-		<option value="5">5</option>
-		<option value="6">6</option>
-		<option value="7">7</option>
-		<option value="8">8</option>
-		<option value="9">9</option>
-		<option value="10">10</option>
-		<option value="12">12</option>
-		<option value="14">14</option>
-		<option value="16">16</option>
-	</select>
-	<button class="ui-button" onclick="app.comollego();">Buscar</button>
+
+	<div class="comollego-result ui-tab">
+		<select class="ui-select" id="cant-cuadras-select"></select>
+	</div>
 </div>

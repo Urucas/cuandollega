@@ -595,4 +595,37 @@ a:active{text-decoration:none;}
 	*/
 }
 
+.ui-tab {
+	display:none;
+	
+}
 
+.ui-tabs {
+	width:90%;
+	margin-left:auto;
+	margin-right:auto;
+	border-bottom:1px solid #ccc;
+	margin-bottom:4px;
+}
+
+.ui-tabs a{
+	float:left;
+	padding:8px;
+	border-radius:5px;
+	border:1px solid #ccc;
+ 	font-size:20px;
+	text-align:center;
+ 	font-family:Calibri, sans-serif;
+	color:#8f99a0;
+	background:#fff;
+	border-bottom:0px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	margin-right:8px;
+	margin-bottom:0px;
+}
+
+.ui-tabs a.active{
+	color:#ffffff;
+	background:#67b8de;	
+}
