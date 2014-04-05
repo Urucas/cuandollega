@@ -42,7 +42,7 @@ var app = {
                         "No hagas cálculos de horarios, quedate en la cama hasta que llegue el cole!", 
                         null, 
                         null, 
-                        "http://cineros.com.ar"
+                        "https://play.google.com/store/apps/details?id=com.cuandollegaandroid"
                     );
                 }
             });
