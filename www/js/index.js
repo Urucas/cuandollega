@@ -31,6 +31,7 @@ var app = {
                 menu.style.zIndex = '-1';
                 $(".menu-option > div").removeClass().addClass("btn-izq");
                 $("#"+view_id).addClass("btn-izq-selected");
+				document.getElementById('wrapper').style.position = '';
             }catch(e) {}
             try { callback(); } catch(e) {}
         });
@@ -274,7 +275,6 @@ var app = {
 			type : 'POST',
 			url : 'http://infomapa.rosario.gov.ar/emapa/tup/comoLLego/origen.htm',
 			dataType : 'json',  
-			contentType : "application/json; charset=utf-8",
 			data : origen,
 			success : function(data) {
 				app.stopSpinning();
@@ -523,11 +523,13 @@ function toggle(id){
 			el.style.display = 'block'; 		
 			el.style.zIndex = '99';
 			general.style.marginLeft = '85%';
+			document.getElementById('wrapper').style.position = 'fixed';
 			// general.style.position = (general.style.position == 'absolute') ? 'fixed' : 'absolute';
 		}else {
 			el.style.display = 'none'; 	
 			general.style.marginLeft = '0px';
 			el.style.zIndex = '-1';
+			document.getElementById('wrapper').style.position = '';
 		}
 	}
 }
