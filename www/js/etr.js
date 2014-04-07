@@ -55,18 +55,20 @@ function _etr(){
 						}
 
 						desc = response.input1;
-
+						var extra = busqueda.nomcalle == undefined || busqueda.nominter == undefined ? 
+										busqueda.idparada : 
+										busqueda.nomcalle + " y " + busqueda.nominter;
+						
 						etr.favoritos.push({
 							'idlinea'  : busqueda.idlinea,
 							'idparada' : busqueda.idparada,
 							'linea'    : busqueda.linea,
-							'nomcalle' : busqueda.nomcalle,
-							'nominter' : busqueda.nominter,
+							'extra'    : extra,
 							'descripcion': desc
 						});	
 
 						try{ 
-							var strfavs = JSON.stringify(etr.favoritos); 
+							var strfavs = JSON.stringify(etr.favoritos);
 							app.saveValue("favoritos", strfavs); 
 
 						}catch(e) { console.log(e); }

@@ -132,15 +132,13 @@ var app = {
         if(etr.busqueda.linea == undefined){
             alert("Todavía no has consultado ninguna línea");
 			return;
-            window.location.href = "#consultar";
+            // window.location.href = "#consultar";
         }
         $("#linea-num").html("Linea "+etr.busqueda.linea);
-        if(etr.busqueda.nomcalle != undefined && etr.busqueda.nominter != undefined) {
-            $("#linea-num").append('<br /><span class="linea-addr">'+etr.busqueda.nomcalle+' - '+etr.busqueda.nominter+'</span>');
-        }else{
-            $("#linea-num").append('<br /><span class="linea-addr">Parada '+etr.busqueda.idparada+'</span>');
+        if(etr.busqueda.extra != undefined) {
+            $("#linea-num").append('<br /><span class="linea-addr">'+etr.busqueda.extra);
 		}
-        etr.cuandollega();
+		etr.cuandollega();
     },
     validarConsultar: function() {
 
@@ -150,11 +148,14 @@ var app = {
             alert("Debe seleccionar la linea");
             return;
         }	
-        if( idparada.length == 0) {
+        if(idparada.length == 0) {
             alert("Debe ingresar el nro. de parada");
             return;
         }
         etr.busqueda.idparada = idparada;
+		etr.busqueda.extra = etr.busqueda.nomcalle == undefined || etr.busqueda.nominter == undefined ? 
+					"Parada "+etr.busqueda.idparada : etr.busqueda.nomcalle + " y " + etr.busqueda.nominter;
+
         document.location.href = "#resultado";
     },
     loadBusqueda: function() {
@@ -332,23 +333,17 @@ var app = {
 		}
 	},
     getFavs: function(){
-		console.log(JSON.stringify(etr.favoritos));
-		if(etr.favoritos != undefined && etr.favoritos.length == 0) {
-			var favs = this.getValue("favoritos");
-			console.log(favs);
-			try{
-				if(!favs){
-					favs = [];
-				}else {
-					favs =  JSON.parse(favs);
-				}
-				etr.favoritos = favs;
-			}catch(e) {  
-				etr.favoritos = [];
-			}
+		var favs = this.getValue("favoritos");
+		console.log("fav en localstorage");
+		console.log(favs);
+		if(!favs){
+			favs = [];
 		}else {
-			$("#favoritos-list").html("No has agregado ningun favorito a tu lista!");
+			favs =  JSON.parse(favs);
 		}
+		etr.favoritos = favs;
+		console.log("favs parseado");
+		console.log(JSON.stringify(favs));
 		if(etr.favoritos.length) {
 			$("#favoritos-list").render("views/favorito-list-item.html", etr.favoritos);
 		}else{
@@ -361,10 +356,12 @@ var app = {
 			app.getFavs();
     	}
     },
-    openFavorito: function(idlinea,idparada, linea){
-        etr.busqueda.linea = linea;
-        etr.busqueda.idparada = idparada;
-        etr.busqueda.idlinea = idlinea;
+    openFavorito: function(idlinea, idparada){
+		var fav = etr.hasFavorito(idparada,idlinea);
+        etr.busqueda.linea = fav.linea;
+        etr.busqueda.idparada = fav.idparada;
+        etr.busqueda.idlinea = fav.idlinea;
+		etr.busqueda.extra = fav.extra;
         document.location.href="#resultado";
     },
     showNoticias: function(){
