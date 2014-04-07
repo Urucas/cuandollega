@@ -131,12 +131,15 @@ var app = {
 
         if(etr.busqueda.linea == undefined){
             alert("Todavía no has consultado ninguna línea");
+			return;
             window.location.href = "#consultar";
         }
         $("#linea-num").html("Linea "+etr.busqueda.linea);
         if(etr.busqueda.nomcalle != undefined && etr.busqueda.nominter != undefined) {
             $("#linea-num").append('<br /><span class="linea-addr">'+etr.busqueda.nomcalle+' - '+etr.busqueda.nominter+'</span>');
-        }
+        }else{
+            $("#linea-num").append('<br /><span class="linea-addr">Parada '+etr.busqueda.idparada+'</span>');
+		}
         etr.cuandollega();
     },
     validarConsultar: function() {
