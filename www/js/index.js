@@ -329,8 +329,10 @@ var app = {
 		}
 	},
     getFavs: function(){
+		console.log(JSON.stringify(etr.favoritos));
 		if(etr.favoritos != undefined && etr.favoritos.length == 0) {
 			var favs = this.getValue("favoritos");
+			console.log(favs);
 			try{
 				if(!favs){
 					favs = [];
