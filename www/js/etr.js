@@ -56,7 +56,7 @@ function _etr(){
 
 						desc = response.input1;
 						var extra = busqueda.nomcalle == undefined || busqueda.nominter == undefined ? 
-										busqueda.idparada : 
+										"Parada "+busqueda.idparada : 
 										busqueda.nomcalle + " y " + busqueda.nominter;
 						
 						etr.favoritos.push({
