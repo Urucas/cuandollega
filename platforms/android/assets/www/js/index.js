@@ -101,6 +101,8 @@ var app = {
             toggle('menu');
         }, false);
 
+		app.priloader = new Priloader("preloader", {size:36, className:"btn-config",color:"#67b8de"});
+
         document.location.href = "#consultar";
     },
 
@@ -122,10 +124,12 @@ var app = {
         }catch(e) { }
     },
     startSpinning: function(){
-        $("#btn-config").css("visibility","visible");
+      //  $("#btn-config").css("visibility","visible");
+		app.priloader.start();
     },
     stopSpinning: function(){
-        $("#btn-config").css("visibility","hidden");
+		app.priloader.stop();
+        // $("#btn-config").css("visibility","hidden");
     },
     showResult: function(){
 

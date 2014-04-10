@@ -187,7 +187,7 @@ a:active{text-decoration:none;}
     width:auto;
     height:55px;
 }
-#btn-config{
+.btn-config{
     float:right;
     margin:4px;
     width:35px;
@@ -196,12 +196,13 @@ a:active{text-decoration:none;}
     border-radius:5px;
     padding:5px;
 }
+/*
 #btn-config img{
     width:35px;
     height:35px;
     margin-right:5px;
 }
-
+*/
 #buscador{
     background-color:#14aad6;
     width:100%;
