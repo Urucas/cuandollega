@@ -139,6 +139,7 @@ a:active{text-decoration:none;}
     background: linear-gradient(to right, rgba(229,234,238,1) 0%,rgba(229,234,238,1) 92%,rgba(151,154,157,1) 99%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5eaee', endColorstr='#979a9d',GradientType=1 ); /* IE6-9 */
 }
+
 .btn-izq img{
     width:auto;
     height:45px;
@@ -644,4 +645,10 @@ a:active{text-decoration:none;}
 
 .ui-button-next{
 	width:79%;
+}
+
+.limosnas{
+	font-size:0.8em;
+	padding:10px;
+	text-align:left;
 }
