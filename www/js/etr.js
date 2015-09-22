@@ -2,7 +2,7 @@ function _etr(){
 
 	this.favoritos = [];
 
-	this.baseURL = "http://www.etr.gov.ar/";
+	this.baseURL = "http://www.etr.gov.ar/ajax/";
 
 	this.busqueda = {};
 
@@ -269,7 +269,7 @@ function _etr(){
 
 		$("#consultar-refresh").css("visibility","hidden");
 
-		var url = "http://www.etr.gov.ar/getSmsResponse.php";
+		var url = "http://www.etr.gov.ar/ajax/getSmsResponse.php";
 		var params = "parada=" + idparada;
 		params+= "&linea=" + this.busqueda.linea;
 

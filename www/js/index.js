@@ -5,10 +5,10 @@ var app = {
 	{ id: "consultar", view: "views/consultar.html", callback: function(){ app.loadBusqueda(); }},
 	{ id: "favoritos", view: "views/favoritos.html", callback: function(){ app.getFavs();}},
 	{ id: "configuracion", view: "views/configuracion.html"},
-	{ id: "recorridos", view: "views/recorridos.html", callback: function() { lazyGMaps(app.prepareRecorridos); }},
+	{ id: "recorridos", view: "views/recorridos.html", callback: function() { app.prepareRecorridos(); }},
 	{ id: "resultado", view: "views/resultado.html", callback: function() { app.showResult(); } },
 	{ id: "noticias", view: "views/noticias.html", callback: function() { app.showNoticias(); } },
-	{ id: "recargas", view: "views/puntos-recarga.html", callback: function() { lazyGMaps(app.loadRecargas); } },
+	{ id: "recargas", view: "views/puntos-recarga.html", callback: function() { app.loadRecargas(); } },
 	{ id: "contribuir", view: "views/contribuir.html" },
 	{ id: "comollego", view: "views/comollego.html", callback: function() { app.loadComoLlego(); }  },
 	],
@@ -406,7 +406,6 @@ var app = {
 	prepareRecorridos: function() {
 
 		var w = $("#recorrido-canvas").width();
-		console.log(w);
 		$("#map-canvas").css("width", w+"px").css("height",w+"px");
 
 		map = new google.maps.Map(document.getElementById('map-canvas'), {
